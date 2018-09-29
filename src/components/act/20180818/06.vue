@@ -1,17 +1,9 @@
 <template>
 	<div>
-		<div class="act04">
+		<div class="act06">
 			<div class="attend_expo">				
 				<div class="identity">
-					<div class="ideTit">请选择您的参会身份</div>
-					<div class="ideCon">
-						<span class="inv" @click="toggleInv()" :class="{ active:active==1 }">我是投资方</span>
-						<span class="fin" @click="toggleFin()" :class="{ active:active==2 }">我是融资方</span>							
-					</div>
 					<div class="form">
-						<select name="" v-model="selected">
-							<option v-for="option in options" :value="option.value" :key="option.value">{{option.text}}</option>
-						</select>
 						<label for="">
 							<input type="text"  placeholder="姓名" v-model.trim="userinfo.name"/>
 						</label>
@@ -25,7 +17,15 @@
 							<input type="email"  placeholder="邮箱" v-model.trim="userinfo.email"/>
 						</label>
 						<label for="">
-							<input type="tel"  placeholder="人数" v-model.trim="userinfo.num"/>
+							<input type="tel"  placeholder="参会人数" v-model.trim="userinfo.num"/>
+						</label>
+					</div>
+					<div class="ideCon">
+						<div class="inv">
+							<input type="checkbox" class="checkbox" v-model="checked"/><span>我要参加项目考察</span>
+						</div>
+						<label for="" v-show="checked">
+							<input type="tel" placeholder="考察人数" v-model.trim="userinfo.invnum"/>	
 						</label>
 					</div>
 				</div>
@@ -49,42 +49,32 @@
 					tel: '',
 					email: '',
 					num: '',
+					invnum: '',
 				},
-				selected: '投融资行业选择',
-				options: [
-					{text:'投融资行业选择',value:'投融资行业选择'},
-					{text:'IT|互联网|通信',value:'IT|互联网|通信'},
-					{text:'房产|不动产',value:'房产|不动产'},
-					{text:'生产制造',value:'生产制造'},
-					{text:'农林渔业',value:'农林渔业'},
-					{text:'旅游、教育及文体娱乐',value:'旅游、教育及文体娱乐'},
-					{text:'矿产能源',value:'矿产能源'},
-					{text:'现代服务业',value:'现代服务业'},
-					{text:'其他',value:'其他'},
-				],
-				additional1: '投资方',
 				selectedError: false,
 				nameError: false,
 				companyError: false,
 				telError: false,
 				emailError: false,
 				numError: false,
+				invnumError: false,
 				active: 1,
 				disable: false,
 				url: window.location.href,
+				checked: false,
+				invitationCode: this.$route.query.invitationCode,
 			}
 		},
 		methods: {
-			toggleFin(){
-				this.additional1 = '融资方';
-				this.active = 2;
-			},
-			toggleInv(){
-				this.additional1 = '投资方';
-				this.active = 1;
-			},
 			sub(){
-				this.numError = this.userinfo.num.length >0 && this.userinfo.num <99 && this.userinfo.num > 0? false: true;
+				this.invnumError = this.userinfo.invnum.length >0 && this.userinfo.invnum >0 && this.userinfo.invnum <99 ? false: true;
+				if(this.invnumError){
+					if(this.checked){
+						this.$layer.msg('请输入正确的人数');
+						return
+					}
+				}
+				this.numError = this.userinfo.num.length >0 && this.userinfo.num >0 && this.userinfo.num <99 ? false: true;
 				if(this.numError){
 					this.$layer.msg('请输入正确的人数');
 				}
@@ -104,38 +94,40 @@
 				if(this.nameError){
 					this.$layer.msg('请输入正确的姓名');
 				}
-				this.selectedError = this.selected && this.selected !='投融资行业选择' ? false: true;
-				if(this.selectedError){
-					this.$layer.msg('请选择投融资行业')
-				}
-				if(!this.numError && !this.emailError && !this.telError && !this.companyError && !this.nameError && !this.selectedError ){
+				if( !this.numError && !this.emailError && !this.telError && !this.companyError && !this.nameError ){
 					this.disable = true;
 					//是否报名
 					this.$axios.get( this.$root.urlPath.NEW + '/wap/activity/actAlready', {
 						params: {
-							activityNo: 20180808,
+							activityNo: '20180818',
 							APF_UID: getCookie('APF_UID'),
 						}
 					} )
 					.then(res=>{
-						if(res.data.data){
+						if(res.data.data!=false){
 							this.$layer.msg('您已报名，不能重复报名!');
 							var self = this;
+							this.invitationCode = res.data.data;
 							window.setTimeout(function(){
-								window.location.href = self.$root.urlPath.M_APF + '/act/act2018080805';
+								window.location.href = self.$root.urlPath.M_APF + '/act/act2018081807?invitationCode=' + this.invitationCode;
 							},2000)
 						}else{
 							const params = {
-								activityNo: 20180808,
-								activityDesc: '海南优质项目对接会',
+								activityNo: 20180818,
+								activityDesc: '2019三亚国际金融周',
 								companyName: this.userinfo.company,
 								contactPerson: this.userinfo.name,
 								mobile: this.userinfo.tel,
 								email: this.userinfo.email,
 								actNumber: this.userinfo.num,
-								additional1: this.additional1,
-								additional2: this.selected,
 								APF_UID: getCookie('APF_UID'),
+							}
+							if( this.checked && !this.invnumError ){
+								console.log(1)
+								params['additional2'] = this.userinfo.invnum;
+							}
+							if( this.invitationCode != '' && this.invitationCode != 'undefined' && this.invitationCode != 'null' ){
+								params['additional4'] = this.invitationCode;
 							}
 							this.$axios.post(this.$root.urlPath.NEW + '/wap/activity/activitySubmit',
 								qs.stringify(params),
@@ -149,9 +141,10 @@
 							.then(res=>{
 								if(res.data.success){
 									this.$layer.msg('恭喜您报名成功！');
+									this.invitationCode = res.data.data;
 									var self = this;
 									window.setTimeout(function(){
-										window.location.href = self.$root.urlPath.M_APF + '/act/act2018080805';
+										window.location.href = self.$root.urlPath.M_APF + '/act/act2018081807?invitationCode=' + self.invitationCode;
 									},2000)
 								}else{
 									this.$layer.msg(res.data.errMsg);
@@ -166,29 +159,52 @@
 		},
 		mounted(){
 		    var winHeight = $(window).height(); //获取当前页面高度  
-		    $('.act04').css('height', winHeight + 'px');     
+		    $('.act06').css('height', winHeight + 'px');     
 		},
 		created(){
 			//wx-share
-		    var title = '2018海南优质项目对接会,三亚亚太金融小镇等你来';
+		    var title = '2019三亚国际金融周-资本项目对接会';
 		    var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
-		    var desc = '8月31日海棠湾，三亚市政府主办，汇聚国内外优势资本，对接海南岛优质项目';
+		    var desc = '抛弃论坛大模式 对接资金好项目 头脑风暴等着你 十项全能挑战你——一场酣畅淋漓的金融精英嘉年华';
 		    var golink = window.location.href;
 			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
-			//是否报名 
-			this.$axios.get( this.$root.urlPath.NEW + '/user/getUserInfo',{
+			//是否登录
+			this.$axios.get(this.$root.urlPath.NEW + '/user/getUserInfo', {
 				params: {
 					APF_UID: getCookie('APF_UID'),
 				}
-			} )
-			.then(res=>{
-				if(!res.data.success){
-					window.location.href = this.$root.urlPath.M_APF + '/act/act2018080803';
+			})
+			.then(res => {
+				if(res.data.success) {
+					this.userinfo.tel = res.data.data.mobile
+					//是否报名
+					this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
+						params: {
+							activityNo: '20180818',
+							APF_UID: getCookie('APF_UID'),
+						}
+					})
+					.then(res => {
+						if(res.data.data!=false) {
+							this.invitationCode = res.data.data
+							window.location.href = this.$root.urlPath.M_APF + '/act/act2018081807?invitationCode=' + this.invitationCode;
+						} else {
+						}
+					})
+					.catch(err => {
+						console.log(err)
+					})
 				}else{
-					this.userinfo.tel = res.data.data.mobile;
+					if( this.invitationCode && this.invitationCode != '' && this.invitationCode != 'undefined' && this.invitationCode != 'null' ){
+						window.location.href = this.$root.urlPath.M_APF + '/act/act2018081805?invitationCode=' + this.invitationCode;
+					}else{
+						window.location.href = this.$root.urlPath.M_APF + '/act/act2018081805';
+					}
 				}
 			})
-			.catch(err=>{console.log(err)});
+			.catch(err => {
+				console.log(err)
+			});
 		},
 	}
 </script>
@@ -197,48 +213,42 @@
 	.mb-20{
 		margin-bottom: 0.1rem;
 	}
-	.act04{
-		background-image: url(../../../../static/img/act/20180808/bg04.jpg);
+	.act06{
+		background-image: url(../../../../static/img/act/20180818/bg-6.jpg);
 		background-size: 100% 100%;
 		height: 100%;
 		width: 100%;
 		position: relative;
 	}
-	.act04 .attend_expo{
+	.act06 .attend_expo{
 	    padding: 0.85rem 0.43rem 0;
 	}
-	.act04 .identity .ideTit{
+	.act06 .identity .ideTit{
 		width: 100%;
 		text-align: center;
 		font-size: 0.11rem;
 		color: #fff100;
 	}
-	.act04 .identity .ideCon{
+	.act06 .identity .ideCon{
 		width: 100%;
-		padding-top: 0.15rem;
 	}
-	.act04 .identity .ideCon .inv{
-		margin-right: 0.42rem;
-	}
-	.act04 .identity .ideCon span{
-		width: 42%;
-		border-radius: 35px;		
-		height: 0.35rem;
-		line-height: 0.32rem;
-		font-size: 0.14rem;
-		color: #fff;
+	.act06 .identity .ideCon .inv{
+		padding: 0.15rem 0;
 		text-align: center;
-		border: solid 1px #fff;
 	}
-	.act04 .identity .ideCon .active{
-		border: solid 2px #fff100;
+	.act06 .identity .ideCon .inv span{
+		font-size: 0.15rem;
 		color: #fff100;
-		font-weight: 600;
 	}
-	.act04 .identity .form{
+	.act06 .identity .ideCon input[type="checkbox"]{
+		zoom: 1.5;
+		vertical-align: middle;
+		margin-right: 0.05rem;
+	}
+	.act06 .identity .form{
 		padding-top: 0.25rem;
 	}
-	.act04 .identity .form select{
+	.act06 .identity .form select{
 		width: 100%;
 		height: 0.4rem;
 		padding: 0 0.18rem;
@@ -249,7 +259,7 @@
 	    color: #7d7d7d;
 		background-color: #fff;
 	}
-	.act04 .identity .form input{
+	.act06 .identity .form input,.act06 .identity .ideCon input[type="tel"]{
 		width: 100%;
 		height: 0.4rem;
 		background-color: #ffffff;
@@ -260,7 +270,7 @@
 		padding: 0 0.18rem;
 		margin-bottom: 0.1rem;
 	}
-	.act04 .con{
+	.act06 .con{
 		padding: 0 0.43rem;
 		position: absolute;
 		bottom: 0.44rem;
@@ -268,7 +278,7 @@
 	    right: 0;
 	    margin: 0 auto;
 	}
-	.act04 .con .btn{
+	.act06 .con .btn{
 		width: 100%;
 		height: 0.41rem;
 		line-height: 0.41rem;

@@ -187,7 +187,7 @@
 		},
 	}
 </script>
-<style>
+<style scoped>
 	@import url("../../../../static/css/reset.css");
 	.mb-20{
 		margin-bottom: 0.1rem;

@@ -7,7 +7,7 @@ Axios.defaults.baseURL = 'http://memberapi.apftown.com';   //接口地址
 Axios.defaults.withCredentials = true; //让ajax携带cookie
 Axios.defaults.headers.get['Content-Type']='application/x-www-form-urlencoded;text/html;charset=UTF-8';   //配置请求头
 Axios.defaults.headers['APF_UID'] = getCookie("APF_UID")
-var ENV = "prod"; // 控制开关,dev 开发环境，release,master环境时改为prod
+var ENV = "test"; // 控制开关,dev 开发环境，release,master环境时改为prod
 
 export default {
   	pathUrl:function() {
