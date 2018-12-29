@@ -12,9 +12,9 @@
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
-									<a :href="actUrl"><img src="../../../static/img/home/banner1.jpg"/></a>
+									<a href="javascript:;"><img src="../../../static/img/home/banner.jpg"/></a>
 								</div>
-								<div class="swiper-slide">
+								<!-- <div class="swiper-slide">
 									<a href="javascript:;" target="_blank"><img src="../../../static/img/home/banner2.jpg"/></a>
 								</div>
 								<div class="swiper-slide">
@@ -22,11 +22,11 @@
 								</div>
 								<div class="swiper-slide">
 									<a href="javascript:;" target="_blank"><img src="../../../static/img/home/banner4.jpg"/></a>
-								</div>
+								</div> -->
 							</div>
 							<!--<div class="swiper-button-prev"></div>
 			    			<div class="swiper-button-next"></div>-->
-			    			<div class="swiper-pagination"></div>
+			    			<!-- <div class="swiper-pagination"></div> -->
 						</div>
 					</div>
 				</div>
@@ -159,15 +159,15 @@
 	export default {
 		data(){
 			return {
-				actUrl: this.$root.urlPath.M_APF + '/act/act2018080801'
+				actUrl: 'https://mp.weixin.qq.com/s/hONsO6xMSH5gt9TutWv8wQ',
 			}
 		},
 		mounted(){
-			var mySwiper = new Swiper('.swiper-container', {
-				autoplay: 3000,
-				loop: true,
-				pagination : '.swiper-pagination',
-			})
+// 			var mySwiper = new Swiper('.swiper-container', {
+// 				autoplay: 3000,
+// 				loop: true,
+// 				pagination : '.swiper-pagination',
+// 			})
 		},
 	}
 </script>

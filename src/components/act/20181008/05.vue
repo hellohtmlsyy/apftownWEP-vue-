@@ -41,6 +41,7 @@
 	</div>
 </template>
 <script>
+	import Moment from 'moment';
 	function dateFormat(date, fmt) {
 		var o = {
 			"M+": date.getMonth() + 1,
@@ -134,6 +135,8 @@
 				disable: false,
 				telError: false, //手机号错误
 				mobileIsEixt: false,
+				fromDate: '', //入住日期
+				toDate: '', //离开日期
 			}
 		},
 		methods: {
@@ -147,11 +150,13 @@
 				this.selected1Date = dateFormat(date,'yyyy-MM-dd');
 				this.calendarShow2 = true;
 				this.minDate2 = new Date(date.getTime() + 24 * 60 * 60 * 1000 * 2)
+				this.fromDate = Moment(date).format("YYYY-MM-DD HH:mm:ss");
 			},
 			//离开时间
 			handelChange2(date, formatDate) {
 				this.selectedDate2 = formatDate;
 				this.selected2Date = dateFormat(date,'yyyy-MM-dd');
+				this.toDate = Moment(date).format("YYYY-MM-DD HH:mm:ss");
 			},
 			//日期选择弹出
 			data(){
@@ -201,7 +206,7 @@
 					this.$layer.msg('请选择教室')
 				}
 				this.selected2Error = this.selected2 && this.selected2 != '请选择场地' ? false : true;
-				this.dataError = this.selectedDate >=dateFormat(new Date(), "MM-dd") && this.selectedDate2 > this.selectedDate ? false :true;
+				this.dataError = this.selectedDate >=dateFormat(new Date(), "MM-dd") && this.toDate > this.fromDate ? false :true;
 				if(this.dataError){
 					this.$layer.msg("请选择正确的时间")
 				}
@@ -231,9 +236,9 @@
 								email: this.userinfo.email,
 								APF_UID: getCookie('APF_UID'),
 								actNumber: this.userinfo.peoNum,
-								additional1: this.userinfo.roomsNum,
 								additional2: data,
 								additional3: this.selected,
+								additional5: this.userinfo.roomsNum,
 							}
 							if(!this.selected2Error) {
 								params['additional4'] = this.selected2;

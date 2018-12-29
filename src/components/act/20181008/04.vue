@@ -203,6 +203,10 @@
 				console.log(err)
 			});
 		},
+		mounted() {
+			var winHeight = $(window).height(); //获取当前页面高度  
+			$('.act_train04').css('height', winHeight + 'px');
+		},
 	}
 </script>
 <style scoped="scoped">
@@ -214,7 +218,7 @@
 		background-color: #eee;
 		padding: 0.15rem 0;
 		height: 100%;
-		position: absolute;
+		position: relative;
 	}
 	.act_train04 .tit img{
 		height: 0.37rem;
