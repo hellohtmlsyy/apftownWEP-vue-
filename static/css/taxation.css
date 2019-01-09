@@ -1,0 +1,215 @@
+@charset "utf-8";
+
+/* 
+* @name: 税收流程样式
+* @description: 如下各模块注释
+* @author: author-name(szhengjie@126.com)
+* @update: 2019-1-2 16:00
+*/
+
+a {
+	color: inherit;
+}
+
+/*颜色表*/
+.col-fff {
+	color: #fff;
+}
+
+.col-333 {
+	color: #333;
+}
+
+.col-70 {
+	color: #707070;
+}
+
+.col-eb6400 {
+	color: #eb6400;
+}
+
+.col-e43947 {
+	color: #e43947;
+}
+
+.col-717bea {
+	color: #717bea;
+}
+
+.col-da3741 {
+	color: #da3741;
+}
+
+/*字体weight*/
+.fw-4 {
+	font-weight: 400;
+}
+
+.fw-6 {
+	font-weight: 600;
+}
+
+/*字体大小*/
+.fs-22 {
+	font-size: 0.11rem;
+}
+
+.fs-24 {
+	font-size: 0.12rem;
+}
+
+.fs-26 {
+	font-size: 0.13rem;
+}
+
+.fs-28 {
+	font-size: 0.14rem;
+}
+
+.fs-30 {
+	font-size: 0.15rem;
+}
+
+.fs-32 {
+	font-size: 0.16rem;
+}
+
+.fs-36 {
+	font-size: 0.18rem;
+}
+
+.fs-60 {
+	font-size: 0.3rem;
+}
+
+/*行高*/
+.lh-20 {
+	line-height: 0.2rem;
+}
+
+.lh-24 {
+	line-height: 0.24rem;
+}
+
+.lh-36 {
+	line-height: 0.36rem;
+}
+
+.lh-40 {
+	line-height: 0.4rem;
+}
+
+/*margin*/
+.mb-5 {
+	margin-bottom: 0.05rem;
+}
+
+.mb-10 {
+	margin-bottom: 0.1rem;
+}
+
+.mb-15 {
+	margin-bottom: 0.15rem;
+}
+
+.mb-30 {
+	margin-bottom: 0.3rem;
+}
+
+.mr-10 {
+	margin-right: 0.1rem;
+}
+
+/* padding */
+.pd-5 {
+	padding: 0.05rem 0;
+}
+
+.pd-10 {
+	padding: 0.10rem 0;
+}
+
+.pd-15 {
+	padding: 0.15rem 0;
+}
+
+.pd-20 {
+	padding: 0.20rem 0;
+}
+
+.w100 {
+	width: 100%;
+}
+
+.tac {
+	text-align: center;
+}
+
+.dis-i {
+	display: inline;
+}
+
+/*flex布局*/
+.dis-flex {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+}
+
+
+.jc-space-around {
+	justify-content: space-around;
+}
+
+/*border*/
+.border-n {
+	border: none !important;
+}
+
+.border-b {
+	border-bottom: 1px solid #d2d2d2;
+}
+
+/* 通用head */
+.tc .title {
+	width: 100%;
+	height: 0.6rem;
+	background-blend-mode: normal, normal;
+	padding: 0.08rem 0.24rem;
+}
+
+.tc .title img {
+	width: 0.44rem;
+	margin-right: 0.1rem;
+}
+
+.tc .title .Btit {
+	font-size: 0.18rem;
+	margin: -0.05rem 0 0.05rem;
+}
+
+.tc .content {
+	background-color: #fff;
+	padding: 0.2rem;
+}
+
+.tc .content .conBox {
+	padding: 0.1rem 0.05rem;
+	border-radius: 5px;
+	border: solid 1px #a0a0a0;
+}
+
+.tc7 .title {
+	background-image: linear-gradient(0deg,
+		#3282da 0%,
+		#599ee9 100%),
+		linear-gradient(#516eea,
+		#516eea);
+}
+
+.tc7 .content {
+	padding: 0.1rem 0.15rem;
+}
