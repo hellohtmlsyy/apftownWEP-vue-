@@ -270,20 +270,20 @@
 							)
 							.then(res => {
 								if(res.data.success) {
-                  //发邮件短信
-                  this.$axios.get( this.$root.urlPath.NEW + '/wap/activity/sendNotice',{
-                    params: {
-                      APF_UID: getCookie('APF_UID'),
-                      activityNo: '20181031',
-                    }
-                  } )
-                  .then(res=>{
-                  })
-                  .catch(err=>{console.log(err)});
+				                  //发邮件短信
+				                  this.$axios.get( this.$root.urlPath.NEW + '/wap/activity/sendNotice',{
+				                    params: {
+				                      APF_UID: getCookie('APF_UID'),
+				                      activityNo: '20181031',
+				                    }
+				                  } )
+				                  .then(res=>{
+				                  })
+				                  .catch(err=>{console.log(err)});
 									this.$layer.msg('恭喜您预订成功！');
 									var self = this;
 									window.setTimeout(function() {
-										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+//										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
 									}, 2000)
 								} else {
 									this.$layer.msg(res.data.errMsg);

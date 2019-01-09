@@ -45,10 +45,10 @@
 						<div class="contact_us">
 							<div class="title">联系我们</div>
 							<ul class="contact_info">
-								<li>联系电话&nbsp;&nbsp;400-670-2139</li>
+								<li>联系电话&nbsp;&nbsp;<u><a href="tel:4006702139">400-670-2139</a></u></li>
 								<li>联系地址&nbsp;&nbsp;海南省三亚市海棠湾亚太金融小镇3号楼</li>
-								<li>电子邮箱&nbsp;&nbsp;info@apftown.com</li>
-								<li>官方网址&nbsp;&nbsp;www.apftown.com</li>
+								<li>电子邮箱&nbsp;&nbsp;<u><a href="mailto:info@apftown.com">info@apftown.com</a></u></li>
+								<li>官方网址&nbsp;&nbsp;<a href="http://www.apftown.com" target="_blank">www.apftown.com</a></li>
 							</ul>
 						</div>
 						<div class="share_btn" @click="share()"><span>立即分享给好友</span></div>
