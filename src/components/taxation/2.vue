@@ -1,5 +1,7 @@
 <template>
 	<div class="tc2 tc">
+		<router-link :to="{ path: '/taxation/list' }" class="nav"><img src="../../../static/img/taxation/nav.png" alt=""></router-link>
+		<a href="/taxation/t3" class="next"><img src="../../../static/img/taxation/next.png" alt=""></a>
 		<div class="title dis-flex">
 			<div><img src="../../../static/img/taxation/content/2-1.png" class="tit-img" /> </div>
 			<div class="col-fff">
@@ -24,6 +26,22 @@
 </template>
 
 <script>
+	import { wxShare } from '@/assets/commonjs/util.js';
+	export default {
+		data() {
+			return {
+				url: window.location.href,
+			};
+		},
+		mounted() {
+			//wx-share
+			var title = '亚太金融小镇基金税务流程及服务';
+			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
+			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
+			var golink = window.location.href;
+			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+		},
+	}
 </script>
 
 <style>

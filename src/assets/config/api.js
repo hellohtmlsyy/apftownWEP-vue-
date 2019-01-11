@@ -25,7 +25,7 @@ export default {
                 NEW: 'http://memberapi.apftown.com:8070',
             },
             test: {
-                M_APF: 'http://m.apftown.com:8083', //小镇地址m
+                M_APF: 'http://m.apftown.com:8080', //小镇地址m
                 NEW: 'http://memberapi.apftown.com:8088',
             }
         }

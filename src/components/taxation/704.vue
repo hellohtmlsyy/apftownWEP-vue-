@@ -1,12 +1,6 @@
 <template>
 	<div class="tc704 tc tc7">
-		<div class="title dis-flex">
-			<div><img src="../../../static/img/taxation/content/7-1.png" class="tit-img" /> </div>
-			<div class="col-fff">
-				<div class="Btit">个人所得税申报流程</div>
-				<div class="fs-22">自然人税收管理系统扣缴客户端用户操作流程</div>
-			</div>
-		</div>
+		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
 			<div class="fs-24 lh-24">
 				<div class="mb-5">
@@ -25,6 +19,23 @@
 </template>
 
 <script>
+	import { wxShare } from '@/assets/commonjs/util.js';
+	export default{
+		data(){
+			return {
+				path: '/taxation/t705',
+				url: window.location.href,
+			}
+		},
+		mounted() {
+			//wx-share
+			var title = '亚太金融小镇基金税务流程及服务';
+			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
+			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
+			var golink = window.location.href;
+			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+		},
+	}
 </script>
 
 <style>

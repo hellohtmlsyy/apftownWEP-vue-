@@ -91,6 +91,7 @@ import taxation_738 from '@/components/taxation/738'
 import taxation_739 from '@/components/taxation/739'
 import taxation_740 from '@/components/taxation/740'
 import taxation_741 from '@/components/taxation/741'
+import taxation_742 from '@/components/taxation/742'
 import taxation_8 from '@/components/taxation/8'
 
 import Rotate from '@/components/comm/rotate';//转盘
@@ -368,6 +369,7 @@ export default new Router({
 		{ path: '/taxation/t739', name: 'taxation.t739', component: taxation_739, meta: { title: '税收流程及相关服务' } },
 		{ path: '/taxation/t740', name: 'taxation.t740', component: taxation_740, meta: { title: '税收流程及相关服务' } },
 		{ path: '/taxation/t741', name: 'taxation.t741', component: taxation_741, meta: { title: '税收流程及相关服务' } },
+		{ path: '/taxation/t742', name: 'taxation.t742', component: taxation_742, meta: { title: '税收流程及相关服务' } },
 		{ path: '/taxation/t8', name: 'taxation.t8', component: taxation_8, meta: { title: '税收流程及相关服务' } },
     ]
 })

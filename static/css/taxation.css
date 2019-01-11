@@ -7,7 +7,11 @@
 * @update: 2019-1-2 16:00
 */
 
-a {
+a,
+a:link,
+a:hover,
+a:visited,
+a:active {
 	color: inherit;
 }
 
@@ -46,7 +50,7 @@ a {
 }
 
 .fw-6 {
-	font-weight: 600;
+	font-weight: 700;
 }
 
 /*字体大小*/
@@ -118,6 +122,9 @@ a {
 
 .mr-10 {
 	margin-right: 0.1rem;
+}
+.mt-15 {
+	margin-top: 0.15rem;
 }
 
 /* padding */
@@ -194,6 +201,7 @@ a {
 .tc .content {
 	background-color: #fff;
 	padding: 0.2rem;
+	padding-bottom: 0.6rem;
 }
 
 .tc .content .conBox {
@@ -211,5 +219,25 @@ a {
 }
 
 .tc7 .content {
-	padding: 0.1rem 0.15rem;
+	padding: 0.1rem 0.15rem 0.3rem 0.15rem;
+}
+/* nav */
+.tc .nav,
+.tc .next {
+	width: 100%;
+	height: 100%;
+}
+.tc .nav img {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	width: 1.24rem;
+}
+.tc .next img {
+	position: fixed;
+	bottom: 0.06rem;
+	right: 0.15rem;
+	z-index: 1;
+	height: 0.36rem;
 }

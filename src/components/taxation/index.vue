@@ -9,22 +9,22 @@
 		</div>
 		<ul class="int">
 			<li class="clearfix li">
-				<div class="fl"><a href="/taxation/list?num=1"><img src="../../../static/img/taxation/1-icon-1.png" class="icon" /><span
+				<div class="fl"><a href="/taxation/t1"><img src="../../../static/img/taxation/1-icon-1.png" class="icon" /><span
 						 class="fs-32 col-333">税务备案登记</span></a></div>
 				<div class="fr col-70 fs-24">股东及注册信息登记</div>
 			</li>
 			<li class="clearfix li">
-				<div class="fl"><a href="/taxation/list?num=2"><img src="../../../static/img/taxation/1-icon-2.png" class="icon" /><span
+				<div class="fl"><a href="/taxation/t2"><img src="../../../static/img/taxation/1-icon-2.png" class="icon" /><span
 						 class="fs-32 col-333">税种属性认定</span></a></div>
 				<div class="fr col-70 fs-24">添加国税/地税种</div>
 			</li>
 			<li class="clearfix li">
-				<div class="fl"><a href="/taxation/list?num=3"><img src="../../../static/img/taxation/1-icon-3.png" class="icon" /><span
+				<div class="fl"><a href="/taxation/t3"><img src="../../../static/img/taxation/1-icon-3.png" class="icon" /><span
 						 class="fs-32 col-333">签订三方协议</span></a></div>
 				<div class="fr col-70 fs-24">公司/税务局/银行共同签订</div>
 			</li>
 			<li class="clearfix li">
-				<div class="fl"><a href="/taxation/list?num=4"><img src="../../../static/img/taxation/1-icon-4.png" class="icon" /><span
+				<div class="fl"><a href="/taxation/t4"><img src="../../../static/img/taxation/1-icon-4.png" class="icon" /><span
 						 class="fs-32 col-333">财务制度备案</span></a></div>
 				<div class="fr col-70 fs-24">填制备案报告书</div>
 			</li>
@@ -34,13 +34,13 @@
 					<div class="fr col-70 fs-24">申报纳税操作流程</div>
 				</div>
 				<div class="online jc-space-around dis-flex">
-					<a href="/taxation/list?num=5"><img src="../../../static/img/taxation/1-icon-7.png" /></a>
-					<a href="/taxation/list?num=6"><img src="../../../static/img/taxation/1-icon-8.png" /></a>
-					<a href="/taxation/list?num=7"><img src="../../../static/img/taxation/1-icon-9.png" /></a>
+					<a href="/taxation/t5"><img src="../../../static/img/taxation/1-icon-7.png" /></a>
+					<a href="/taxation/t6"><img src="../../../static/img/taxation/1-icon-8.png" /></a>
+					<a href="/taxation/t701"><img src="../../../static/img/taxation/1-icon-9.png" /></a>
 				</div>
 			</li>
 			<li class="clearfix li border-n">
-				<div class="fl"><a href="/taxation/list?num=8"><img src="../../../static/img/taxation/1-icon-4.png" class="icon" /><span
+				<div class="fl"><a href="/taxation/t8"><img src="../../../static/img/taxation/1-icon-6.png" class="icon" /><span
 						 class="fs-32 col-333">代理记账后续服务</span></a></div>
 				<div class="fr col-70 fs-24">后续服务流程介绍</div>
 			</li>

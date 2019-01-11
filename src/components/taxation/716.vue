@@ -1,30 +1,38 @@
 <template>
-	<div class="tc716 tc tc7">
-		<div class="title dis-flex">
-			<div><img src="../../../static/img/taxation/content/7-1.png" class="tit-img" /> </div>
-			<div class="col-fff">
-				<div class="Btit">个人所得税申报流程</div>
-				<div class="fs-22">自然人税收管理系统扣缴客户端用户操作流程</div>
-			</div>
-		</div>
+	<div class="tc715 tc tc7">
+		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
 			<div class="fs-24 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-30">外籍人员数月奖金</span><br>
+					<span class="fw-6 fs-30">全年一次性奖金收入</span><br>
 					<span class="fw-6">业务简介</span><br>
-					根据国税发[1996]183号《国家税务总局关于在中国境内无住所的个人取得奖金征税问题的通知》相关规定，对在中国境内无住所的个人一次取得数月奖金或年终加薪，劳动分红，可单独作为一个月工资，薪金所得计算纳税。<br>
-					外籍人数月奖金所得，即适用于无住所个人一次性取得的相关奖金。
+					根据国家税务总局
+					国税发[2005]9号《国家税务总局关于调整个人取得全年一次性奖金等计算征收个人所得税方法问题的通知》规定，全年一次性奖金是指行政机关、企事业单位等扣缴义务人根据其全年经济效益和对雇员全年工作业绩的综合考核情况，向雇员发放的一次性奖金。<br>
+					上述一次性奖金也包括年终加薪、实行年薪制和绩效工资办法的单位根据考核情况兑现的年薪和绩效工资。<br>
+					纳税人取得全年一次性奖金，单独作为一个月工资、薪金所得计算纳税。全年一次性奖金发放当月，按照《全年一次性奖金收入》申报缴纳个人所得税。
 				</div>
 				<div class="mb-5">
 					<span class="fw-6">相关项业务含义</span><br>
-					在扣缴报告表主页面，点击【外籍人员数月】或右边的【填写】按钮，进入外籍人员数月奖金界面。点击界面【添加】按钮，打开编辑界面，对界面的相关业务属性进行逐个说明
+					在扣缴报告表主页面，点击【全年一次性奖金收入】或右边的【填写】按钮，进入全年一次性奖金界面
 				</div>
-				<p class="mb-5"><img src="../../../static/img/taxation/content/7/7-3-14.png" alt="" class="w100"></p>
+				<p class="mb-5"><img src="../../../static/img/taxation/content/7/7-3-12.png" alt="" class="w100"></p>
+				<div class="mb-5">
+					点击【全年一次性奖金】界面【添加】按钮，打开全年一次性奖金编辑界面，对界面相关业务属性进行逐个说明
+				</div>
+				<p class="mb-5"><img src="../../../static/img/taxation/content/7/7-3-13.png" alt="" class="w100"></p>
 				<div class="mb-30">
-					<span class="fw-6">当月取得数月奖金额</span><br>
-					当月给无住所个人发放的数月奖金。<br>
+					<span class="fw-6">全年一次性奖金额</span><br>
+					所发全年奖的总金额。<br>
+					<span class="fw-6">税款负担方式</span><br>
+					根据《中华人民共和国个人所得税法》规定，个税的纳税人为个人，那么负担方式为“自行负担”。个别单位承诺付给员工的工资是税后工资，那么申报个税时可填写税后收入额，税款负担方式选择“雇主全额负担”，系统会自动把收入额转化为含税收入额。<br>
 					<span class="fw-6">免税所得</span><br>
 					《中华人民共和国个人所得税法》第四条规定了免税所得的范围，详见跟随式帮助。<br>
+					<span class="fw-6">月工资薪金所得与法定减除费用差额</span><br>
+					根据《国家税务总局关于调整个人取得全年一次性奖金等计算征收个人所得税方法问题的通知》规定，当月工资高于法定费用减除标准时，本值为零；当月工资低于法定费用减除标准时，该值为费用减除标准与当月工资的差额。<br>
+					<span class="fw-6">其他</span><br>
+					其他中包括商业健康保险费、其他扣除2项内容。<br>
+					（1）商业健康保险费，根据财税[2017]39号，对个人购买符合规定的商业健康保险产品支出，允许扣除限额为2400元/年（200元/月）。若在正常工资薪金中已经扣除商业健康保险费，则此处无需再填写。<br>
+					（2）其他扣除，填写根据相关法律法规可以在税前扣除的项目。填写了其他扣除的，需要在【备注】中注明填写的其他扣除的具体内容。<br>
 					<span class="fw-6">实际捐赠额</span><br>
 					根据《税法》及《实施条例》规定，个人将其所得通过中国境内的社会团体、国家机关向教育和其他社会公益事业以及遭受严重自然灾害地区、贫困地区的捐赠。捐赠额未超过纳税义务人申报的应纳税所得额30%的部分，可以从其应纳税所得额中扣除。根据财税[2004]172号，过宋庆龄基金会、中国福利会、中国残疾人福利基金会、中国扶贫基金会、中国煤矿尘肺病治疗基金会、中华环境保护基金会用于公益救济性的捐赠，准予在缴纳企业所得税和个人所得税前全额扣除。<br>
 					<span class="fw-6">准予列支的捐赠比例</span><br>
@@ -42,7 +50,7 @@
 					<span class="fw-6">应扣缴税额</span><br>
 					根据公式自动计算。<br>
 					<span class="fw-6">已扣缴税额</span><br>
-					无需填写。
+					填写财政部门按照《行政单位财政统一发放工资暂行办法》给扣缴义务人单位内的“由财政供养的编制限额内的正式职工”拨发工资时，已扣缴的税额。简称【财政统发已缴税额】。仅由财政统一拨款发放工资的行政事业单位才可填写该项。
 				</div>
 			</div>
 		</div>
@@ -50,6 +58,23 @@
 </template>
 
 <script>
+	import { wxShare } from '@/assets/commonjs/util.js';
+	export default{
+		data(){
+			return {
+				path: '/taxation/t717',
+				url: window.location.href,
+			}
+		},
+		mounted() {
+			//wx-share
+			var title = '亚太金融小镇基金税务流程及服务';
+			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
+			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
+			var golink = window.location.href;
+			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+		},
+	}
 </script>
 
 <style>

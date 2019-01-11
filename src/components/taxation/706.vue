@@ -1,12 +1,6 @@
 <template>
 	<div class="tc706 tc tc7">
-		<div class="title dis-flex">
-			<div><img src="../../../static/img/taxation/content/7-1.png" class="tit-img" /> </div>
-			<div class="col-fff">
-				<div class="Btit">个人所得税申报流程</div>
-				<div class="fs-22">自然人税收管理系统扣缴客户端用户操作流程</div>
-			</div>
-		</div>
+		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
 			<div class="fs-24 lh-24">
 				<div class="mb-5">
@@ -17,7 +11,7 @@
 					人员信息采集的信息，主要针对的是《个人所得税基础信息表（A、B表）》，需要登记的相关信息见下图
 				</div>
 				<p class="mb-5"><img src="../../../static/img/taxation/content/7/7-2-1.png" alt="" class="w100"></p>
-				<div class="mb-5">
+				<div class="mb-30">
 					<span class="fw-6">证照类型</span><br>
 					境内职员，通常用【身份证】登记人员信息。特殊人群也可以使用军官证、士兵证、武警警官证、中国护照等。<br>
 					<span class="fw-6">证照号码</span><br>
@@ -54,17 +48,32 @@
 					· 开户银行—选择纳税人银行账号对应的开户银行。<br>
 					· 银行账号—填写对应的银行账号。<br>
 					· 居住地址/户籍所在地—下拉项选择后，进行详细地址补充。<br>
-					<span class="fw-6">软件操作</span><br>
-					人员信息采集包括登记、编辑、报送及获取反馈、查询和更多操作。点击左边菜单人员信息采集，打开人员信息采集列表。下文详细介绍人员信息采集的功能。
+					<span class="fw-6">温馨提醒</span><br>
+					人员信息采集信息中，带"*"号的都是必填信息，其他非必填信息，用户可以根据实际情况选填。
 				</div>
-				<p class="mb-5"><img src="../../../static/img/taxation/content/7/7-2-2.png" alt="" class="w100"></p>
-				<p class="mb-30"><img src="../../../static/img/taxation/content/7/7-2-3.png" alt="" class="w100"></p>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import { wxShare } from '@/assets/commonjs/util.js';
+	export default{
+		data(){
+			return {
+				path: '/taxation/t707',
+				url: window.location.href,
+			}
+		},
+		mounted() {
+			//wx-share
+			var title = '亚太金融小镇基金税务流程及服务';
+			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
+			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
+			var golink = window.location.href;
+			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+		},
+	}
 </script>
 
 <style>
