@@ -8,24 +8,24 @@
 			</div>
 		</div>
 		<ul class="int">
-			<li class="clearfix li">
-				<div class="fl"><a href="/taxation/t1"><img src="../../../static/img/taxation/1-icon-1.png" class="icon" /><span
-						 class="fs-32 col-333">税务备案登记</span></a></div>
+			<li class="clearfix li" @click="toDetail('/taxation/t1')">
+				<div class="fl"><img src="../../../static/img/taxation/1-icon-1.png" class="icon" /><span
+						 class="fs-32 col-333">税务备案登记</span></div>
 				<div class="fr col-70 fs-24">股东及注册信息登记</div>
 			</li>
-			<li class="clearfix li">
-				<div class="fl"><a href="/taxation/t2"><img src="../../../static/img/taxation/1-icon-2.png" class="icon" /><span
-						 class="fs-32 col-333">税种属性认定</span></a></div>
+			<li class="clearfix li" @click="toDetail('/taxation/t2')">
+				<div class="fl"><img src="../../../static/img/taxation/1-icon-2.png" class="icon" /><span
+						 class="fs-32 col-333">税种属性认定</span></div>
 				<div class="fr col-70 fs-24">添加国税/地税种</div>
 			</li>
-			<li class="clearfix li">
-				<div class="fl"><a href="/taxation/t3"><img src="../../../static/img/taxation/1-icon-3.png" class="icon" /><span
-						 class="fs-32 col-333">签订三方协议</span></a></div>
+			<li class="clearfix li" @click="toDetail('/taxation/t3')">
+				<div class="fl"><img src="../../../static/img/taxation/1-icon-3.png" class="icon" /><span
+						 class="fs-32 col-333">签订三方协议</span></div>
 				<div class="fr col-70 fs-24">公司/税务局/银行共同签订</div>
 			</li>
-			<li class="clearfix li">
-				<div class="fl"><a href="/taxation/t4"><img src="../../../static/img/taxation/1-icon-4.png" class="icon" /><span
-						 class="fs-32 col-333">财务制度备案</span></a></div>
+			<li class="clearfix li" @click="toDetail('/taxation/t4')">
+				<div class="fl"><img src="../../../static/img/taxation/1-icon-4.png" class="icon" /><span
+						 class="fs-32 col-333">财务制度备案</span></div>
 				<div class="fr col-70 fs-24">填制备案报告书</div>
 			</li>
 			<li class="li">
@@ -39,9 +39,9 @@
 					<a href="/taxation/t701"><img src="../../../static/img/taxation/1-icon-9.png" /></a>
 				</div>
 			</li>
-			<li class="clearfix li border-n">
-				<div class="fl"><a href="/taxation/t8"><img src="../../../static/img/taxation/1-icon-6.png" class="icon" /><span
-						 class="fs-32 col-333">代理记账后续服务</span></a></div>
+			<li class="clearfix li border-n" @click="toDetail('/taxation/t8')">
+				<div class="fl"><img src="../../../static/img/taxation/1-icon-6.png" class="icon" /><span
+						 class="fs-32 col-333">代理记账后续服务</span></div>
 				<div class="fr col-70 fs-24">后续服务流程介绍</div>
 			</li>
 		</ul>
@@ -55,6 +55,11 @@
 			return {
 				url: window.location.href,
 			};
+		},
+		methods:{
+			toDetail(url){
+				location.href = this.$root.urlPath.M_APF + url; 
+			}
 		},
 		mounted() {
 			var winHeight = $(window).height(); //获取当前页面高度  

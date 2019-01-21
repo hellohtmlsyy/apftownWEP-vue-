@@ -19,15 +19,20 @@ import tab0818 from '@/components/comm/0818tab';
 Vue.component(tab0818.name, tab0818);
 import taxhead7 from '@/components/comm/taxhead7';
 Vue.component(taxhead7.name, taxhead7);
-
+import footer from '@/components/2.0/comm/footer';
+Vue.component(footer.name, footer);
 //引入mint-ui框架
 import MintUI from 'mint-ui'
 Vue.use(MintUI)
 //import 'mint-ui/lib/style.css';
 import {
-	Switch
+	Switch,
+	Tabbar,
+	TabItem
 } from 'mint-ui';
 Vue.component(Switch.name, Switch);
+Vue.component(Tabbar.name, Tabbar);
+Vue.component(TabItem.name, TabItem);
 
 Vue.config.productionTip = false;
 import Calendar from 'vue-mobile-calendar'

@@ -1,7 +1,7 @@
 <template>
 	<div class="tc8 tc">
 		<router-link :to="{ path: '/taxation/list' }" class="nav"><img src="../../../static/img/taxation/nav.png" alt=""></router-link>
-		<a href="javascript:;" class="next"><img src="../../../static/img/taxation/next.png" alt=""></a>
+		<a href="/taxation/index" class="next"><img src="../../../static/img/taxation/next.png" alt=""></a>
 		<div class="title dis-flex">
 			<div><img src="../../../static/img/taxation/content/8-1.png" class="tit-img" /> </div>
 			<div class="col-fff">
@@ -35,7 +35,7 @@
 					<span class="fw-6">凭证明细</span><br>
 					1. 现金单据<br>
 					如办公费/差旅费/房租费/通讯费/业务招待费/运输费等<br>
-					2.　 银行单据<br>
+					2. 银行单据<br>
 					如提现/转账/贷记凭证/电汇/进账单/借款单等<br>
 					3. 发票<br>
 					当月1日——31日期间的所有发票<br>

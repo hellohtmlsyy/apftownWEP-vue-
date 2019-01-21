@@ -49,10 +49,6 @@ html {
     overflow: -moz-scrollbars-vertical;
 }
 
-body {
-    background: rgb(238, 238, 238);
-}
-
 body,
 button,
 input,
@@ -153,7 +149,7 @@ body,
 html {
     width: 100%;
     height: 100%;
-    background: rgb(238, 238, 238);
+    background: #fff;
 }
 
 .dis-fl {
@@ -211,6 +207,7 @@ html {
 /* 主体架子 */
 .mob_home {
     width: 100%;
+	background: rgb(238, 238, 238);
 }
 .header {
     width: 100%;

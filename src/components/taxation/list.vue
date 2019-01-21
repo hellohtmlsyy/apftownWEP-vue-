@@ -26,15 +26,15 @@
 				<div class="line"></div>
 			</div>
 			<div class="rcon col-333 fs-26">
-				<ul v-show="(num==1)" class="mt-15"><li><router-link :to="{ path: '/taxation/t1' }" class="rtext fw-6 mt-15">税务备案登记信息<img :src="rightsrc" alt="" class="img-w6"></router-link></li></ul>
-				<ul v-show="(num==2)" class="mt-15"><li><router-link :to="{ path: '/taxation/t2' }" class="rtext fw-6 mt-15">税种认定<img :src="rightsrc" alt="" class="img-w6"></router-link></li></ul>
-				<ul v-show="(num==3)" class="mt-15"><li><router-link :to="{ path: '/taxation/t3' }" class="rtext fw-6 mt-15">签订三方协议<img :src="rightsrc" alt="" class="img-w6"></router-link></li></ul>
-				<ul v-show="(num==4)" class="mt-15"><li><router-link :to="{ path: '/taxation/t4' }" class="rtext fw-6 mt-15">财务制度备案<img :src="rightsrc" alt="" class="img-w6"></router-link></li></ul>
+				<ul v-show="(num==1)" class="mt-15"><li><router-link :to="{ path: '/taxation/t1' }" class="rtext fw-6">税务备案登记信息<img :src="rightsrc" alt="" class="img-w6"></router-link></li></ul>
+				<ul v-show="(num==2)" class="mt-15"><li><router-link :to="{ path: '/taxation/t2' }" class="rtext fw-6">税种认定<img :src="rightsrc" alt="" class="img-w6"></router-link></li></ul>
+				<ul v-show="(num==3)" class="mt-15"><li><router-link :to="{ path: '/taxation/t3' }" class="rtext fw-6">签订三方协议<img :src="rightsrc" alt="" class="img-w6"></router-link></li></ul>
+				<ul v-show="(num==4)" class="mt-15"><li><router-link :to="{ path: '/taxation/t4' }" class="rtext fw-6">财务制度备案<img :src="rightsrc" alt="" class="img-w6"></router-link></li></ul>
 				<ul v-show="(num==5)" class="mt-15">
-					<li v-for="item in data.data5" class="rtext fw-6 mt-15" @click="toDetail(item.href)">{{item.text}}<img :src="rightsrc" alt="" class="img-w6"></li>
+					<li v-for="item in data.data5" class="rtext fw-6" @click="toDetail(item.href)">{{item.text}}<img :src="rightsrc" alt="" class="img-w6"></li>
 				</ul>
 				<ul v-show="(num==6)" class="mt-15">
-					<li v-for="item in data.data6" class="rtext fw-6 mt-15" @click="toDetail(item.href)">{{item.text}}<img :src="rightsrc" alt="" class="img-w6"></li>
+					<li v-for="item in data.data6" class="rtext fw-6" @click="toDetail(item.href)">{{item.text}}<img :src="rightsrc" alt="" class="img-w6"></li>
 				</ul>
 
 				<ul v-show="(num==7)">

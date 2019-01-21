@@ -94,7 +94,18 @@ import taxation_741 from '@/components/taxation/741'
 import taxation_742 from '@/components/taxation/742'
 import taxation_8 from '@/components/taxation/8'
 
-import Rotate from '@/components/comm/rotate';//转盘
+// import Rotate from '@/components/comm/rotate';//
+
+//act20190209 初五活动act2019020901
+import Act2019020901 from '@/components/act/20190209/01'
+import Act2019020902 from '@/components/act/20190209/02'
+import Act2019020903 from '@/components/act/20190209/03'
+import Act2019020904 from '@/components/act/20190209/04'
+import Act2019020905 from '@/components/act/20190209/05'
+import Act2019020906 from '@/components/act/20190209/06'
+
+// 2.0网站
+import Login from '@/components/2.0/Login/login';
 
 Vue.use(Router)
 export default new Router({
@@ -107,12 +118,12 @@ export default new Router({
             component: Home,
             meta: { title: '亚太金融小镇' }
         },
-		//转盘
-		{
-			path: '/rotate',
-			name: 'rotate',
-			component: Rotate,
-		},
+		//
+// 		{
+// 			path: '/rotate',
+// 			name: 'rotate',
+// 			component: Rotate,
+// 		},
         //海南项目优质对接会
         {
             path: '/act/act2018080801',
@@ -293,7 +304,7 @@ export default new Router({
             component: Act2018103107,
             meta: { title: '金融培训民宿预订' },
             beforeEnter: (to, from, next) => {
-                if (getCookie('APF_UID')) { // 通过vuex state获取当前的token是否存在
+                if (getCookie('APF_UID')) { 
                     Axios.get(url + '/wap/activity/actAlready', {
                             params: {
                                 activityNo: '20181031',
@@ -320,56 +331,97 @@ export default new Router({
             }
         },
 		//税收流程
-   		{ path: '/taxation/index', name: 'taxation.index', component: taxation_index, meta: { title: '税收流程及相关服务' } },
-   		{ path: '/taxation/list', name: 'taxation.list', component: taxation_list, meta: { title: '税收流程及相关服务' } },
-   		{ path: '/taxation/t1', name: 'taxation.t1', component: taxation_1, meta: { title: '税收流程及相关服务' } },
-   		{ path: '/taxation/t2', name: 'taxation.t2', component: taxation_2, meta: { title: '税收流程及相关服务' } },
-   		{ path: '/taxation/t3', name: 'taxation.t3', component: taxation_3, meta: { title: '税收流程及相关服务' } },
-   		{ path: '/taxation/t4', name: 'taxation.t4', component: taxation_4, meta: { title: '税收流程及相关服务' } },
-   		{ path: '/taxation/t5', name: 'taxation.t5', component: taxation_5, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t6', name: 'taxation.t6', component: taxation_6, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t701', name: 'taxation.t701', component: taxation_701, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t702', name: 'taxation.t702', component: taxation_702, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t703', name: 'taxation.t703', component: taxation_703, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t704', name: 'taxation.t704', component: taxation_704, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t705', name: 'taxation.t705', component: taxation_705, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t706', name: 'taxation.t706', component: taxation_706, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t707', name: 'taxation.t707', component: taxation_707, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t708', name: 'taxation.t708', component: taxation_708, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t709', name: 'taxation.t709', component: taxation_709, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t710', name: 'taxation.t710', component: taxation_710, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t711', name: 'taxation.t711', component: taxation_711, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t712', name: 'taxation.t712', component: taxation_712, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t713', name: 'taxation.t713', component: taxation_713, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t714', name: 'taxation.t714', component: taxation_714, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t715', name: 'taxation.t715', component: taxation_715, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t716', name: 'taxation.t716', component: taxation_716, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t717', name: 'taxation.t717', component: taxation_717, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t718', name: 'taxation.t718', component: taxation_718, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t719', name: 'taxation.t719', component: taxation_719, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t720', name: 'taxation.t720', component: taxation_720, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t721', name: 'taxation.t721', component: taxation_721, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t722', name: 'taxation.t722', component: taxation_722, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t723', name: 'taxation.t723', component: taxation_723, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t724', name: 'taxation.t724', component: taxation_724, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t725', name: 'taxation.t725', component: taxation_725, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t726', name: 'taxation.t726', component: taxation_726, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t727', name: 'taxation.t727', component: taxation_727, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t728', name: 'taxation.t728', component: taxation_728, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t729', name: 'taxation.t729', component: taxation_729, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t730', name: 'taxation.t730', component: taxation_730, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t731', name: 'taxation.t731', component: taxation_731, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t732', name: 'taxation.t732', component: taxation_732, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t733', name: 'taxation.t733', component: taxation_733, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t734', name: 'taxation.t734', component: taxation_734, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t735', name: 'taxation.t735', component: taxation_735, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t736', name: 'taxation.t736', component: taxation_736, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t737', name: 'taxation.t737', component: taxation_737, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t738', name: 'taxation.t738', component: taxation_738, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t739', name: 'taxation.t739', component: taxation_739, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t740', name: 'taxation.t740', component: taxation_740, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t741', name: 'taxation.t741', component: taxation_741, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t742', name: 'taxation.t742', component: taxation_742, meta: { title: '税收流程及相关服务' } },
-		{ path: '/taxation/t8', name: 'taxation.t8', component: taxation_8, meta: { title: '税收流程及相关服务' } },
+   		{ path: '/taxation/index', name: 'taxation.index', component: taxation_index, meta: { title: '亚太金融小镇税收相关服务' } },
+   		{ path: '/taxation/list', name: 'taxation.list', component: taxation_list, meta: { title: '亚太金融小镇税收相关服务' } },
+   		{ path: '/taxation/t1', name: 'taxation.t1', component: taxation_1, meta: { title: '亚太金融小镇税收相关服务' } },
+   		{ path: '/taxation/t2', name: 'taxation.t2', component: taxation_2, meta: { title: '亚太金融小镇税收相关服务' } },
+   		{ path: '/taxation/t3', name: 'taxation.t3', component: taxation_3, meta: { title: '亚太金融小镇税收相关服务' } },
+   		{ path: '/taxation/t4', name: 'taxation.t4', component: taxation_4, meta: { title: '亚太金融小镇税收相关服务' } },
+   		{ path: '/taxation/t5', name: 'taxation.t5', component: taxation_5, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t6', name: 'taxation.t6', component: taxation_6, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t701', name: 'taxation.t701', component: taxation_701, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t702', name: 'taxation.t702', component: taxation_702, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t703', name: 'taxation.t703', component: taxation_703, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t704', name: 'taxation.t704', component: taxation_704, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t705', name: 'taxation.t705', component: taxation_705, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t706', name: 'taxation.t706', component: taxation_706, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t707', name: 'taxation.t707', component: taxation_707, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t708', name: 'taxation.t708', component: taxation_708, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t709', name: 'taxation.t709', component: taxation_709, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t710', name: 'taxation.t710', component: taxation_710, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t711', name: 'taxation.t711', component: taxation_711, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t712', name: 'taxation.t712', component: taxation_712, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t713', name: 'taxation.t713', component: taxation_713, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t714', name: 'taxation.t714', component: taxation_714, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t715', name: 'taxation.t715', component: taxation_715, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t716', name: 'taxation.t716', component: taxation_716, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t717', name: 'taxation.t717', component: taxation_717, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t718', name: 'taxation.t718', component: taxation_718, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t719', name: 'taxation.t719', component: taxation_719, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t720', name: 'taxation.t720', component: taxation_720, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t721', name: 'taxation.t721', component: taxation_721, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t722', name: 'taxation.t722', component: taxation_722, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t723', name: 'taxation.t723', component: taxation_723, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t724', name: 'taxation.t724', component: taxation_724, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t725', name: 'taxation.t725', component: taxation_725, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t726', name: 'taxation.t726', component: taxation_726, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t727', name: 'taxation.t727', component: taxation_727, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t728', name: 'taxation.t728', component: taxation_728, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t729', name: 'taxation.t729', component: taxation_729, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t730', name: 'taxation.t730', component: taxation_730, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t731', name: 'taxation.t731', component: taxation_731, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t732', name: 'taxation.t732', component: taxation_732, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t733', name: 'taxation.t733', component: taxation_733, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t734', name: 'taxation.t734', component: taxation_734, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t735', name: 'taxation.t735', component: taxation_735, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t736', name: 'taxation.t736', component: taxation_736, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t737', name: 'taxation.t737', component: taxation_737, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t738', name: 'taxation.t738', component: taxation_738, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t739', name: 'taxation.t739', component: taxation_739, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t740', name: 'taxation.t740', component: taxation_740, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t741', name: 'taxation.t741', component: taxation_741, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t742', name: 'taxation.t742', component: taxation_742, meta: { title: '亚太金融小镇税收相关服务' } },
+		{ path: '/taxation/t8', name: 'taxation.t8', component: taxation_8, meta: { title: '亚太金融小镇税收相关服务' } },
+		
+		// 初五活动act2019020901
+		{
+		    path: '/act/act2019020901',
+		    name: 'act.act2019020901',
+		    component: Act2019020901,
+		    meta: { title: '亚太金融小镇财神节庙会' }
+		},
+		{
+		    path: '/act/act2019020902',
+		    name: 'act.act2019020902',
+		    component: Act2019020902,
+		    meta: { title: '亚太金融小镇财神节庙会' }
+		},
+		{
+		    path: '/act/act2019020903',
+		    name: 'act.act2019020903',
+		    component: Act2019020903,
+		    meta: { title: '亚太金融小镇财神节庙会' }
+		},
+		{
+		    path: '/act/act2019020904',
+		    name: 'act.act2019020904',
+		    component: Act2019020904,
+		    meta: { title: '亚太金融小镇财神节庙会' }
+		},
+		{
+		    path: '/act/act2019020905',
+		    name: 'act.act2019020905',
+		    component: Act2019020905,
+		    meta: { title: '亚太金融小镇财神节庙会' }
+		},
+		{
+		    path: '/act/act2019020906',
+		    name: 'act.act2019020906',
+		    component: Act2019020906,
+		    meta: { title: '亚太金融小镇财神节庙会' },
+		},
+		
+		// 2.0网站
+		{ path: '/login', name: 'login', component: Login, meta: { title: '亚太金融小镇登录注册' } },
     ]
 })
