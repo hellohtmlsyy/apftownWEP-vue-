@@ -6,14 +6,14 @@
 			<div><img src="../../../static/img/taxation/content/8-1.png" class="tit-img" /> </div>
 			<div class="col-fff">
 				<div class="Btit">代理记账后续服务</div>
-				<div class="fs-22">后续服务流程介绍</div>
+				<div class="fs-11">后续服务流程介绍</div>
 			</div>
 		</div>
 		<div class="content">
 			<div class="conBox">
 				<div class="pd-adv">
 					<div class="adv">
-						<p class="col-fff fs-30 pd-5 fw-6 tac">小镇代理记账服务优势</p>
+						<p class="col-fff fs-15 pd-5 fw-6 tac">小镇代理记账服务优势</p>
 						<img src="../../../static/img/taxation/content/8-2.png" alt="" class="w100">
 						<div class="advCon">
 							<span class="col-22ac38">代理记账资质</span>&nbsp;&nbsp;小镇已获取代理记账许可证书
@@ -24,12 +24,12 @@
 					</div>
 				</div>
 				<div class="text" id="02">代理记账流程</div>
-				<div class="fs-24 col-333 lh-20 pd-con">
+				<div class="fs-12 col-333 lh-20 pd-con">
 					<span class="Btit">01 签订协议</span><br>
 					签订代理记账协议、确定开始时间<br>
 					<span class="Btit">02 票据交接</span><br>
 					税务网上服务厅绑定企业<br>
-					<span class="fs-24">注：需法人或是财务负责人接收短信验证通过</span><br>
+					<span class="fs-12">注：需法人或是财务负责人接收短信验证通过</span><br>
 					<span class="Btit">03 提供资料</span><br>
 					客户每月1日寄来原始凭证<br><br>
 					<span class="fw-6">凭证明细</span><br>
@@ -48,7 +48,7 @@
 					每月15日申报纳税<br>
 					<span class="Btit">06 信息反馈</span><br>
 					交接电子版财务表、申报纳税记录<br>注：确认无误后，原始凭证装订完整，寄回企业
-					<div class="download"><a href="../../../static/download/Agency_Accounting_Agreement.doc">下载代理记账协议书</a></div>
+					<div class="download"><a href="../../../static/download/Agency_Accounting_Agreement.doc" class="col-fff">下载代理记账协议书</a></div>
 				</div>
 				<div class="text" id="03">后续税务服务</div>
 				<div class="service">
@@ -59,14 +59,16 @@
 			</div>
 			<div class="dis-flex pd-contact">
 				<div><img src="../../../static/img/taxation/content/8-3.png" alt="" class="img-w57"></div>
-				<div class="fs-36 col-22ac38 lh-36">具体后续税务服务联系人<br>李经理　18976711787</div>
+				<div class="fs-18 col-22ac38 lh-36">具体后续税务服务联系人<br>李经理　18976711787</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
 	export default {
 		data() {
 			return {
@@ -79,7 +81,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

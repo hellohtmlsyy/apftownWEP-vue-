@@ -2,9 +2,9 @@
 	<div class="tc713 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-30">正常工资薪金</span><br>
+					<span class="fw-6 fs-15">正常工资薪金</span><br>
 					<span class="fw-6">业务简介</span><br>
 					《中华人民共和国个人所得税法实施条例》规定，工资、薪金所得，是指个人因任职或者受雇而取得的工资、薪金、奖金、年终加薪、劳动分红、津贴、补贴以及与任职或者受雇有关的其他所得。<br>
 					《正常工资薪金》是工资、薪金所得的一部分，主要是单位每月发放给员工的工资。<br>
@@ -68,9 +68,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t715',
 				url: window.location.href,
@@ -82,7 +84,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

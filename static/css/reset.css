@@ -4,13 +4,15 @@
 * @name: 初始化/通用
 * @description: 如下各模块注释
 * @author: author-name(szhengjie@126.com)
-* @update: 2019-1-2 16:00
+* @update: 2019-3-4 16:30
 */
 
 * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: 0;
+	-webkit-tap-highlight-color: transparent;
 }
 
 body,
@@ -38,15 +40,22 @@ input,
 textarea,
 th,
 td {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 html {
-    font-size: 625%;
-    color: #000;
-    overflow-y: scroll;
-    overflow: -moz-scrollbars-vertical;
+	font-size: 625%;
+	color: #000;
+	overflow-y: scroll;
+	overflow: -moz-scrollbars-vertical;
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	/* background: #eee; */
 }
 
 body,
@@ -54,167 +63,183 @@ button,
 input,
 select,
 textarea {
-    font-size: 12px;
-    font-family: "microsoft yahei", "微软雅黑", arial, "Hiragino Sans GB", "宋体", "\5b8b\4f53", tahoma, arial, helvetica, STHeiti;
+	font-size: 12px;
+	font-family: "microsoft yahei", "微软雅黑", arial, "Hiragino Sans GB", "宋体", "\5b8b\4f53", tahoma, arial, helvetica, STHeiti;
 }
 
-a {
-    text-decoration: none;
+input {
+	/* 去除移动端默认阴影 */
+	appearance: button;
+	-moz-appearance: button;
+	/* Firefox */
+	-webkit-appearance: button;
+	/* Safari 和 Chrome */
+	outline: none;
+}
+
+
+label,
+button {
+	outline: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 textarea {
-    resize: vertical;
+	resize: vertical;
 }
 
-span{
-	display: inline-block;
-}
 
-.overflow {
-    overflow: hidden;
-}
 
-.hide {
-    display: none;
-}
-
-.block {
-    display: block;
-}
-
-.inline {
-    display: inline;
-}
-
-.error {
-    color: #f00;
-    font-size: 12px;
-}
-
-input,
-label,
-button {
-    outline: none;
+a,
+a:hover,
+a:active,
+a:visited,
+a:link,
+a:focus {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
+	background: none;
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	-webkit-user-select: none;
+	-moz-user-focus: none;
+	-moz-user-select: none;
 }
 
 li {
-    list-style: none;
+	list-style: none;
 }
-.fl{
+
+span {
+	display: inline-block;
+}
+
+
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+	vertical-align: middle;
+}
+
+hr {
+	border: none;
+	border-bottom: 1px solid #DADADA;
+	height: 1px;
+	-webkit-transform: scale(0.5);
+	-webkit-transform-origin: 0 0;
+}
+
+
+pre.wordwrap {
+	white-space: pre-wrap;
+}
+
+.overflow {
+	overflow: hidden;
+}
+
+.hide {
+	display: none;
+}
+
+.block {
+	display: block;
+}
+
+.inline {
+	display: inline;
+}
+
+.error {
+	color: #f00;
+	font-size: 12px;
+}
+
+.fl {
 	float: left;
 }
-.fr{
+
+.fr {
 	float: right;
 }
+
 .clearfix:after {
-    content: "\20";
-    display: block;
-    height: 0;
-    clear: both;
+	content: "\20";
+	display: block;
+	height: 0;
+	clear: both;
 }
+
 .clearfix {
-    zoom: 1;
+	zoom: 1;
 }
 
 .clear {
-    clear: both;
-    height: 0;
-    line-height: 0;
-    font-size: 0;
-    visibility: hidden;
-    overflow: hidden;
+	clear: both;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+	visibility: hidden;
+	overflow: hidden;
 }
 
 .wordwrap {
-    word-break: break-all;
-    word-wrap: break-word;
-}
-
-pre.wordwrap {
-    white-space: pre-wrap;
-}
-
-img {
-    border: 0;
-    -ms-interpolation-mode: bicubic;
-    vertical-align: middle;
-}
-
-body,
-html {
-    width: 100%;
-    height: 100%;
-    background: #fff;
+	word-break: break-all;
+	word-wrap: break-word;
 }
 
 .dis-fl {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
 }
 
 .fles-1 {
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
 }
 
 @media screen and (min-width:360px) and (max-width:374px) and (orientation:portrait) {
-    html {
-        font-size: 703%;
-    }
+	html {
+		font-size: 703%;
+	}
 }
 
 @media screen and (min-width:375px) and (max-width:383px) and (orientation:portrait) {
-    html {
-        font-size: 732.4%;
-    }
+	html {
+		font-size: 732.4%;
+	}
 }
 
 @media screen and (min-width:384px) and (max-width:399px) and (orientation:portrait) {
-    html {
-        font-size: 750%;
-    }
+	html {
+		font-size: 750%;
+	}
 }
 
 @media screen and (min-width:400px) and (max-width:413px) and (orientation:portrait) {
-    html {
-        font-size: 781.25%;
-    }
+	html {
+		font-size: 781.25%;
+	}
 }
 
 @media screen and (min-width:414px) and (max-width:431px) and (orientation:portrait) {
-    html {
-        font-size: 808.6%;
-    }
+	html {
+		font-size: 808.6%;
+	}
 }
 
 @media screen and (min-width:432px) and (max-width:479px) and (orientation:portrait) {
-    html {
-        font-size: 843.75%;
-    }
-}
-
-
-/* 主体架子 */
-.mob_home {
-    width: 100%;
-	background: rgb(238, 238, 238);
-}
-.header {
-    width: 100%;
-    background: #fff;
-    padding: 0.05rem 0.1rem;
-    z-index: 1;
-}
-.header .logo_firstimg {
-    width: 0.94rem;
+	html {
+		font-size: 843.75%;
+	}
 }

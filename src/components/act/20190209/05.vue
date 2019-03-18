@@ -150,9 +150,9 @@
 		},
 		created() {
 			//wx-share
-			var title = '正月初五迎财神，福禄寿喜进家门';
+			var title = '正月初五迎财神，三亚庙会等你来';
 			var desc = '参加2月9日小镇财神节庙会，获得888元游园大礼包，尽享美味BBQ，还有新年烟花热情篝火';
-			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
+			var imgUrl = 'http://m.apftown.com/static/img/act/20190209/wx_share.jpg';
 			var golink = window.location.href;
 			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 			//是否登录
@@ -176,7 +176,7 @@
 									this.invitationCode = res.data.data;
 									window.location.href = this.$root.urlPath.M_APF + '/act/act2019020906?invitationCode=' + this.invitationCode;
 								} else { //登录未报名
-									// window.location.href = this.$root.urlPath.M_APF + '/act/act2019020906;
+									// window.location.href = this.$root.urlPath.M_APF + '/act/act2019020901;
 								}
 							})
 							.catch(err => {
@@ -198,7 +198,7 @@
 	}
 </script>
 <style scoped>
-	.mb-20 {
+	.act020905 .mb-20 {
 		margin-bottom: 0.1rem;
 	}
 

@@ -1,5 +1,5 @@
 <template>
-	<div class="tc">
+	<div class="">
 		<router-link :to="{ path: '/taxation/list' }" class="nav"><img src="../../../static/img/taxation/nav.png" alt=""></router-link>
 		<a :href="path" class="next"><img src="../../../static/img/taxation/next.png" alt=""></a>
 		<div class="title dis-flex">
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-	export default{
+	export default {
 		name: 'tax-head7',
 		props: ['path'],
 	}

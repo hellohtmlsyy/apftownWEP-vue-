@@ -2,9 +2,9 @@
 	<div class="tc717 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-30">内退一次性补偿金</span><br>
+					<span class="fw-6 fs-15">内退一次性补偿金</span><br>
 					<span class="fw-6">业务简介</span><br>
 					国税发[1999]58号
 					《国家税务总局关于个人所得税有关政策问题的通知》中规定，实行内部退养的个人在其办理内部退养手续后至法定离退休年龄之间从原任职单位取得工资、薪金，不属于离退休工资，应按“工资、薪金所得”项目计征个人所得税。<br>
@@ -58,9 +58,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t719',
 				url: window.location.href,
@@ -72,7 +74,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

@@ -47,12 +47,12 @@
 		},
 		created() {
 			//wx-share
-			var title = '正月初五迎财神，福禄寿喜进家门';
+			var title = '正月初五迎财神，三亚庙会等你来';
 			var desc = '参加2月9日小镇财神节庙会，获得888元游园大礼包，尽享美味BBQ，还有新年烟花热情篝火';
-			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
+			var imgUrl = 'http://m.apftown.com/static/img/act/20190209/wx_share.jpg';
 			var golink = window.location.href;
 			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
-			//是否登录
+			// 是否登录
 			this.$axios.get(this.$root.urlPath.NEW + '/user/getUserInfo', {
 					params: {
 						APF_UID: getCookie('APF_UID'),
@@ -68,16 +68,16 @@
 							})
 							.then(res => {
 								if (res.data.data) {
-									if(this.$route.query.invitationCode != res.data.data){
+									if (this.$route.query.invitationCode != res.data.data) {
 										this.invitationCode = res.data.data;
 										window.location.href = this.$root.urlPath.M_APF + '/act/act2019020906?invitationCode=' + this.invitationCode;
 									}
 								} else { //登录未报名
 									if (this.invitationCode && this.invitationCode != '' && this.invitationCode != 'undefined' && this.invitationCode !=
 										'null') {
-										window.location.href = this.$root.urlPath.M_APF + '/act/act2019020904?invitationCode=' + this.invitationCode;
+										window.location.href = this.$root.urlPath.M_APF + '/act/act2019020901?invitationCode=' + this.invitationCode;
 									} else {
-										window.location.href = this.$root.urlPath.M_APF + '/act/act2019020904';
+										window.location.href = this.$root.urlPath.M_APF + '/act/act2019020901';
 									}
 								}
 							})
@@ -115,7 +115,7 @@
 	}
 </script>
 <style scoped>
-	.img-w100 {
+	.act020906 .img-w100 {
 		width: 100%;
 	}
 
@@ -124,9 +124,9 @@
 		width: 100%;
 		background-color: #a40000;
 		position: relative;
-		padding: 0.21rem 0.18rem 0;
+		padding: 0.15rem 0.18rem 0;
 	}
-	
+
 	.act020906 .lay {
 		width: 100%;
 		height: 100%;
@@ -137,7 +137,7 @@
 		text-align: center;
 		z-index: 100000;
 	}
-	
+
 	.act020906 .lay img {
 		width: 75%;
 		margin: 0.5rem 0 0 0.5rem;
@@ -186,6 +186,7 @@
 		font-size: 0.12rem;
 		width: 2.3rem;
 		height: 0.27rem;
+		line-height: 0.27rem;
 	}
 
 	.act020906 .share_con .inv span {
@@ -198,7 +199,8 @@
 	.act020906 .con {
 		padding: 0 0.22rem;
 		text-align: center;
-		margin-top: 0.34rem;
+		margin-top: 0.24rem;
+		margin-bottom: 0.15rem;
 	}
 
 	.act020906 .con .btn {

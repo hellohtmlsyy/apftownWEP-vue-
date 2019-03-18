@@ -2,9 +2,9 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-30">股权奖励个人所得税分期缴纳备案</span><br>
+					<span class="fw-6 fs-15">股权奖励个人所得税分期缴纳备案</span><br>
 					<span class="fw-6">业务简介</span><br>
 					对于股权奖励、转增股本的个人，需要依法缴纳个人所得税，对于一次性缴纳个税有困难的，可以分期缴纳，分期的期限不超过5年。需要提前向税务机关备案，提交分期计划。<br>
 					1. 股权奖励的计税价格参照获得股权时的公平市场价格确定，具体按以下方法确定：<br>
@@ -48,9 +48,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t741',
 				url: window.location.href,
@@ -62,7 +64,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

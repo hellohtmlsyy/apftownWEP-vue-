@@ -6,17 +6,17 @@
 			<div><img src="../../../static/img/taxation/content/2-1.png" class="tit-img" /> </div>
 			<div class="col-fff">
 				<div class="Btit">税种认定</div>
-				<div class="fs-22">添加国税、地税税种</div>
+				<div class="fs-11">添加国税、地税税种</div>
 			</div>
 		</div>
 		<div class="content">
 			<ul class="conBox">
 				<li class="dis-flex border-b">
 					<div><img src="../../../static/img/taxation/content/2-2.png" alt="" class="img-w120 mr-26" /></div>
-					<div class="fs-26 col-333 lh-24">根据营业执照经营范围<br>确定主营业务<br><span class="col-eb6400">认定税种属于国税或地税</span></div>
+					<div class="fs-13 col-333 lh-24">根据营业执照经营范围<br>确定主营业务<br><span class="col-eb6400">认定税种属于国税或地税</span></div>
 				</li>
 				<li>
-					<div class="fs-26 col-333 lh-24">认定税种后，税局办事人员打印国/地税<span class="col-eb6400 dis-i">税务事项认定书</span>公司财务根据认定书上的<span
+					<div class="fs-13 col-333 lh-24">认定税种后，税局办事人员打印国/地税<span class="col-eb6400 dis-i">税务事项认定书</span>公司财务根据认定书上的<span
 						 class="col-eb6400 dis-i">认定有效期</span>起确定报税时间</div>
 					<div class="tac"><img src="../../../static/img/taxation/content/2-3.png" alt="" class="img-w250" /></div>
 				</li>
@@ -26,7 +26,9 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
 	export default {
 		data() {
 			return {
@@ -39,7 +41,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

@@ -29,71 +29,83 @@
 	</div>
 </template>
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
 	export default {
-		data(){
+		data() {
 			return {
 				url: window.location.href,
 				invitationCode: this.$route.query.invitationCode,
 			}
 		},
 		methods: {
-			goSignUp(){
-				if( this.invitationCode && this.invitationCode != '' && this.invitationCode != 'undefined' && this.invitationCode != 'null' ){
-					window.location.href = this.$root.urlPath.M_APF+ '/act/act2018081805?invitationCode=' + this.invitationCode;
-				}else{
+			goSignUp() {
+				if (this.invitationCode && this.invitationCode != '' && this.invitationCode != 'undefined' && this.invitationCode !=
+					'null') {
+					window.location.href = this.$root.urlPath.M_APF + '/act/act2018081805?invitationCode=' + this.invitationCode;
+				} else {
 					window.location.href = this.$root.urlPath.M_APF + '/act/act2018081805'
 				}
 			},
 		},
-		created(){
+		created() {
 			//wx-share
-		    var title = '2019三亚国际金融周-资本项目对接会';
-		    var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
-		    var desc = '抛弃论坛大模式 对接资金好项目 头脑风暴等着你 十项全能挑战你——一场酣畅淋漓的金融精英嘉年华';
-		    var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			var title = '2019三亚国际金融周-资本项目对接会';
+			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
+			var desc = '抛弃论坛大模式 对接资金好项目 头脑风暴等着你 十项全能挑战你——一场酣畅淋漓的金融精英嘉年华';
+			var golink = window.location.href;
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>
 <style scoped>
-	.signUp{
-		position: fixed;
-		right:0.2rem;
-		top: 4.8rem;
-	}
-	.signUp img{
-		width: 0.7rem;
-	}
-	div{
+	div {
 		font-size: 0 !important;
 	}
-	.mt-30{
+
+	.act01 .signUp {
+		position: fixed;
+		right: 0.2rem;
+		top: 4.8rem;
+	}
+
+	.act01 .signUp img {
+		width: 0.7rem;
+	}
+
+	.act01 .mt-30 {
 		margin-top: 0.3rem;
 	}
-	.imgBox-pd{
+
+	.act01 .imgBox-pd {
 		padding: 0 0.15rem;
 	}
-	.act01{
+
+	.act01 {
 		background-image: url(../../../../static/img/act/20180818/bg-1.jpg);
 		background-size: 100% 100%;
 		height: 100%;
 		width: 100%;
 		padding-bottom: 0.3rem;
-	    padding-top: 0.5rem;
+		padding-top: 0.5rem;
 	}
-	.act01 .con .imgBox img{
+
+	.act01 .con .imgBox img {
 		width: 100%;
 	}
-	.act01 .telBox{
+
+	.act01 .telBox {
 		position: relative;
 	}
-	.act01 .tel{
+
+	.act01 .tel {
 		position: absolute;
 		top: 0.52rem;
 		right: 0.3rem;
 	}
-	.act01 .tel a{
+
+	.act01 .tel a {
 		font-size: 0.14rem;
 		display: block;
 		margin-bottom: 0.2rem;

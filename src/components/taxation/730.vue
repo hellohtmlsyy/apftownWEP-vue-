@@ -2,10 +2,10 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-36 mb-5">申报表报送</span><br>
-					<span class="fw-6 fs-30">申报模式</span><br>
+					<span class="fw-6 fs-18 mb-5">申报表报送</span><br>
+					<span class="fw-6 fs-15">申报模式</span><br>
 					<span class="fw-6">网络申报模式</span><br>
 					客户端主体流程如下图
 				</div>
@@ -29,9 +29,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t731',
 				url: window.location.href,
@@ -43,7 +45,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

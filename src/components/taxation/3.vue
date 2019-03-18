@@ -6,13 +6,13 @@
 			<div><img src="../../../static/img/taxation/content/3-1.png" class="tit-img" /> </div>
 			<div class="col-fff">
 				<div class="Btit">签订三方协议</div>
-				<div class="fs-22">签订公司、税务局、银行三方协议</div>
+				<div class="fs-11">签订公司、税务局、银行三方协议</div>
 			</div>
 		</div>
 		<div class="content">
 			<ul class="conBox">
 				<li>
-					<div class="fs-26 col-333 lh-24">提供开户银行许可证原件<br>待税务局工作人员打印<span class="col-e43947 dis-i">三方委托扣款协议书</span><br>需要到开户银行签约(公章、财务章、法人章）<br>签约成功后，需回到税务局认证通过</div>
+					<div class="fs-13 col-333 lh-24">提供开户银行许可证原件<br>待税务局工作人员打印<span class="col-e43947 dis-i">三方委托扣款协议书</span><br>需要到开户银行签约(公章、财务章、法人章）<br>签约成功后，需回到税务局认证通过</div>
 					<div class="tac"><img src="../../../static/img/taxation/content/3-2.png" alt="" class="img-w250" /></div>
 				</li>
 			</ul>
@@ -21,7 +21,9 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
 	export default {
 		data() {
 			return {
@@ -34,7 +36,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

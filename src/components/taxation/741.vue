@@ -2,9 +2,9 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-30">转增股本个人所得税分期缴纳备案</span><br>
+					<span class="fw-6 fs-15">转增股本个人所得税分期缴纳备案</span><br>
 					<span class="fw-6">业务简介</span><br>
 					根据国家税务总局关于《股权奖励和转增股本个人所得税征管问题》的公告对于转增股本定义：<br>
 					1.非上市及未在全国中小企业股份转让系统挂牌的中小高新技术企业以未分配利润、盈余公积、资本公积向个人股东转增股本，并符合财税〔2015〕116号文件有关规定的，纳税人可分期缴纳个人所得税；非上市及未在全国中小企业股份转让系统挂牌的其他企业转增股本，应及时代扣代缴个人所得税。<br>
@@ -41,9 +41,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t742',
 				url: window.location.href,
@@ -55,7 +57,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

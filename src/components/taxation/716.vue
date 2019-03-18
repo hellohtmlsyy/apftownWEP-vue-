@@ -2,9 +2,9 @@
 	<div class="tc715 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-30">全年一次性奖金收入</span><br>
+					<span class="fw-6 fs-15">全年一次性奖金收入</span><br>
 					<span class="fw-6">业务简介</span><br>
 					根据国家税务总局
 					国税发[2005]9号《国家税务总局关于调整个人取得全年一次性奖金等计算征收个人所得税方法问题的通知》规定，全年一次性奖金是指行政机关、企事业单位等扣缴义务人根据其全年经济效益和对雇员全年工作业绩的综合考核情况，向雇员发放的一次性奖金。<br>
@@ -58,9 +58,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t717',
 				url: window.location.href,
@@ -72,7 +74,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

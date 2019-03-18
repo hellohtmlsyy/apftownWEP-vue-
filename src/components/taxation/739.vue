@@ -2,15 +2,15 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-36 mb-5">备案表</span><br>
-					<span class="fw-6 fs-30">分期缴纳备案表</span><br>
+					<span class="fw-6 fs-18 mb-5">备案表</span><br>
+					<span class="fw-6 fs-15">分期缴纳备案表</span><br>
 					分期缴纳备案，是指个人所得税纳税人按照政策的规定，可以分期缴纳个人所得税的，按规定由纳税人或扣缴义务人向主管机关报送相关资料进行备案。具体可分为个人取得股票期权或认购股票个人所得税分期备案、股权奖励个人所得税分期缴纳备案、转增股本个人所得税分期缴纳备案。
 				</div>
 				<p class="mb-30"><img src="../../../static/img/taxation/content/7/7-6-1.png" alt="" class="w100"></p>
 				<div class="mb-30">
-					<span class="fw-6 fs-30">个人取得股票期权或认购股票个人所得税分期备案</span><br>
+					<span class="fw-6 fs-15">个人取得股票期权或认购股票个人所得税分期备案</span><br>
 					<span class="fw-6">业务简介</span><br>
 					按照《国家税务总局关于个人认购股票等有价证券而从雇主取得折扣或补贴收入有关征收个人所得税问题的通知》（国税发〔1998〕9号）规定，纳税人若选择分期缴纳个人所得税，其扣缴义务人应在实际认购股票等有价证券的次月15日内，向主管税务机关办理分期缴纳个人所得税备案手续，报送《个人取得股票期权或认购股票等取得折扣或补贴收入分期缴纳个人所得税备案表》。其他相关证明材料由扣缴义务人留存备查。
 				</div>
@@ -45,9 +45,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t740',
 				url: window.location.href,
@@ -59,7 +61,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

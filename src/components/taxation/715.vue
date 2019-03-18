@@ -2,9 +2,9 @@
 	<div class="tc714 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-30">外籍人员正常工资薪金</span><br>
+					<span class="fw-6 fs-15">外籍人员正常工资薪金</span><br>
 					<span class="fw-6">业务简介</span><br>
 					《个人所得税法》规定，非居民纳税义务人是“在中国境内无住所又不居住或者无住所而在境内居住不满1年的个人”。即非居民纳税义务人，是指习惯性居住地不在中国境内，而且不在中国居住，或者在一个纳税年度内，在中国境内居住不满1年的个人。在现实生活中，习惯性居住地不在中国境内的个人，只有外籍人员、华侨或者香港、澳门和台湾同胞。因此，非居民纳税义务人，实际上只能是在一个纳税年度中，没有在中国境内居住，或者在中国境内居住不满1年的外籍人员、华侨或香港、澳门、台湾同胞。<br>
 					非居民纳税人适用《外籍人员正常工资薪金》所得申报个税。<br>
@@ -75,9 +75,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t716',
 				url: window.location.href,
@@ -89,7 +91,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

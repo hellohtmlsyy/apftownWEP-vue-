@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="act_stay05" >
+		<div class="act_stay05">
 			<div class="con">
 				<input type="text" placeholder="请输入手机号" class="mb-20" v-model.trim="userinfo.tel" />
 				<div class="dis-fl clearfix mb-20">
@@ -15,11 +15,15 @@
 </template>
 <script>
 	import Vue from 'vue';
-	import { setCookie, getCookie, wxShare } from '@/assets/commonjs/util.js';
+	import {
+		setCookie,
+		getCookie,
+		wxShare
+	} from '@/assets/commonjs/util.js';
 	import qs from 'qs';
 	var time = null;
 	export default {
-		data(){
+		data() {
 			return {
 				bgurl: this.$root.urlPath.M_APF + '/static/img/20181031/bg-5-1.jpg',
 				url: window.location.href,
@@ -46,14 +50,14 @@
 		methods: {
 			signUp() {
 				this.msg_codeError = this.userinfo.msgCode.length > 0 ? false : true;
-				if(this.msg_codeError) {
+				if (this.msg_codeError) {
 					this.$layer.msg('请输入正确的验证码');
 				}
 				this.telError = this.userinfo.tel.length == 11 && /^1[34578]\d{9}$/.test(this.userinfo.tel) ? false : true;
-				if(this.telError) {
+				if (this.telError) {
 					this.$layer.msg('请输入正确的手机号');
 				}
-				if(!this.telError && !this.msg_codeError && !this.mobileIsEixt) {
+				if (!this.telError && !this.msg_codeError && !this.mobileIsEixt) {
 					this.disable = true;
 					const params = {
 						account: this.userinfo.tel,
@@ -69,7 +73,7 @@
 							}
 						)
 						.then(res => {
-							if(res.data.success) {
+							if (res.data.success) {
 								setCookie('APF_UID', res.data.data);
 								//是否报名
 								this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
@@ -79,12 +83,12 @@
 										}
 									})
 									.then(res => {
-										if(res.data.data!=false) {
+										if (res.data.data != false) {
 											this.$layer.msg('您已预订，不能重复预订!');
 											var self = this;
-											window.setTimeout(function(){
+											window.setTimeout(function() {
 												window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
-											},2000)
+											}, 2000)
 										} else {
 											window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106';
 										}
@@ -104,12 +108,12 @@
 			mobileCheck() {
 				var mobile = /^1[34578]\d{9}$/;
 				this.telError = this.userinfo.tel.length == 11 && mobile.test(this.userinfo.tel) ? false : true;
-				if(!this.userinfo.tel || this.telError) {
+				if (!this.userinfo.tel || this.telError) {
 					this.$layer.msg('请输入正确的手机号')
 					return false;
 				}
 				var self = this;
-				if(time) {
+				if (time) {
 					window.clearInterval(time);
 					this.count = 60;
 				}
@@ -117,7 +121,7 @@
 				this.show_time = false;
 				this.$axios.get(this.$root.urlPath.NEW + '/sms/getSmsPre?type=1&terminal=1')
 					.then(res => {
-						if(res.data.success) {
+						if (res.data.success) {
 							setCookie('APF_SMS', res.data.data);
 							const params = {
 								mobile: this.userinfo.tel,
@@ -144,7 +148,7 @@
 					self.time = count;
 					Vue.set([self.time], 'time', count)
 					count--
-					if(count < 1) {
+					if (count < 1) {
 						count = 5;
 						self.show_time = true;
 						clearInterval(time);
@@ -153,70 +157,71 @@
 				}, 1000)
 			},
 		},
-		created(){
+		created() {
 			//wx-share
-		    var title = '寒冷的2018即将过去，来三亚开启你温暖幸运的2019';
-		    var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
-		    var desc = '凛冬骤降，亚太金融小镇新年礼包等你来，点击开启你的三亚温暖之旅';
-		    var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
-			
+			var title = '寒冷的2018即将过去，来三亚开启你温暖幸运的2019';
+			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
+			var desc = '凛冬骤降，亚太金融小镇新年礼包等你来，点击开启你的三亚温暖之旅';
+			var golink = window.location.href;
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
+
 			//是否登录
 			this.$axios.get(this.$root.urlPath.NEW + '/user/getUserInfo', {
-				params: {
-					APF_UID: getCookie('APF_UID'),
-				}
-			})
-			.then(res => {
-				if(res.data.success) {//已登录
-					//是否预订
-					this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
-						params: {
-							activityNo: '20181031',
-							APF_UID: getCookie('APF_UID'),
-						}
-					})
-					.then(res => {
-						if(res.data.data!=false) {
-							this.$layer.msg('您已预订，不能重复预订!');
-							var self = this;
-							window.setTimeout(function(){//已预订
-								window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
-							},2000)
-						} else {//未预订
-							window.location.href = this.$root.urlPath.M_APF+ '/act/act2018103106';
-						}
-					})
-					.catch(err => {
-						console.log(err)
-					})
-				}else{//未登录
-				}
-			})
-			.catch(err => {
-				console.log(err)
-			});
+					params: {
+						APF_UID: getCookie('APF_UID'),
+					}
+				})
+				.then(res => {
+					if (res.data.success) { //已登录
+						//是否预订
+						this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
+								params: {
+									activityNo: '20181031',
+									APF_UID: getCookie('APF_UID'),
+								}
+							})
+							.then(res => {
+								if (res.data.data != false) {
+									this.$layer.msg('您已预订，不能重复预订!');
+									var self = this;
+									window.setTimeout(function() { //已预订
+										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+									}, 2000)
+								} else { //未预订
+									window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106';
+								}
+							})
+							.catch(err => {
+								console.log(err)
+							})
+					} else { //未登录
+					}
+				})
+				.catch(err => {
+					console.log(err)
+				});
 		},
-		mounted(){
-		    var winHeight = $(window).height(); //获取当前页面高度  
-			if( winHeight >680 ){
+		mounted() {
+			var winHeight = $(window).height(); //获取当前页面高度  
+			if (winHeight > 680) {
 				this.bgurl = this.$root.urlPath.M_APF + '/static/img/act/20181031/bg-5-1.jpg';
 			}
-			$('.act_stay05').css('height', winHeight + 'px'); 
+			$('.act_stay05').css('height', winHeight + 'px');
 		},
 	}
 </script>
 <style scoped="scoped">
-	@import url("../../../../static/css/reset.css");
-	.mb-20 {
+	.act_stay05 .mb-20 {
 		margin-bottom: 0.1rem;
 	}
-	.act_stay05{
+
+	.act_stay05 {
 		background-image: url(../../../..//static/img/act/20181031/bg-5-1.jpg);
 		background-size: 100% 100%;
 		width: 100%;
 		position: relative;
 	}
+
 	.act_stay05 .con {
 		width: 100%;
 		padding: 0 0.37rem;
@@ -224,6 +229,7 @@
 		bottom: 0.67rem;
 		left: 0;
 	}
+
 	.act_stay05 .con .dis-fl .right {
 		width: 40%;
 		text-align: center;
@@ -235,6 +241,7 @@
 		color: #fff;
 		font-size: 0.15rem;
 	}
+
 	.act_stay05 .con input[type="text"],
 	.act_stay05 .con input[type="tel"],
 	.act_stay05 .con .btn {
@@ -248,6 +255,7 @@
 		font-size: 0.15rem;
 		padding: 0 0.18rem;
 	}
+
 	.act_stay05 .con input[type="tel"] {
 		width: 55%;
 		height: 0.41rem;
@@ -257,6 +265,7 @@
 		border: solid 1px #707070;
 		margin-right: 0.16rem;
 	}
+
 	.act_stay05 .con .btn {
 		width: 100%;
 		height: 0.41rem;

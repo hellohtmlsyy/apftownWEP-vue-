@@ -2,10 +2,10 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-36 mb-5">网上缴款</span><br>
-					<span class="fw-6 fs-30">税款缴纳</span><br>
+					<span class="fw-6 fs-18 mb-5">网上缴款</span><br>
+					<span class="fw-6 fs-15">税款缴纳</span><br>
 					按照现行税法《个人所得税代扣代缴暂行办法》，第十三条，扣缴义务人每月所扣的税款，应当在次月7日内缴入国库，并向主管税务机关报送《扣缴个人所得税报告表》、代扣代收税款凭证和包括每一纳税人姓名、单位、职务、收入、税款等内容的支付个人收入明细表以及税务机关要求报送的其他有关资料。申报成功后需要及时缴款。逾期将加收滞纳金并根据《中华人民共和国税收征收管理法》第六十二条的有关规定，税务机关将责令限期改正，并按照规定依法对该单位进行行政处罚。<br>
 					如果本次申报成功后，没有立即缴款，系统在下次登录启动后，首页会弹出缴款的提醒，引导用户进行税款缴纳工作，如下图
 				</div>
@@ -23,9 +23,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t737',
 				url: window.location.href,
@@ -37,7 +39,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

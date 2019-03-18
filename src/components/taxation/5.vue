@@ -6,7 +6,7 @@
 			<div><img src="../../../static/img/taxation/content/5-1.png" class="tit-img" /> </div>
 			<div class="col-fff">
 				<div class="Btit">地税申报流程</div>
-				<div class="fs-22">海南省税务局(原地税)网上申报系统介绍</div>
+				<div class="fs-11">海南省税务局(原地税)网上申报系统介绍</div>
 			</div>
 		</div>
 		<div class="content col-333">
@@ -17,23 +17,23 @@
 					http://sso.hitax.gov.cn:5555/sso
 				</a>
 			</div>
-			<div class="fs-26 lh-24 border-b pd-10">纳税人登录网站可完成增值税附加、工会、房产税、土地增值税、代扣代缴个人所得税、车船税、社保、残疾人保障金等各类税费申报、扣款等操作。</div>
-			<div class="fs-24 lh-24">
-				<p class="fs-26 pd-5 fw-6" id="01">系统登录页面</p>
+			<div class="fs-13 lh-24 border-b pd-10">纳税人登录网站可完成增值税附加、工会、房产税、土地增值税、代扣代缴个人所得税、车船税、社保、残疾人保障金等各类税费申报、扣款等操作。</div>
+			<div class="fs-12 lh-24">
+				<p class="fs-13 pd-5 fw-6" id="01">系统登录页面</p>
 				<p><img src="../../../static/img/taxation/content/5-3.png" alt="" class="w100 mb-5"></p>
 				<div class="mb-30">
 					<span class="fw-6 mr-10">登录</span>账号为注册时纳税人录入的手机号，<br>&nbsp;&nbsp;&nbsp;　　密码为注册时设置密码。<br>
 					<span class="fw-6 mr-10">注册</span>首次使用本网站的纳税人可在网上快速注册。
 				</div>
 				<div class="mb-5" id="02">
-					<span class="fs-30 fw-6">海南省税务局网上申报系统（原地税）系统登录</span><br>
+					<span class="fs-15 fw-6">海南省税务局网上申报系统（原地税）系统登录</span><br>
 					登录网上办税服务厅后选择【原地税网上申报系统】
 				</div>
 				<p><img src="../../../static/img/taxation/content/5-4.png" alt="" class="w100 mb-5"></p>
 				<p class="mb-5">登录用户信息栏将展示当前用户手机号下绑定的所有纳税人信息，请根据需要申报的企业信息选择，点击【确认】进入系统即可申报。</p>
 				<p class="mb-30"><img src="../../../static/img/taxation/content/5-5.png" alt="" class="w100 mb-5"></p>
 				<div class="mb-5" id="03">
-					<span class="fs-30 fw-6">网上申报功能介绍</span><br>
+					<span class="fs-15 fw-6">网上申报功能介绍</span><br>
 					系统主页面包括三部分：标题区、功能菜单区、业务操作区<br>
 					<span class="fw-6">标题区</span><br>
 					显示网上申报系统标题（海南省税务局网上申报系统）<br>
@@ -46,7 +46,7 @@
 				</div>
 				<p class="mb-30"><img src="../../../static/img/taxation/content/5-6.png" alt="" class="w100 mb-5"></p>
 				<div class="mb-5" id="04">
-					<span class="fs-30 fw-6">申报纳税(费)</span><br>
+					<span class="fs-15 fw-6">申报纳税(费)</span><br>
 					<span class="fw-6">在线填写申报表(税)</span><br>
 					可填写所有税种报表，纳税人根据所要填报种类相应填写
 				</div>
@@ -71,7 +71,9 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
 	export default {
 		data() {
 			return {
@@ -84,7 +86,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>
@@ -110,10 +112,6 @@
 			#4494e8 100%),
 			linear-gradient(#516eea,
 			#516eea);
-	}
-
-	.tc5 .content {
-		padding: 0.1rem 0.15rem 0.3rem 0.15rem;
 	}
 
 	.tc5 .content .url {

@@ -2,9 +2,9 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-30">偶然所得</span><br>
+					<span class="fw-6 fs-15">偶然所得</span><br>
 					偶然所得，是指个人得奖、中奖、中彩以及其他偶然性质的所得。但以下所得不能作为偶然所得<br>
 					根据财税〔2007〕34号《财政部国家税务总局关于个人取得有奖发票奖金征免个人所得税问题的通知》规定：个人取得单张有奖发票奖金所得不超过800元（含800元）的，暂免征收个人所得税；个人取得单张有奖发票奖金所得超过800元的，应金额按照个人所得税法规定的“偶然所得”目征收个人所得税<br>
 					根据国税发〔1994〕127号《国家税务总局关于社会福利有奖募捐发行收入税收问题的通知》: 对个人购买社会福利有奖募捐奖券一次中奖收入不超过10000元的暂免征收个人所得税，对一次中奖收入超过10000元的，应按税法规定全额征税<br>
@@ -20,9 +20,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t728',
 				url: window.location.href,
@@ -34,7 +36,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

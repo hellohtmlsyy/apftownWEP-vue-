@@ -2,9 +2,9 @@
 	<div class="tc708 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-30">人员信息编辑</span><br>
+					<span class="fw-6 fs-15">人员信息编辑</span><br>
 					人员信息编辑指已登记人员【修改】和【删除】等相关操作。当人员信息登记到软件后，发现人员信息存在错误信息，需要【修改】人员信息，或【删除】人员信息后重新登记。
 				</div>
 				<div class="mb-30">
@@ -25,9 +25,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t710',
 				url: window.location.href,
@@ -39,7 +41,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

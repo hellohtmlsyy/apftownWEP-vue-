@@ -19,9 +19,6 @@
 			</div>
 			<button type="button" class="sub" @click="sub()" :disabled="disable">登录</button>
 		</div>
-		<c-footer>
-
-		</c-footer>
 	</div>
 </template>
 
@@ -37,8 +34,19 @@
 	let time = null;
 	let mobile = /^1[34578]\d{9}$/;
 	export default {
+		beforeRouteEnter(to, from, next) {
+			next(vm => {
+				// 通过 `vm` 访问组件实例
+				if (isDevice() == '微信浏览器') {
+					// console.log(true)
+				} else {
+					next()
+				}
+			})
+		},
 		data() {
 			return {
+				isShow: true,
 				url: window.location.href,
 				userinfo: {
 					tel: '',
@@ -52,6 +60,8 @@
 				code: '',
 				apf_UID: '',
 				apf_WX_OID: '',
+				returnUrl: this.$route.query.returnUrl,
+				isLog: this.$route.query.log,
 
 			};
 		},
@@ -89,7 +99,9 @@
 										}
 									}
 								)
-								.then(res => {})
+								.then(res => {
+									if (!res.data.success) this.$layer.msg(res.data.errMsg);
+								})
 						} else {
 							this.$layer.msg('您输入的账户或者验证码不正确');
 						}
@@ -136,23 +148,35 @@
 						.then(res => {
 							if (res.data.success) {
 								this.apf_UID = res.data.data;
-								let params = {
-									APF_WX_OID: this.apf_WX_OID,
-									APF_UID: this.apf_UID
-								};
-								this.$axios.post(this.$root.urlPath.NEW + '/wx/bindingUser',
-										qs.stringify(params))
-									.then(res => {
-										if (res.data.success) {
-											setCookie('APF_UID', this.apf_UID);
-											setCookie('APF_WX_OID', this.apf_WX_OID);
-											// 跳转会员中心
-											alert('跳转会员中心1')
-										} else {}
-									})
-									.catch(err => {
-										console.log(err)
-									})
+								if (this.isLog) {
+									let params = {
+										APF_WX_OID: getCookie('APF_WX_OID'),
+										APF_UID: this.apf_UID
+									};
+									this.$axios.post(this.$root.urlPath.NEW + '/wx/bindingUser',
+											qs.stringify(params))
+										.then(res => {
+											if (res.data.success) {
+												setCookie('APF_UID', this.apf_UID);
+												setCookie('APF_WX_OID', this.apf_WX_OID);
+												if (this.returnUrl) {
+													location.href = this.$root.urlPath.M_APF + this.returnUrl;
+												} else {
+													location.href = this.$root.urlPath.M_APF + '/user/center';
+												}
+											} else {}
+										})
+										.catch(err => {
+											console.log(err)
+										})
+								} else {
+									setCookie('APF_UID', res.data.data);
+									if (this.returnUrl) {
+										location.href = this.$root.urlPath.M_APF + this.returnUrl;
+									} else {
+										location.href = this.$root.urlPath.M_APF + '/user/center';
+									}
+								}
 							} else {
 								this.$layer.msg(res.data.errMsg);
 							}
@@ -166,106 +190,30 @@
 		mounted() {
 			var winHeight = $(window).height(); //获取当前页面高度  
 			$('.login').css('height', winHeight + 'px');
-
-			//wx-share
-			var title = '亚太金融小镇基金税务流程及服务';
-			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
-			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
-			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 		created() {
-
-			if (isDevice() == '微信浏览器') {
-				var url = location.search;
-				var theRequest = new Object();
-				if (url.indexOf("?") != -1) {
-					var str = url.substr(1);
-					str = str.split("&");
-					for (var i = 0; i < str.length; i++) {
-						theRequest[str[i].split("=")[0]] = unescape(str[i].split("=")[1]);
-					}
-				}
-				var url2 = 'http://m.apftown.com/login'
-				if (theRequest.hasOwnProperty('code')) {
-					this.code = theRequest.code;
-					if (theRequest.code == "''" || !theRequest.code || theRequest.code == 'undefined') {
-						location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf22fa92a73f19465&redirect_uri=' +
-							encodeURIComponent(url2) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
-					}
+			if (getCookie('APF_UID')) {
+				if (this.returnUrl) {
+					location.href = this.$root.urlPath.M_APF + this.returnUrl;
 				} else {
-					location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf22fa92a73f19465&redirect_uri=' +
-						encodeURIComponent(url2) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
+					location.href = this.$root.urlPath.M_APF + '/user/center';
 				}
-				
-				if(this.code){
-					if (getCookie('APF_WX_OID')) {
-						if (getCookie('APF_UID')) {
-							alert('跳转会员中心4')
-						}else{
-							//登录注册
-						}
-					} else {
-						this.$axios.post(this.$root.urlPath.NEW + '/wx/wxOAuth2/openId',
-								qs.stringify({
-									code: this.code
-								})
-							)
-							.then(res => {
-								if (res.data.success) {
-									this.apf_WX_OID = res.data.data.apf_WX_OID;
-									if (!res.data.data.apf_UID) {
-										//登录注册
-									} else {
-										this.$axios.post(this.$root.urlPath.NEW + '/wx/bindingUser',
-												qs.stringify({
-													APF_WX_OID: this.apf_WX_OID,
-													APF_UID: this.apf_UID
-												})
-											)
-											.then(res => {
-												if (res.data.success) {
-													setCookie('APF_UID', this.apf_UID);
-													setCookie('APF_WX_OID', this.apf_WX_OID);
-													// 跳转会员中心
-												} else {}
-											})
-											.catch(err => {
-												console.log(err)
-											})
-					
-									}
-								} else {
-									if (getCookie('APF_UID')) {
-										alert('跳转会员中心')
-									} else {
-										//登录注册
-									}
-								}
-							})
-							.catch(err => {
-								console.log(err)
-							})
-					}
-				}
-
 			}
 		},
 	}
 </script>
 
 <style>
-	.footer {
-		height: 0.49rem;
-		width: 100%;
-	}
-
-	.img-w79 {
+	.login .img-w79 {
 		width: 0.79rem;
 	}
 
-	.img-h20 {
+	.login .img-h20 {
 		height: 0.2rem;
+	}
+
+	.login {
+		background: #fff;
 	}
 
 	.login .logo {

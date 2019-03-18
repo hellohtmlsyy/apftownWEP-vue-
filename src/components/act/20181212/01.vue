@@ -1,6 +1,6 @@
 <template>
 	<div class="act_ld1">
-		<div class="login" v-show="islogin">
+		<div class="login">
 			<input type="text" placeholder="请输入手机号" class="mb-20" v-model.trim="userinfo.tel" />
 			<div class="dis-fl clearfix mb-20">
 				<input class="fl" type="tel" placeholder="输入验证码" v-model.trim="userinfo.msgCode">
@@ -9,7 +9,7 @@
 			</div>
 			<div class="btn" @click="toLogin()" :disabled="disable">立即参加抽奖</div>
 		</div>
-		<form class="form" v-show="!islogin">
+		<form class="form">
 			<div class="tit">金融选择题</div>
 			<div>
 				<div class="key">1、2018中共中央国务院《关于支持海南全面深化改革开放的指导意见》，确立海南自贸区、中国自贸港成立，是几月几日确立的?</div>

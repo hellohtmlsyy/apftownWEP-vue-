@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+/* 
+* @name: 2.0页面样式/通用
+* @description: 如下各模块注释
+* @author: author-name(szhengjie@126.com)
+* @update: 2019-3-4 16:30
+*/
+
+body {
+	background: #eee;
+}
+
+.m {
+	background-color: #eee;
+	padding-bottom: .5rem;
+}
+
+.mar {
+	background-color: #fff;
+	margin: .1rem 0;
+	color: #333;
+}
+
+/* 会员中心账单----- */
+.paycode,
+.pay,
+.payresult {
+	background-image: linear-gradient(0deg,
+		#e97e01 0%,
+		#ffcc1c 100%),
+		linear-gradient(#f1a200,
+		#f1a200);
+}
+
+.paycode .content,
+.pay .content,
+.payresult .content {
+	background-color: #fff;
+	text-align: center;
+	border-radius: .05rem;
+}
+
+/* ------- */
+
+.bg-fff {
+	background-color: #fff;
+}
+
+/* 橙 */
+.col-eb6100 {
+	color: #eb6100;
+}
+
+.col-f17c00 {
+	color: #f17c00;
+}
+
+.col-f39800 {
+	color: #f39800;
+}
+
+/* 蓝 */
+.col-0068b7 {
+	color: #0068b7;
+}
+
+.col-00a0e9 {
+	color: #00a0e9;
+}
+
+.col-00479d {
+	color: #00479d;
+}
+
+/* 绿 */
+.col-23ac38 {
+	color: #23ac38;
+}
+
+.col-3ab512 {
+	color: #3ab512;
+}
+
+.col-6bbe21 {
+	color: #6bbe21;
+}
+
+/* border */
+.border-0 {
+	border: none !important;
+}
+
+/* margin */
+.m-13 {
+	margin: 0 .13rem;
+}
+
+/* 联系我们按钮 */
+.contactus-btn {
+	position: fixed;
+	right: .23rem;
+	top: 75%;
+}
+
+.img-w66 {
+	width: .66rem;
+}
+
+/* 产业服务 */
+.img-w317 {
+	width: 3.17rem;
+	margin-bottom: .2rem;
+}
+
+.industry {
+	position: relative;
+	background-color: #eee;
+}
+
+.industry .top_bg {
+	height: .8rem;
+	color: #fff;
+	padding: .14rem .23rem 0 0;
+	text-align: right;
+	font-size: .12rem;
+	line-height: .18rem;
+	background-size: 100% 100%;
+}
+
+.industry .content {
+	padding: 0 .08rem .5rem;
+	width: 100%;
+	margin-top: -0.15rem;
+}
+
+.industry .adv {
+	background-color: #ffffff;
+	box-shadow: 0 0 .05rem 0 #b5b5b5;
+	border-radius: .1rem;
+	padding: 0 .08rem .25rem;
+	color: #333;
+}
+
+.industry .adv {
+	margin-bottom: .15rem;
+}
+
+.industry .adv .tit {
+	padding: .14rem 0 .12rem .07rem;
+	font-size: .18rem;
+	font-weight: 700;
+}
+
+.industry .adv .advText {
+	font-size: .12rem;
+	color: #707070;
+	padding-top: .2rem;
+	border-top: 1px solid #d2d2d2;
+	margin: 0 .13rem;
+	line-height: .2rem;
+}
+
+.industry .adv .item {
+	background-color: #fff;
+	position: relative;
+	border-radius: 5px;
+	color: #707070;
+	line-height: .2rem;
+}
+
+.industry .adv small {
+	font-size: .12rem;
+	-webkit-transform-origin-x: 0;
+	transform: scale(0.88);
+	-webkit-transform: scale(0.88);
+	display: inline-block;
+}

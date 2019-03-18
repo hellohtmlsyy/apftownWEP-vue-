@@ -2,14 +2,14 @@
 	<div>
 		<div class="act_train04">
 			<div class="tit">
-				<img src="../../../../static/img/act/20181008/4-title.png"/>
+				<img src="../../../../static/img/act/20181008/4-title.png" />
 			</div>
 			<div class="text">
 				<img src="../../../../static/img/act/20181008/4-1.png" alt="" />
 			</div>
 			<div class="con">
-				<input type="text" placeholder="请输入手机号" class="mb-20" v-model.trim="userinfo.tel" />
-				<div class="dis-fl clearfix mb-20">
+				<input type="text" placeholder="请输入手机号" class="mb-10" v-model.trim="userinfo.tel" />
+				<div class="dis-fl clearfix mb-10">
 					<input class="fl" type="tel" placeholder="输入验证码" v-model.trim="userinfo.msgCode">
 					<button class="fr right" @click="mobileCheck()" v-show="show_time">获取验证码</button>
 					<button class="fr right" v-show="!show_time">{{count}}秒重新获取</button>
@@ -21,11 +21,15 @@
 </template>
 <script>
 	import Vue from 'vue';
-	import { setCookie, getCookie, wxShare } from '@/assets/commonjs/util.js';
+	import {
+		setCookie,
+		getCookie,
+		wxShare
+	} from '@/assets/commonjs/util.js';
 	import qs from 'qs';
 	var time = null;
 	export default {
-		data(){
+		data() {
 			return {
 				url: window.location.href,
 				userinfo: {
@@ -51,14 +55,14 @@
 		methods: {
 			signUp() {
 				this.msg_codeError = this.userinfo.msgCode.length > 0 ? false : true;
-				if(this.msg_codeError) {
+				if (this.msg_codeError) {
 					this.$layer.msg('请输入正确的验证码');
 				}
 				this.telError = this.userinfo.tel.length == 11 && /^1[34578]\d{9}$/.test(this.userinfo.tel) ? false : true;
-				if(this.telError) {
+				if (this.telError) {
 					this.$layer.msg('请输入正确的手机号');
 				}
-				if(!this.telError && !this.msg_codeError && !this.mobileIsEixt) {
+				if (!this.telError && !this.msg_codeError && !this.mobileIsEixt) {
 					this.disable = true;
 					const params = {
 						account: this.userinfo.tel,
@@ -74,7 +78,7 @@
 							}
 						)
 						.then(res => {
-							if(res.data.success) {
+							if (res.data.success) {
 								setCookie('APF_UID', res.data.data);
 								//是否报名
 								this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
@@ -84,12 +88,12 @@
 										}
 									})
 									.then(res => {
-										if(res.data.data!=false) {
+										if (res.data.data != false) {
 											this.$layer.msg('您已预订，不能重复预订!');
 											var self = this;
-											window.setTimeout(function(){
+											window.setTimeout(function() {
 												window.location.href = self.$root.urlPath.M_APF + '/act/act2018100806';
-											},2000)
+											}, 2000)
 										} else {
 											window.location.href = this.$root.urlPath.M_APF + '/act/act2018100805';
 										}
@@ -109,12 +113,12 @@
 			mobileCheck() {
 				var mobile = /^1[34578]\d{9}$/;
 				this.telError = this.userinfo.tel.length == 11 && mobile.test(this.userinfo.tel) ? false : true;
-				if(!this.userinfo.tel || this.telError) {
+				if (!this.userinfo.tel || this.telError) {
 					this.$layer.msg('请输入正确的手机号')
 					return false;
 				}
 				var self = this;
-				if(time) {
+				if (time) {
 					window.clearInterval(time);
 					this.count = 60;
 				}
@@ -122,7 +126,7 @@
 				this.show_time = false;
 				this.$axios.get(this.$root.urlPath.NEW + '/sms/getSmsPre?type=1&terminal=1')
 					.then(res => {
-						if(res.data.success) {
+						if (res.data.success) {
 							setCookie('APF_SMS', res.data.data);
 							const params = {
 								mobile: this.userinfo.tel,
@@ -149,7 +153,7 @@
 					self.time = count;
 					Vue.set([self.time], 'time', count)
 					count--
-					if(count < 1) {
+					if (count < 1) {
 						count = 5;
 						self.show_time = true;
 						clearInterval(time);
@@ -158,50 +162,50 @@
 				}, 1000)
 			},
 		},
-		created(){
+		created() {
 			//wx-share
-		    var title = '亚太金融小镇培训基地欢迎您';
-		    var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
-		    var desc = '白天面朝大海，夜晚仰望星空，上课金融学习，下课资本沙龙，来三亚度过一段难忘同窗时光';
-		    var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
-			
+			var title = '亚太金融小镇培训基地欢迎您';
+			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
+			var desc = '白天面朝大海，夜晚仰望星空，上课金融学习，下课资本沙龙，来三亚度过一段难忘同窗时光';
+			var golink = window.location.href;
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
+
 			//是否登录
 			this.$axios.get(this.$root.urlPath.NEW + '/user/getUserInfo', {
-				params: {
-					APF_UID: getCookie('APF_UID'),
-				}
-			})
-			.then(res => {
-				if(res.data.success) {
-					//是否预订
-					this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
-						params: {
-							activityNo: '20181008',
-							APF_UID: getCookie('APF_UID'),
-						}
-					})
-					.then(res => {
-						if(res.data.data!=false) {
-							this.$layer.msg('您已预订，不能重复预订!');
-							var self = this;
-							window.setTimeout(function(){
-								window.location.href = self.$root.urlPath.M_APF + '/act/act2018100806';
-							},2000)
-						} else {
-							window.location.href = this.$root.urlPath.M_APF+ '/act/act2018100805';
-						}
-					})
-					.catch(err => {
-						console.log(err)
-					})
-				}else{
-//					window.location.href = this.$root.urlPath.M_APF+ '/act/act2018100804';
-				}
-			})
-			.catch(err => {
-				console.log(err)
-			});
+					params: {
+						APF_UID: getCookie('APF_UID'),
+					}
+				})
+				.then(res => {
+					if (res.data.success) {
+						//是否预订
+						this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
+								params: {
+									activityNo: '20181008',
+									APF_UID: getCookie('APF_UID'),
+								}
+							})
+							.then(res => {
+								if (res.data.data != false) {
+									this.$layer.msg('您已预订，不能重复预订!');
+									var self = this;
+									window.setTimeout(function() {
+										window.location.href = self.$root.urlPath.M_APF + '/act/act2018100806';
+									}, 2000)
+								} else {
+									window.location.href = this.$root.urlPath.M_APF + '/act/act2018100805';
+								}
+							})
+							.catch(err => {
+								console.log(err)
+							})
+					} else {
+						//					window.location.href = this.$root.urlPath.M_APF+ '/act/act2018100804';
+					}
+				})
+				.catch(err => {
+					console.log(err)
+				});
 		},
 		mounted() {
 			var winHeight = $(window).height(); //获取当前页面高度  
@@ -211,35 +215,42 @@
 </script>
 <style scoped="scoped">
 	@import url("../../../../static/css/reset.css");
-	.mb-20 {
+
+	.act_train04 .mb-10 {
 		margin-bottom: 0.1rem;
 	}
-	.act_train04{
+
+	.act_train04 {
 		background-color: #eee;
 		padding: 0.15rem 0;
 		height: 100%;
 		position: relative;
 	}
-	.act_train04 .tit img{
+
+	.act_train04 .tit img {
 		height: 0.37rem;
 		margin-bottom: 0.11rem;
 	}
-	.act_train04 .text,.act_train04 .con{
+
+	.act_train04 .text,
+	.act_train04 .con {
 		width: 100%;
 		padding: 0 0.2rem;
 	}
-	.act_train04 .text img{
+
+	.act_train04 .text img {
 		width: 100%;
-		box-shadow: 6px 5px 8px 0px 
-		rgba(42, 56, 30, 0.15);
+		box-shadow: 6px 5px 8px 0px rgba(42, 56, 30, 0.15);
 		border-radius: 8px;
 	}
+
 	.act_train04 .con {
 		padding: 0 0.18rem;
 		position: absolute;
 		bottom: 0.2rem;
 		left: 0;
 	}
+
 	.act_train04 .con .dis-fl .right {
 		width: 40%;
 		text-align: center;
@@ -251,6 +262,7 @@
 		color: #fff;
 		font-size: 0.15rem;
 	}
+
 	.act_train04 .con input[type="text"],
 	.act_train04 .con input[type="tel"],
 	.act_train04 .con .btn {
@@ -264,6 +276,7 @@
 		font-size: 0.15rem;
 		padding: 0 0.18rem;
 	}
+
 	.act_train04 .con input[type="tel"] {
 		width: 55%;
 		height: 0.41rem;
@@ -273,6 +286,7 @@
 		border: solid 1px #707070;
 		margin-right: 0.16rem;
 	}
+
 	.act_train04 .con .btn {
 		width: 100%;
 		height: 0.41rem;

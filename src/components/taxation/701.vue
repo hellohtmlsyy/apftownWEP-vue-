@@ -2,9 +2,9 @@
 	<div class="tc701 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
-				<span class="fs-36 fw-6 mb-5">系统相关</span><br>
-				<span class="fs-30 fw-6">客户端运行环境</span><br>
+			<div class="fs-12 lh-24">
+				<span class="fs-18 fw-6 mb-5">系统相关</span><br>
+				<span class="fs-15 fw-6">客户端运行环境</span><br>
 				<span class="fw-6">操作系统</span>　Windows7/ Windows8/ Windows10中文操作系统<br>
 				<span class="fw-6">分辨率　</span>　推荐1366×768<br>
 				<span class="fw-6">系统日期</span>　必须设置成当天日期<br>
@@ -18,9 +18,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t702',
 				url: window.location.href,
@@ -32,7 +34,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

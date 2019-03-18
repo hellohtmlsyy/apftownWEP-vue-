@@ -2,9 +2,9 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-30">股权转让所得</span><br>
+					<span class="fw-6 fs-15">股权转让所得</span><br>
 					股权转让收入是指转让方因股权转让而获得的现金、实物、有价证券和其他形式的经济利益，转让方取得与股权转让相关的各种款项，包括违约金、补偿金以及其他名目的款项、资产、权益等，均应当并入股权转让收入。纳税人按照合同约定，在满足约定条件后取得的后续收入，应当作为股权转让收入，其行为包括以下情形：<br>
 					1. 出售股权；<br>
 					2. 公司回购股权；<br>
@@ -24,9 +24,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t726',
 				url: window.location.href,
@@ -38,7 +40,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

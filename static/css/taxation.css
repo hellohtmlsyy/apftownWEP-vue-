@@ -4,30 +4,10 @@
 * @name: 税收流程样式
 * @description: 如下各模块注释
 * @author: author-name(szhengjie@126.com)
-* @update: 2019-1-2 16:00
+* @update: 2019-3-4 16:00
 */
 
-a,
-a:link,
-a:hover,
-a:visited,
-a:active {
-	color: inherit;
-}
-
 /*颜色表*/
-.col-fff {
-	color: #fff;
-}
-
-.col-333 {
-	color: #333;
-}
-
-.col-70 {
-	color: #707070;
-}
-
 .col-eb6400 {
 	color: #eb6400;
 }
@@ -44,116 +24,25 @@ a:active {
 	color: #da3741;
 }
 
-/*字体weight*/
-.fw-4 {
-	font-weight: 400;
-}
-
-.fw-6 {
-	font-weight: 700;
-}
-
-/*字体大小*/
-.fs-22 {
-	font-size: 0.11rem;
-}
-
-.fs-24 {
-	font-size: 0.12rem;
-}
-
-.fs-26 {
-	font-size: 0.13rem;
-}
-
-.fs-28 {
-	font-size: 0.14rem;
-}
-
-.fs-30 {
-	font-size: 0.15rem;
-}
-
-.fs-32 {
-	font-size: 0.16rem;
-}
-
-.fs-36 {
-	font-size: 0.18rem;
-}
-
-.fs-60 {
-	font-size: 0.3rem;
-}
-
-/*行高*/
-.lh-20 {
-	line-height: 0.2rem;
-}
-
-.lh-24 {
-	line-height: 0.24rem;
-}
-
-.lh-36 {
-	line-height: 0.36rem;
-}
-
-.lh-40 {
-	line-height: 0.4rem;
-}
-
-/*margin*/
-.mb-5 {
-	margin-bottom: 0.05rem;
-}
-
-.mb-10 {
-	margin-bottom: 0.1rem;
-}
-
-.mb-15 {
-	margin-bottom: 0.15rem;
-}
-
-.mb-30 {
-	margin-bottom: 0.3rem;
-}
-
-.mr-10 {
-	margin-right: 0.1rem;
-}
-.mt-15 {
-	margin-top: 0.15rem;
-}
-
 /* padding */
 .pd-5 {
-	padding: 0.05rem 0;
+	padding: .05rem 0;
 }
 
 .pd-10 {
-	padding: 0.10rem 0;
+	padding: .10rem 0;
 }
 
 .pd-15 {
-	padding: 0.15rem 0;
+	padding: .15rem 0;
 }
 
 .pd-20 {
-	padding: 0.20rem 0;
+	padding: .2rem 0;
 }
 
 .w100 {
 	width: 100%;
-}
-
-.tac {
-	text-align: center;
-}
-
-.dis-i {
-	display: inline;
 }
 
 /*flex布局*/
@@ -166,11 +55,6 @@ a:active {
 	align-items: center;
 }
 
-
-.jc-space-around {
-	justify-content: space-around;
-}
-
 /*border*/
 .border-n {
 	border: none !important;
@@ -181,31 +65,43 @@ a:active {
 }
 
 /* 通用head */
+.tc {
+	background-color: #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
 .tc .title {
 	width: 100%;
-	height: 0.6rem;
+	height: .6rem;
 	background-blend-mode: normal, normal;
-	padding: 0.08rem 0.24rem;
+	padding: .08rem .24rem;
 }
 
 .tc .title img {
-	width: 0.44rem;
-	margin-right: 0.1rem;
+	width: .44rem;
+	margin-right: .1rem;
 }
 
 .tc .title .Btit {
-	font-size: 0.18rem;
+	font-size: .18rem;
 	margin: -0.05rem 0 0.05rem;
 }
 
 .tc .content {
 	background-color: #fff;
-	padding: 0.2rem;
-	padding-bottom: 0.6rem;
+	padding: .2rem;
+	padding-bottom: .6rem;
+}
+
+.tc5 .content,
+.tc6 .content {
+	padding: .1rem .15rem .3rem .15rem;
 }
 
 .tc .content .conBox {
-	padding: 0.1rem 0.05rem;
+	padding: .1rem .05rem;
 	border-radius: 5px;
 	border: solid 1px #a0a0a0;
 }
@@ -219,14 +115,16 @@ a:active {
 }
 
 .tc7 .content {
-	padding: 0.1rem 0.15rem 0.3rem 0.15rem;
+	padding: .1rem .15rem .3rem .15rem;
 }
+
 /* nav */
 .tc .nav,
 .tc .next {
 	width: 100%;
 	height: 100%;
 }
+
 .tc .nav img {
 	position: fixed;
 	bottom: 0;
@@ -234,10 +132,11 @@ a:active {
 	z-index: 1;
 	width: 1.24rem;
 }
+
 .tc .next img {
 	position: fixed;
-	bottom: 0.06rem;
-	right: 0.15rem;
+	bottom: .06rem;
+	right: .15rem;
 	z-index: 1;
-	height: 0.36rem;
+	height: .36rem;
 }

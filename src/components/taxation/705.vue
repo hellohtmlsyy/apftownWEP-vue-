@@ -2,9 +2,9 @@
 	<div class="tc705 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-30 ">系统业务简介</span><br>
+					<span class="fw-6 fs-15">系统业务简介</span><br>
 					《扣缴客户端》用于扣缴义务人为在职员工申报个人所得税。对应申报表《个人所得税基础信息表（A表）》和《扣缴个人所得税报告表》。为降低报表填写难度，《扣缴客户端》对报表填写做了拆分处理。<br>
 					申报主体流程如下
 				</div>
@@ -23,7 +23,7 @@
 					申报完成后，需根据所申报税款，通过【网上缴款】功能缴纳税款<br>
 				</div>
 				<div class="mb-5">
-					<span class="fw-6 fs-30">软件主界面分四个区域</span><br>
+					<span class="fw-6 fs-15">软件主界面分四个区域</span><br>
 					<span class="fw-6">左侧功能菜单</span><br>
 					对应各功能菜单，通过菜单可以打开具体功能<br>
 					<span class="fw-6">常用功能区</span><br>
@@ -33,7 +33,7 @@
 					<span class="fw-6">税款所属月份</span><br>
 					税款所属月份为当前时间上月<br>
 					例：当前时间为2017年8月10日，则税款所属月份为2017年7月，8月15日前可以申报7月份个人所得税。可点击税款所属月份右边图标，切换税款所属月份到历史月份，补报以前月份税款。
-					<div class="fs-22">温馨提醒　各地补报历史月份税款政策不同。<br>　　　　　可能会产生滞纳金，具体以当地税局政策为准
+					<div class="fs-11">温馨提醒　各地补报历史月份税款政策不同。<br>　　　　　可能会产生滞纳金，具体以当地税局政策为准
 					</div>
 				</div>
 				<p class="mb-30"><img src="../../../static/img/taxation/content/7/7-1-9.png" alt="" class="w100"></p>
@@ -43,9 +43,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t706',
 				url: window.location.href,
@@ -57,7 +59,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

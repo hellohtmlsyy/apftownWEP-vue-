@@ -6,13 +6,13 @@
 			<div><img src="../../../static/img/taxation/content/4-1.png" class="tit-img" /> </div>
 			<div class="col-fff">
 				<div class="Btit">财务制度备案</div>
-				<div class="fs-22">填制财务会计制度备案报告书</div>
+				<div class="fs-11">填制财务会计制度备案报告书</div>
 			</div>
 		</div>
 		<div class="content">
 			<ul class="conBox">
 				<li>
-					<div class="fs-26 col-333 lh-24">范本如下：</div>
+					<div class="fs-13 col-333 lh-24">范本如下：</div>
 					<div class="tac"><img src="../../../static/img/taxation/content/4-2.png" alt="" class="img-w250" /></div>
 				</li>
 			</ul>
@@ -21,7 +21,9 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
 	export default {
 		data() {
 			return {
@@ -34,7 +36,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

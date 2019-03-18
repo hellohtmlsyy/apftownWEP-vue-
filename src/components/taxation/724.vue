@@ -2,9 +2,9 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-30">利息股息红利所得</span><br>
+					<span class="fw-6 fs-15">利息股息红利所得</span><br>
 					利息、股息、红利所得，是指个人拥有债权、股权而取得的利息、股息、红利所得。包括以下所得：<br>
 					《国家税务总局关于<关于个人独资企业和合伙企业投资者征收个人所得税的规定>执行口径的通知》（国税函[2001]84号）第二条规定的，个人独资企业和合伙企业对外投资分回的利息或者股息、红利，不并入企业的收入，单独作为各个投资者个人取得的利息、股息、红利所得；<br>
 						《国家税务总局关于企业改组改制过程中个人取得的量化资产征收个人所得税问题的通知》（国税发[2000]60号）第三条规定的，对职工个人以股份形式取得的企业量化资产参与企业分配而获得的股息、红利，应按“利息、股息、红利”项目征收个人所得税；<br>
@@ -30,9 +30,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t725',
 				url: window.location.href,
@@ -44,7 +46,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

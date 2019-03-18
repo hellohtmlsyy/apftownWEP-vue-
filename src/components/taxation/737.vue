@@ -2,9 +2,9 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-30">历史查询</span><br>
+					<span class="fw-6 fs-15">历史查询</span><br>
 					历史查询菜单可以对以往所得月、缴款日期、不同缴款状态的申报成功的报表进行筛选查询。展示的信息包括：所得月份、申报表、应补退税额、实缴税额、缴款日期、缴款状态，如下图
 				</div>
 				<p class="mb-5"><img src="../../../static/img/taxation/content/7/7-5-5.png" alt="" class="w100"></p>
@@ -16,9 +16,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t738',
 				url: window.location.href,
@@ -30,7 +32,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

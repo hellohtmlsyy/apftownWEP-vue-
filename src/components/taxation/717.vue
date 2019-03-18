@@ -2,9 +2,9 @@
 	<div class="tc716 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-30">外籍人员数月奖金</span><br>
+					<span class="fw-6 fs-15">外籍人员数月奖金</span><br>
 					<span class="fw-6">业务简介</span><br>
 					根据国税发[1996]183号《国家税务总局关于在中国境内无住所的个人取得奖金征税问题的通知》相关规定，对在中国境内无住所的个人一次取得数月奖金或年终加薪，劳动分红，可单独作为一个月工资，薪金所得计算纳税。<br>
 					外籍人数月奖金所得，即适用于无住所个人一次性取得的相关奖金。
@@ -44,9 +44,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t718',
 				url: window.location.href,
@@ -58,7 +60,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

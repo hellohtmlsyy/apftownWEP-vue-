@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { getCookie, } from '@/assets/commonjs/util.js';
+import { getCookie, setCookie, isDevice } from '@/assets/commonjs/util.js';
 import Axios from 'axios';
-let url = 'http://memberapi.apftown.com:8070'
-import Home from '@/components/Home/Home'
+import qs from 'qs';
+const URL = 'http://memberapi.apftown.com:8070'
 
 //act20180808  海南项目优质对接会
 import Act2018080801 from '@/components/act/20180808/01'
@@ -40,6 +40,7 @@ import Act2018103107 from '@/components/act/20181031/07'
 
 //act20181212 小镇推广20181212
 // import Act2018121201 from '@/components/act/20181212/01'
+// import Rotate from '@/components/comm/rotate';//抽奖
 
 //taxation/index 小镇税收流程
 import taxation_index from '@/components/taxation/index'
@@ -94,8 +95,6 @@ import taxation_741 from '@/components/taxation/741'
 import taxation_742 from '@/components/taxation/742'
 import taxation_8 from '@/components/taxation/8'
 
-// import Rotate from '@/components/comm/rotate';//
-
 //act20190209 初五活动act2019020901
 import Act2019020901 from '@/components/act/20190209/01'
 import Act2019020902 from '@/components/act/20190209/02'
@@ -105,7 +104,37 @@ import Act2019020905 from '@/components/act/20190209/05'
 import Act2019020906 from '@/components/act/20190209/06'
 
 // 2.0网站
-import Login from '@/components/2.0/Login/login';
+import Home from '@/components/2.0/Home/home';
+// 产业服务
+import Industry01 from '@/components/2.0/Industry/01';
+import Industry02 from '@/components/2.0/Industry/02';
+import Industry03 from '@/components/2.0/Industry/03';
+// 学习服务
+import Study01 from '@/components/2.0/Study/01';
+import Study02 from '@/components/2.0/Study/02';
+import Study03 from '@/components/2.0/Study/03';
+// 研究服务
+import Research01 from '@/components/2.0/Research/01';
+import Research02 from '@/components/2.0/Research/02';
+import Research03 from '@/components/2.0/Research/03';
+// 园区服务
+import Park01 from '@/components/2.0/Park/01';
+import Park02 from '@/components/2.0/Park/02';
+import Park03 from '@/components/2.0/Park/03';
+import Introduce from '@/components/2.0/Introduce/introduce';//介绍
+import Service from '@/components/2.0/Service/service';//服务
+import ContactUs from '@/components/2.0/ContactUs/contactUs';//联系我们
+import Login from '@/components/2.0/Login/login';// 登录
+// 企业入驻
+import EnterpriseEntry01 from '@/components/2.0/EnterpriseEntry/01';
+import EnterpriseEntry02 from '@/components/2.0/EnterpriseEntry/02';
+import EnterpriseEntry03 from '@/components/2.0/EnterpriseEntry/03';
+// 会员中心
+import Usercenter from '@/components/2.0/user/usercenter';
+import Bill from '@/components/2.0/user/bill';
+import Paycode from '@/components/2.0/user/paycode';
+import Pay from '@/components/2.0/user/goldyb/pay';
+import Payresult from '@/components/2.0/user/goldyb/payresult';
 
 Vue.use(Router)
 export default new Router({
@@ -118,12 +147,6 @@ export default new Router({
             component: Home,
             meta: { title: '亚太金融小镇' }
         },
-		//
-// 		{
-// 			path: '/rotate',
-// 			name: 'rotate',
-// 			component: Rotate,
-// 		},
         //海南项目优质对接会
         {
             path: '/act/act2018080801',
@@ -236,7 +259,7 @@ export default new Router({
             meta: { title: '国际金融培训基地-三亚·亚太金融小镇' },
             beforeEnter: (to, from, next) => {
                 if (getCookie('APF_UID')) { // 通过vuex state获取当前的token是否存在
-                    Axios.get(url + '/wap/activity/actAlready', {
+                    Axios.get(URL + '/wap/activity/actAlready', {
                             params: {
                                 activityNo: '20181008',
                                 APF_UID: getCookie('APF_UID'),
@@ -305,7 +328,7 @@ export default new Router({
             meta: { title: '金融培训民宿预订' },
             beforeEnter: (to, from, next) => {
                 if (getCookie('APF_UID')) { 
-                    Axios.get(url + '/wap/activity/actAlready', {
+                    Axios.get(URL + '/wap/activity/actAlready', {
                             params: {
                                 activityNo: '20181031',
                                 APF_UID: getCookie('APF_UID'),
@@ -422,6 +445,145 @@ export default new Router({
 		},
 		
 		// 2.0网站
-		{ path: '/login', name: 'login', component: Login, meta: { title: '亚太金融小镇登录注册' } },
+		{ path: '/login', name: 'login', component: Login, meta: { title: '亚太金融小镇' },
+			beforeEnter: (to, from, next) => {
+				to.query['log'] = false;
+			    if (isDevice() == '微信浏览器') {
+					to.query.log = true;
+			    	let url = location.search;
+					console.log(url)
+			    	let theRequest = new Object();
+			    	let code = '',apf_WX_OID = '', apf_UID = '';
+					let toUrl = (to.query.returnUrl ? to.query.returnUrl : 'user/center');
+			    	if (url.indexOf("?") != -1) {
+			    		var str = url.substr(1);
+			    		str = str.split("&");
+			    		for (var i = 0; i < str.length; i++) {
+			    			theRequest[str[i].split("=")[0]] = unescape(str[i].split("=")[1]);
+			    		}
+			    	}
+			    	var url2 = 'http://m.apftown.com/login'
+			    	if (theRequest.hasOwnProperty('code')) {
+			    		code = theRequest.code
+			    		if (theRequest.code == "''" || !theRequest.code || theRequest.code == 'undefined') {
+			    			location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf22fa92a73f19465&redirect_uri=' +
+			    				encodeURIComponent(url2) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
+			    		}
+			    	} else {
+			    		location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf22fa92a73f19465&redirect_uri=' +
+			    			encodeURIComponent(url2) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
+			    	}
+			    
+			    	if (code) {
+			    		if (getCookie('APF_WX_OID')) {
+			    			if (getCookie('APF_UID')) {
+			    				next({
+									path: '/' + toUrl
+								})
+			    			} else {
+			    				Axios.post(URL + '/wap/login/wxLogin',
+			    					qs.stringify({
+			    						APF_WX_OID: apf_WX_OID || getCookie('APF_WX_OID'),
+			    					})
+			    				)
+			    				.then(res => {
+			    					if (res.data.success) {
+			    						apf_UID = res.data.data;
+			    						setCookie('APF_UID', res.data.data);
+			    						setCookie('APF_WX_OID', apf_WX_OID);
+			    						next({
+			    							path: '/' + toUrl
+			    						})
+			    					} else {
+										if (res.data.errCode =='001006012') next();
+			    					}
+			    				})
+			    				.catch(err => {
+			    					console.log(err)
+			    				})
+			    			}
+			    		} else {
+			    			Axios.post(URL + '/wx/wxOAuth2/openId',
+			    				qs.stringify({
+			    					code: code
+			    				})
+			    			)
+			    			.then(res => {
+			    				if (res.data.success) {
+			    					apf_WX_OID = res.data.data.apf_WX_OID;
+									setCookie('APF_WX_OID', apf_WX_OID);
+			    					if (!res.data.data.apf_UID) {
+			    						//登录注册
+										next()
+			    					} else {
+			    						apf_UID = res.data.data.apf_UID;
+			    						Axios.post(URL + '/wx/bindingUser',
+			    							qs.stringify({
+			    								APF_WX_OID: apf_WX_OID,
+			    								APF_UID: apf_UID
+			    							})
+			    						)
+			    						.then(res => {
+			    							if (res.data.success) {
+			    								setCookie('APF_UID', apf_UID);
+			    								setCookie('APF_WX_OID', apf_WX_OID);
+			    								next({
+			    									path: '/' + toUrl
+			    								})
+			    							} else {
+			    		
+			    							}
+			    						})
+			    						.catch(err => {
+			    							console.log(err)
+			    						})
+									
+			    						}
+			    					} else {
+										//登录注册
+										to.query.log = false;
+										next()
+			    					}
+			    				})
+			    				.catch(err => {
+			    					console.log(err)
+			    				})
+			    		}
+			    	}
+			    
+			    }else{
+			    	next()
+			    }
+			},
+		},
+		{ path: '/introduce', name: 'introduce', component: Introduce, meta: { title: '简介' } },
+		{ path: '/service', name: 'service', component: Service, meta: { title: '服务' } },
+		{ path: '/contactUs', name: 'contactUs', component: ContactUs, meta: { title: '联系我们' } },
+		// 企业入驻
+		{ path: '/EnterpriseEntry/01', name: 'enterpriseEntry.01', component: EnterpriseEntry01, meta: { title: '亚太金融小镇' } },
+		{ path: '/EnterpriseEntry/02', name: 'enterpriseEntry.02', component: EnterpriseEntry02, meta: { title: '亚太金融小镇' } },
+		{ path: '/EnterpriseEntry/03', name: 'enterpriseEntry.03', component: EnterpriseEntry03, meta: { title: '亚太金融小镇' } },
+		// 产业服务
+		{ path: '/industry/01', name: 'industry.01', component: Industry01, meta: { title: '小镇优势' } },
+		{ path: '/industry/02', name: 'industry.02', component: Industry02, meta: { title: '金融支持' } },
+		{ path: '/industry/03', name: 'industry.03', component: Industry03, meta: { title: '注册流程' } },
+		// 学习服务
+		{ path: '/study/01', name: 'study.01', component: Study01, meta: { title: '场地预定' } },
+		{ path: '/study/02', name: 'study.02', component: Study02, meta: { title: '金融培训' } },
+		{ path: '/study/03', name: 'study.03', component: Study03, meta: { title: '金融会议' } },
+		// 研究服务
+		{ path: '/research/01', name: 'research.01', component: Research01, meta: { title: '研究成果' } },
+		{ path: '/research/02', name: 'research.02', component: Research02, meta: { title: '合作机构' } },
+		{ path: '/research/03', name: 'research.03', component: Research03, meta: { title: '金融专家' } },
+		// 研究服务
+		{ path: '/park/01', name: 'park.01', component: Park01, meta: { title: '小镇住宿' } },
+		{ path: '/park/02', name: 'park.02', component: Park02, meta: { title: '办公物业' } },
+		{ path: '/park/03', name: 'park.03', component: Park03, meta: { title: '参观小镇' } },
+		// 会员中心
+		{ path: '/user/center', name: 'user.center', component: Usercenter, meta: { title: '会员中心', requireAuth: true } },
+		{ path: '/user/bill', name: 'user.bill', component: Bill, meta: { title: '金元宝', requireAuth: true } },
+		{ path: '/user/paycode', name: 'user.paycode', component: Paycode, meta: { title: '金元宝支付', requireAuth: true } },
+		{ path: '/user/pay', name: 'user.pay', component: Pay, meta: { title: '金元宝核销', requireAuth: true } },
+		{ path: '/user/payresult', name: 'user.payresult', component: Payresult, meta: { title: '支付成功', requireAuth: true } },
     ]
 })

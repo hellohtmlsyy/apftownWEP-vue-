@@ -2,15 +2,15 @@
 	<div class="tc712 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-30">
-					<span class="fw-6 fs-36">报表填写</span><br>
+					<span class="fw-6 fs-18">报表填写</span><br>
 					此功能，是扣缴客户端核心功能模块，四大主体流程之一。<br>
 					人员信息采集完成之后，需要为纳税人填写申报数据。本页面主要介绍数据填写相关业务和功能。<br>
 					扣缴客户端最核心的申报表是《扣缴个人所得税报告表》，另外也包括《限售股转让所得报告表》和《特定行业工资薪金报告表》。
 				</div>
 				<div class="mb-5">
-					<span class="fw-6 fs-30">扣缴个人所得税报告表</span><br>
+					<span class="fw-6 fs-15">扣缴个人所得税报告表</span><br>
 					《中华人民共和国个人所得税法》第二条规定了十一类所得需要交纳个人所得税。除“个体工商户的生产、经营所得”和“对企事业单位的承包经营、承租经营所得”外，其他九类所得均属于代扣代缴的范围，即这九类所得都可以在本《扣缴个人所得税报告表》中进行代扣代缴申报。<br>
 					九类分别是<br>
 					一、工资、薪金所得<br>
@@ -66,9 +66,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t714',
 				url: window.location.href,
@@ -80,7 +82,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

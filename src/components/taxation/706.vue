@@ -2,10 +2,10 @@
 	<div class="tc706 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-36 mb-5">人员信息采集</span><br>
-					<span class="fw-6 fs-30">业务含义</span><br>
+					<span class="fw-6 fs-18 mb-5">人员信息采集</span><br>
+					<span class="fw-6 fs-15">业务含义</span><br>
 					扣缴客户端，用于扣缴义务人为个人代扣代缴个人所得税。按照相关法律规定，为个人代扣代缴税款时需要明细申报，即申报的税款必须具体到每个人。<br>
 					因此，在进行个税申报前，需要把人员信息添加到软件中，再进行人员信息报送局端。需要添加的人员主要是本单位的在职员工。需要申报的个税通常是工资薪金、年终奖等。当然也包括劳务报酬、稿酬所得等其他个税扣缴。<br>
 					人员信息采集的信息，主要针对的是《个人所得税基础信息表（A、B表）》，需要登记的相关信息见下图
@@ -57,9 +57,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t707',
 				url: window.location.href,
@@ -71,7 +73,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

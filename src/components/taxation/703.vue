@@ -2,14 +2,14 @@
 	<div class="tc701 tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fs-30 fw-6">系统初始化</span><br>
+					<span class="fs-15 fw-6">系统初始化</span><br>
 					安装完成后，首先需要进行系统初始化注册。初始化注册，即通过税号从税局网络上获取最新企业信息，保存到本地客户端。软件安装完成后，点击界面上【立即体验】按钮（或点击桌面“自然人税收管理系统扣缴客户端”快捷方式），进入注册流程（5个步骤）。
 					<br><br>
 					<span class="fw-6">第一步：录入单位信息</span><br>
 					在[纳税人识别号]/[确认纳税人识别号]的位置输入单位税号，已经三证合一的单位输入社会信用代码，点击【下一步】按钮即可。<br>
-					<span class="fs-22">注意事项　注册时必须确保电脑处于联网状态</span>
+					<span class="fs-11">注意事项　注册时必须确保电脑处于联网状态</span>
 				</div>
 				<p class="mb-5"><img src="../../../static/img/taxation/content/7/7-1-2.png" alt="" class="w100"></p>
 				<div class="mb-5">
@@ -30,7 +30,7 @@
 				<div class="mb-5">
 					<span class="fw-6">第五步：设置数据自动备份</span><br>
 					扣缴客户端数据保存在电脑本地。为防止本地数据丢失，建议启用自动备份功能。<br>
-					<div class="fs-22">
+					<div class="fs-11">
 						<span class="fw-6">注意事项</span><br>
 						· 设置“启动自动备份”，每次退出软件时，都自动备份数据<br>
 						· 设置“自动备份前提醒”，每次退出软件时，都会弹出是否需要备份提示，自行选择是否备份<br>
@@ -46,9 +46,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t704',
 				url: window.location.href,
@@ -60,7 +62,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>

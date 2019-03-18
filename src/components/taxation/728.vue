@@ -2,9 +2,9 @@
 	<div class="tc tc7">
 		<tax-head7 :path="path"></tax-head7>
 		<div class="content col-333">
-			<div class="fs-24 lh-24">
+			<div class="fs-12 lh-24">
 				<div class="mb-5">
-					<span class="fw-6 fs-30">其他所得</span><br>
+					<span class="fw-6 fs-15">其他所得</span><br>
 					其他所得，无法列入工资薪金所得、生产经营所得、承包承租所得、劳务报酬所得、财产转让所得、财产租赁所得、股息利息红利所得、偶然所得、稿酬所得、特许权使用费的，属于其他所得，对于难以界定应纳税所得项目的，由主管税务机关确定，其中已经明确其他所得。<br>
 					根据国税函发〔1995〕351号《国家税务总局关于对中国科学院院士荣誉奖金征收个人所得税问题的复函》：<br>
 					香港实业家蔡冠深先生捐资500万元人民币建立“蔡冠深中国科学院院士荣誉基金会”，并用基金的利息颁发中国科学院院士荣誉奖金（80岁至89岁的院士每人每年6000元，90岁以上的院士每人每年12000元）。这对发扬中华民族尊老敬贤的优良传统，促进尊重知识、尊重人才的良好社会风气的形成有积极作用。但由于这种奖金不属于个人所得税法定免税奖金的范围，加之国家对中国科学院院士津贴已有免征个人所得税的优惠规定，所以对中国科学院院士荣誉奖金，应按《中华人民共和国个人所得税法》的“其他所得”应税项目，依20%的比例税率计征个人所得税，税款由该基金会在颁发奖金时代扣代缴。<br>
@@ -29,9 +29,11 @@
 </template>
 
 <script>
-	import { wxShare } from '@/assets/commonjs/util.js';
-	export default{
-		data(){
+	import {
+		wxShare
+	} from '@/assets/commonjs/util.js';
+	export default {
+		data() {
 			return {
 				path: '/taxation/t729',
 				url: window.location.href,
@@ -43,7 +45,7 @@
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
 			var desc = '一键了解入驻自贸港基金所需办理税务流程与后续全方位服务';
 			var golink = window.location.href;
-			wxShare(this.$root.urlPath.NEW + '/wx/share',this.url,title,imgUrl,desc,golink);
+			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
 	}
 </script>
