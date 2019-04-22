@@ -103,6 +103,12 @@ import Act2019020904 from '@/components/act/20190209/04'
 import Act2019020905 from '@/components/act/20190209/05'
 import Act2019020906 from '@/components/act/20190209/06'
 
+//act20190418 五一活动act2019041801
+import Act2019041801 from '@/components/act/20190418/01'
+
+// 2019私募大会活动
+// import ee201901 from '@/components/act/ee2019/01'
+
 // 2.0网站
 import Home from '@/components/2.0/Home/home';
 // 产业服务
@@ -135,6 +141,8 @@ import Bill from '@/components/2.0/user/bill';
 import Paycode from '@/components/2.0/user/paycode';
 import Pay from '@/components/2.0/user/goldyb/pay';
 import Payresult from '@/components/2.0/user/goldyb/payresult';
+import Training_world from '@/components/2.0/user/trainingWorld';
+import Training_download from '@/components/2.0/user/trainingDownload';
 
 Vue.use(Router)
 export default new Router({
@@ -289,69 +297,69 @@ export default new Router({
             path: '/act/act2018103101',
             name: 'act.act2018103101',
             component: Act2018103101,
-            meta: { title: '金融培训民宿预订' }
+            meta: { title: '海棠花居预订' }
         },
         {
             path: '/act/act2018103102',
             name: 'act.act2018103102',
             component: Act2018103102,
-            meta: { title: '金融培训民宿预订' }
+            meta: { title: '海棠花居预订' }
         },
         {
             path: '/act/act2018103103',
             name: 'act.act2018103103',
             component: Act2018103103,
-            meta: { title: '金融培训民宿预订' }
+            meta: { title: '海棠花居预订' }
         },
         {
             path: '/act/act2018103104',
             name: 'act.act2018103104',
             component: Act2018103104,
-            meta: { title: '金融培训民宿预订' }
+            meta: { title: '海棠花居预订' }
         },
         {
             path: '/act/act2018103105',
             name: 'act.act2018103105',
             component: Act2018103105,
-            meta: { title: '金融培训民宿预订' }
+            meta: { title: '海棠花居预订' }
         },
         {
             path: '/act/act2018103106',
             name: 'act.act2018103106',
             component: Act2018103106,
-            meta: { title: '金融培训民宿预订' }
+            meta: { title: '海棠花居预订' }
         },
         {
             path: '/act/act2018103107',
             name: 'act.act2018103107',
             component: Act2018103107,
-            meta: { title: '金融培训民宿预订' },
-            beforeEnter: (to, from, next) => {
-                if (getCookie('APF_UID')) { 
-                    Axios.get(URL + '/wap/activity/actAlready', {
-                            params: {
-                                activityNo: '20181031',
-                                APF_UID: getCookie('APF_UID'),
-                            }
-                        })
-                        .then(res => {
-                            if (res.data.data != false) {
-                                next();
-                            } else {
-                                next({
-                                    path: '/act/act2018103101',
-                                })
-                            }
-                        })
-                        .catch(err => {
-                            console.log(err)
-                        })
-                } else {
-                    next({
-                        path: '/act/act2018103101',
-                    })
-                }
-            }
+            meta: { title: '海棠花居预订' },
+//             beforeEnter: (to, from, next) => {
+//                 if (getCookie('APF_UID')) { 
+//                     Axios.get(URL + '/wap/activity/actAlready', {
+//                             params: {
+//                                 activityNo: '20181031',
+//                                 APF_UID: getCookie('APF_UID'),
+//                             }
+//                         })
+//                         .then(res => {
+//                             if (res.data.data != false) {
+//                                 next();
+//                             } else {
+//                                 next({
+//                                     path: '/act/act2018103101',
+//                                 })
+//                             }
+//                         })
+//                         .catch(err => {
+//                             console.log(err)
+//                         })
+//                 } else {
+//                     next({
+//                         path: '/act/act2018103101',
+//                     })
+//                 }
+//             }
         },
 		//税收流程
    		{ path: '/taxation/index', name: 'taxation.index', component: taxation_index, meta: { title: '亚太金融小镇税收相关服务' } },
@@ -444,6 +452,17 @@ export default new Router({
 		    meta: { title: '亚太金融小镇财神节庙会' },
 		},
 		
+		// 2019私募大会ee2019
+// 		{
+// 		    path: '/ee2019/01',
+// 		    name: 'ee2019.01',
+// 		    component: ee201901,
+// 		    meta: { title: '2019私募大会' }
+// 		},
+		
+		//民宿预订活动act2019041801
+		{ path: '/act/act2019041801', name: 'act.act2019041801', component: Act2019041801, meta: { title: '海棠花居预订' } },
+		
 		// 2.0网站
 		{ path: '/login', name: 'login', component: Login, meta: { title: '亚太金融小镇' },
 			beforeEnter: (to, from, next) => {
@@ -451,7 +470,6 @@ export default new Router({
 			    if (isDevice() == '微信浏览器') {
 					to.query.log = true;
 			    	let url = location.search;
-					console.log(url)
 			    	let theRequest = new Object();
 			    	let code = '',apf_WX_OID = '', apf_UID = '';
 					let toUrl = (to.query.returnUrl ? to.query.returnUrl : 'user/center');
@@ -585,5 +603,7 @@ export default new Router({
 		{ path: '/user/paycode', name: 'user.paycode', component: Paycode, meta: { title: '金元宝支付', requireAuth: true } },
 		{ path: '/user/pay', name: 'user.pay', component: Pay, meta: { title: '金元宝核销', requireAuth: true } },
 		{ path: '/user/payresult', name: 'user.payresult', component: Payresult, meta: { title: '支付成功', requireAuth: true } },
+		{ path: '/user/trainingWorld', name: 'user.trainingWorld', component: Training_world, meta: { title: '培训天地', requireAuth: true } },
+		{ path: '/user/trainingDownload', name: 'user.trainingDownload', component: Training_download, meta: { title: '中国人民解放军总医院2019神经内镜高级研修班', requireAuth: true } },
     ]
 })

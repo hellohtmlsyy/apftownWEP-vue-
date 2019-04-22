@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="act_stay05">
+		<div class="act_stay05" :style="{backgroundImage: 'url(' + bgurl + ')' }">
 			<div class="con">
 				<input type="text" placeholder="请输入手机号" class="mb-20" v-model.trim="userinfo.tel" />
 				<div class="dis-fl clearfix mb-20">
@@ -37,7 +37,8 @@
 				mobileIsEixt: false,
 				count: 60,
 				show_time: true,
-				activityNo: '20181031', //活动编号 
+				activityNo: this.$route.query.data == 0? '20190418' : '20181031', //活动编号 
+				data: this.$route.query.data,
 			}
 		},
 		watch: {
@@ -75,22 +76,34 @@
 						.then(res => {
 							if (res.data.success) {
 								setCookie('APF_UID', res.data.data);
-								//是否报名
+								//是否预订
 								this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
 										params: {
-											activityNo: '20181031',
+											activityNo: this.activityNo,
 											APF_UID: getCookie('APF_UID'),
 										}
 									})
 									.then(res => {
-										if (res.data.data != false) {
-											this.$layer.msg('您已预订，不能重复预订!');
-											var self = this;
-											window.setTimeout(function() {
-												window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
-											}, 2000)
-										} else {
-											window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106';
+										if(this.data == 0) {
+											if (res.data.data != false) {
+												this.$layer.msg('您已预订，不能重复预订!');
+												var self = this;
+												window.setTimeout(function() { //已预订
+													window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.$route.query.book;
+												}, 2000)
+											} else { //未预订
+												window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106?data=0&book=' + this.$route.query.book;
+											}
+										}else {
+											if (res.data.data != false) {
+												this.$layer.msg('您已预订，不能重复预订!');
+												var self = this;
+												window.setTimeout(function() { //已预订
+													window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+												}, 2000)
+											} else { //未预订
+												window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106';
+											}
 										}
 									})
 									.catch(err => {
@@ -159,9 +172,9 @@
 		},
 		created() {
 			//wx-share
-			var title = '寒冷的2018即将过去，来三亚开启你温暖幸运的2019';
+			var title = '海棠花居，三亚最浪漫的民宿';
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
-			var desc = '凛冬骤降，亚太金融小镇新年礼包等你来，点击开启你的三亚温暖之旅';
+			var desc = '美丽三亚，浪漫天涯，来海棠花居，住海棠湾最浪漫的花园民宿';
 			var golink = window.location.href;
 			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 
@@ -176,19 +189,31 @@
 						//是否预订
 						this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
 								params: {
-									activityNo: '20181031',
+									activityNo: this.activityNo,
 									APF_UID: getCookie('APF_UID'),
 								}
 							})
 							.then(res => {
-								if (res.data.data != false) {
-									this.$layer.msg('您已预订，不能重复预订!');
-									var self = this;
-									window.setTimeout(function() { //已预订
-										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
-									}, 2000)
-								} else { //未预订
-									window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106';
+								if(this.data == 0) {
+									if (res.data.data != false) {
+										this.$layer.msg('您已预订，不能重复预订!');
+										var self = this;
+										window.setTimeout(function() { //已预订
+											window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.$route.query.book;
+										}, 2000)
+									} else { //未预订
+										window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106?data=0&book=' + this.$route.query.book;
+									}
+								}else {
+									if (res.data.data != false) {
+										this.$layer.msg('您已预订，不能重复预订!');
+										var self = this;
+										window.setTimeout(function() { //已预订
+											window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+										}, 2000)
+									} else { //未预订
+										window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106';
+									}
 								}
 							})
 							.catch(err => {
@@ -204,9 +229,13 @@
 		mounted() {
 			var winHeight = $(window).height(); //获取当前页面高度  
 			if (winHeight > 680) {
-				this.bgurl = this.$root.urlPath.M_APF + '/static/img/act/20181031/bg-5-1.jpg';
 			}
 			$('.act_stay05').css('height', winHeight + 'px');
+			if(this.data == 0) {
+				this.bgurl = this.$root.urlPath.M_APF + '/static/img/act/20190418/2-1.png';
+			}else{
+				this.bgurl = this.$root.urlPath.M_APF + '/static/img/act/20181031/bg-5-1.jpg';
+			}
 		},
 	}
 </script>
@@ -216,7 +245,6 @@
 	}
 
 	.act_stay05 {
-		background-image: url(../../../..//static/img/act/20181031/bg-5-1.jpg);
 		background-size: 100% 100%;
 		width: 100%;
 		position: relative;

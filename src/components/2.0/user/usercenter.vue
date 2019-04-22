@@ -13,15 +13,13 @@
 			点击查看初五迎财神金融庙会活动
 		</div> -->
 		<div>
-			<div class="iBox clearfix" v-for="(item, index) in itemDate" :key="index">
+			<div class="iBox clearfix" v-for="(item, index) in itemDate" :key="index" @click="toDetail(item.detUrl)">
 				<div class="left"><img :src="item.icon" alt="" class="img-w18"></div>
 				<div class="clearfix">
 					<span class="fl col-000">{{item.text}}</span>
 					<div class="fr">
-						<a :href="item.detUrl">
-							<span class="col-eb6100">{{item.rtext}}</span>
-							<img src="../../../../static/img/2.0/user/right.png" alt="" class="img-w8">
-						</a>
+						<span class="col-eb6100">{{item.rtext}}</span>
+						<img src="../../../../static/img/2.0/user/right.png" alt="" class="img-w8">
 					</div>
 				</div>
 			</div>
@@ -54,11 +52,6 @@
 						text: '企业入驻',
 						detUrl: '/EnterpriseEntry/01',
 					},
-					// 					{
-					// 						icon: '../../../../static/img/2.0/user/icon3.png',
-					// 						rtext: ' ',
-					// 						text: '我的订单'
-					// 					},
 					{
 						icon: '../../../../static/img/2.0/user/icon4.png',
 						rtext: ' ',
@@ -71,11 +64,22 @@
 						text: '培训预订',
 						detUrl: '/act/act2018100801',
 					},
+					{
+						icon: '../../../../static/img/2.0/user/icon6.png',
+						rtext: ' ',
+						text: '培训天地',
+						detUrl: '/user/trainingWorld',
+					},
 				],
 				userName: '',
 				headImg: '../../../../static/img/2.0/user/head.jpg',
 				userInfo: [],
 			};
+		},
+		methods: {
+			toDetail(url) {
+				location.href = this.$root.urlPath.M_APF + url;
+			},
 		},
 		mounted() {
 			var winHeight = $(window).height(); //获取当前页面高度  
@@ -92,7 +96,8 @@
 						this.userInfo = res.data.data;
 						this.userName = this.userInfo.userName;
 					} else {
-
+						// this.$layer.msg('未登录，请先登录');
+						location.href = this.$root.urlPath.M_APF + '/login?returnUrl=/user/center';
 					}
 				})
 				.catch(err => {
@@ -106,47 +111,47 @@
 	@import url("../../../assets/css/town2.0.css");
 
 	.usercenter .img-w8 {
-		width: 0.08rem;
-		height: 0.14rem;
-		margin-left: 0.15rem;
+		width: .08rem;
+		height: .14rem;
+		margin-left: .15rem;
 	}
 
 	.usercenter .img-w18 {
-		width: 0.18rem;
+		width: .18rem;
 		margin-top: -0.03rem;
 	}
 
 	.usercenter .img-w65 {
-		width: 0.65rem;
-		height: 0.65rem;
-		margin-right: 0.17rem;
-		border-radius: 0.05rem;
+		width: .65rem;
+		height: .65rem;
+		margin-right: .17rem;
+		border-radius: .05rem;
 	}
 
 	/* head */
 	.usercenter .head {
 		background-color: #fff;
-		padding: 0.25rem 0.25rem 0.3rem;
+		padding: .25rem .25rem .3rem;
 	}
 
 	.usercenter .head-r p {
-		font-size: 0.24rem;
+		font-size: .24rem;
 		color: #333;
-		margin-bottom: 0.14rem;
+		margin-bottom: .14rem;
 	}
 
 	.usercenter .head-r span {
-		width: 0.4rem;
-		height: 0.18rem;
+		width: .4rem;
+		height: .18rem;
 		background-image: linear-gradient(0deg,
 			#cd8815 0%,
 			#ffbf55 100%),
 			linear-gradient(#f39800,
 			#f39800);
-		border-radius: 0.09rem;
+		border-radius: .09rem;
 		border: solid 1px #facd89;
 		color: #fff;
-		font-size: 0.12rem;
+		font-size: .12rem;
 		text-align: center;
 	}
 
@@ -165,10 +170,10 @@
 	/* item */
 	.usercenter .iBox {
 		background-color: #fff;
-		height: 0.6rem;
-		line-height: 0.6rem;
-		padding-left: 0.18rem;
-		font-size: 0.15rem;
+		height: .6rem;
+		line-height: .6rem;
+		padding-left: .18rem;
+		font-size: .15rem;
 		position: relative;
 	}
 
@@ -179,14 +184,14 @@
 	}
 
 	.usercenter .iBox:first-child {
-		margin-bottom: 0.08rem;
+		margin-bottom: .08rem;
 	}
 
 	.usercenter .iBox .clearfix {
-		margin-left: 0.33rem;
+		margin-left: .33rem;
 		border-bottom: 1px solid #e3e3e3;
-		padding-right: 0.18rem;
-		height: 0.6rem;
+		padding-right: .18rem;
+		height: .6rem;
 	}
 
 	.usercenter .iBox:first-child .clearfix,

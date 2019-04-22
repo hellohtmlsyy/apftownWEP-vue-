@@ -287,9 +287,6 @@
 			},
 		},
 		created() {
-			this.$nextTick(function() {
-				this.qrcode(); //生成二维码
-			})
 			//wx-share
 			var title = '亚太金融小镇欢迎您，诚邀各基金入驻';
 			var desc = '面朝大海春暖花开，快速基金注册，轻松三亚培训，惬意海棠生活 ';
@@ -326,7 +323,6 @@
 					operatingSystem: operatingSystem,
 				}
 				getCookie('APF_UID') ? (params['APF_UID'] = getCookie('APF_UID')) : '',
-					console.log(params)
 				this.$axios.get(this.$root.urlPath.NEW + '/wap/spread/spreadBySales', {
 						params: params
 					})
@@ -342,7 +338,9 @@
 						console.log(err)
 					});
 			}
-
+			this.$nextTick(function() {
+				this.qrcode(); //生成二维码
+			})
 		},
 	}
 </script>
@@ -354,7 +352,7 @@
 		width: .16rem;
 		height: .16rem;
 		margin-right: .03rem;
-		margin-top: -.03rem;
+		margin-top: -.02rem;
 	}
 
 	.mob_home .img-w44 {
@@ -583,11 +581,11 @@
 	.mob_home .share_layer .share_layer_box {
 		background-image: url('../../../../static/img/2.0/home/share-bg.png');
 		background-size: 100% 100%;
-		height: 1.275rem;
-		width: 3.565rem;
+		height: 1.35rem;
+		width: 3.69rem;
 		margin: auto;
 		color: #1ca5f5;
-		padding: .17rem .44rem 0 .27rem;
+		padding: .17rem .5rem 0 .27rem;
 		align-items: center;
 		text-align: left;
 		display: flex;

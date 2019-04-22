@@ -56,7 +56,7 @@
 						<div class="contact_us">
 							<div class="title">联系我们</div>
 							<ul class="contact_info">
-								<li>联系电话&nbsp;&nbsp;<u><a href="tel:4006702139">400-670-2139</a></u></li>
+								<li>联系电话&nbsp;&nbsp;<u><a href="tel:17733143031">17733143031</a></u></li>
 								<li>联系地址&nbsp;&nbsp;海南省三亚市海棠湾亚太金融小镇3号楼</li>
 								<li>电子邮箱&nbsp;&nbsp;<u><a href="mailto:info@apftown.com">info@apftown.com</a></u></li>
 								<li>官方网址&nbsp;&nbsp;<a href="http://www.apftown.com" target="_blank">www.apftown.com</a></li>
@@ -89,6 +89,8 @@
 				url: window.location.href,
 				accountNumber: '78990188000266009',
 				info: [],
+				activityNo: this.$route.query.data == 0? '20190418' : '20181031', //活动编号 
+				book: this.$route.query.book,
 			}
 		},
 		methods: {
@@ -101,7 +103,11 @@
 				return;
 			},
 			goNextpage() {
-				window.location.href = this.$root.urlPath.M_APF + '/act/act2018103101';
+				if(this.$route.query.data == 0) {
+					window.location.href = this.$root.urlPath.M_APF + '/act/act2019041801';
+				}else {
+					window.location.href = this.$root.urlPath.M_APF + '/act/act2018103101';
+				}
 			},
 			share() {
 				this.shareLay = true;
@@ -111,20 +117,60 @@
 			}
 		},
 		created() {
+			//是否登录
+			this.$axios.get(this.$root.urlPath.NEW + '/user/getUserInfo', {
+					params: {
+						APF_UID: getCookie('APF_UID'),
+					}
+				})
+				.then(res => {
+					if (res.data.success) { //已登录
+						//是否报名
+						this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
+								params: {
+									activityNo: this.activityNo,
+									APF_UID: getCookie('APF_UID'),
+								}
+							})
+							.then(res => {
+								if (res.data.data != false) { //已预订
+								} else { //未预订
+									if(this.$route.query.data) {
+										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103106?data=0&book=' + this.book;
+									}else {
+										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103106';
+									}
+								}
+							})
+							.catch(err => {
+								console.log(err)
+							})
+					} else { //未登录
+						if(this.$route.query.data) {
+							window.location.href = self.$root.urlPath.M_APF + '/act/act2018103105?data=0&book=' + this.book;
+						}else {
+							window.location.href = self.$root.urlPath.M_APF + '/act/act2018103105';
+						}
+					}
+				})
+				.catch(err => {
+					console.log(err)
+				});
+			
 			// 预付定金信息
 			this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/activityShareInfo', {
 					params: {
 						APF_UID: getCookie('APF_UID'),
-						activityNo: '20181031',
+						activityNo: this.activityNo,
 					}
 				})
 				.then(res => {
 					if (res.data.success) {
 						this.info = res.data.data;
 						//wx-share
-						var title = '寒冷的2018即将过去，来三亚开启你温暖幸运的2019';
+						var title = '海棠花居，三亚最浪漫的民宿';
 						var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
-						var desc = '凛冬骤降，亚太金融小镇新年礼包等你来，点击开启你的三亚温暖之旅';
+						var desc = '美丽三亚，浪漫天涯，来海棠花居，住海棠湾最浪漫的花园民宿';
 						var golink = window.location.href;
 						wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 					} else {

@@ -14,6 +14,13 @@ import 'jquery';
 import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
 
+import VueLazyload from 'vue-lazyload'; //懒加载
+Vue.use(VueLazyload, {
+	preLoad: 1.3,
+	error: 'dist/error.png',
+	loading: 'dist/loading.gif',
+	attempt: 1
+})
 
 //全局组件
 import tab0818 from '@/components/comm/0818tab';
@@ -64,6 +71,8 @@ import Axios from 'axios';
 import qs from 'qs';
 Vue.prototype.API = '/api';
 
+
+const REQ_URL = 'http://memberapi.apftown.com:8070';
 router.beforeEach((to, from, next) => {
 	/* 路由发生变化修改页面meta */
 	if (to.meta.content) {
@@ -79,7 +88,26 @@ router.beforeEach((to, from, next) => {
 
 	if (to.meta.requireAuth) { //判断路由是否需要登录权限
 		if (getCookie('APF_UID')) {
-			next();
+			Axios.get(REQ_URL + '/user/getUserInfo', {
+					params: {
+						APF_UID: getCookie('APF_UID'),
+					}
+				})
+				.then(res => {
+					if (res.data.success) {
+						next()
+					} else {
+						next({
+							path: '/login',
+							query: {
+								returnUrl: to.fullPath
+							} //将跳转的路由path作为参数回跳
+						})
+					}
+				})
+				.catch(err => {
+					console.log(err)
+				});
 		} else {
 			next({
 				path: '/login',

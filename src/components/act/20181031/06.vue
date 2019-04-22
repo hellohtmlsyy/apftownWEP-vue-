@@ -6,48 +6,62 @@
 			<calendar v-model="calendarShow2" :closeByClickmask="closeByClickmask" :format="format" @change="handelChange2"
 			 :minDate="minDate2"></calendar>
 			<div class="tit">
-				<img src="../../../../static/img/act/20181031/tit-6.png" />
+				<img :src="(this.book == 'travel'? '../../../../static/img/act/20190418/tit-6.png' : '../../../../static/img/act/20181031/tit-6.png')" />
 			</div>
 			<div class="con">
 				<div class="form">
 					<ul class="clearfix">
-						<li class="clearfix"><span class="fl w1">预计时间</span>
-							<div class="fl col-70" style="margin-top: -0.08rem;font-size: 0.12rem;width:1.6rem;position:relative" @click="data">
+						<li v-if="(this.book == 'travel')">
+							<span class="w1">预计时间</span>
+							<span class="fs-12 col-70" style="text-align: right;">2019年4月30日—5月4日</span>
+						</li>
+						<li v-else><span class="w1">预计时间</span>
+							<div class="col-70" style="margin-top: -0.08rem;font-size: 0.12rem;width:1.6rem;position:relative" @click="data">
 								<!--<span class="fs-14 col-70" style="position: absolute;left:0; top:0.1rem">请选择时间</span>-->
 								<p><i style="width: 1rem;display: inline-block;">{{selectedDate}} {{week == 1? '(周一)': (week == 2? '(周二)':(week == 3? '(周三)':(week == 4? '(周四)':(week == 5? '(周五)':(week == 6? '(周六)' : (week == 0? '(周日)': ' '))))))}}</i>{{selectedDate!=''? '到达' : ''}}</p>
 								<p><i style="width: 1rem;display: inline-block;">{{selectedDate2}} {{week2 == 1? '(周一)': (week2 == 2? '(周二)':(week2 == 3? '(周三)':(week2 == 4? '(周四)':(week2 == 5? '(周五)':(week2 == 6? '(周六)' : (week2 == 0? '(周日)': ' '))))))}}</i>{{selectedDate2!=''? '离开' : ''}}</p>
 							</div>
-							<img class="fr" src="../../../../static/img/act/20181008/right.png" alt="" style="width: 0.1rem;" @click="data" />
+							<img src="../../../../static/img/act/20181008/right.png" alt="" style="width: .1rem;height: .18rem;" @click="data" />
 						</li>
-						<li class="clearfix"><span class="w1">预订别墅数量</span><span class="fs-14 col-333" style="width:42%;text-align: right;">{{selected =='点击选择'? selected: (selected + '栋')}}</span><img
-							 class="fr" src="../../../../static/img/act/20181008/right.png" alt="" style="width: 0.1rem;vertical-align: inherit;" />
+						
+						<li v-if="(this.book == 'travel')">
+							<span class="w1">预订别墅数量</span>
+							<span class="fs-12 col-70" style="width:1.8rem;text-align: right;">1栋</span>
+						</li>
+						<li v-else><span class="w1">预订别墅数量</span><span class="fs-14 col-333" style="width:42%;text-align: right;">{{selected =='点击选择'? selected: (selected + '栋')}}</span><img
+							 src="../../../../static/img/act/20181008/right.png" alt="" style="width: 0.1rem;height: .18rem;vertical-align: inherit;" />
 							<select name="" v-model="selected" @click="change()" id="select">
 								<option v-for="option in options" :value="option.value" :key="option.value">{{option.text}}</option>
 							</select>
 						</li>
-						<li class="clearfix" v-show="(selected!='点击选择' && selectedDate != '' && selectedDate2 != '')">
-							<span style="width: 25%;" class="fl w1">参考价格</span>
-							<span style="color: #e5004f;text-align: right;" class="fr">&yen;{{price}}</span>
+						
+						<li v-if="(this.book == 'travel')">
+							<span style="width: 25%;" class="w1">参考价格</span>
+							<span style="color: #e5004f;text-align: right;" class="">&yen;5100</span>
 						</li>
-						<li class="clearfix">
-							<span class="fl w1">餐饮预订</span>
-							<div class="fr food">
+						<li v-else v-show="(selected!='点击选择' && selectedDate != '' && selectedDate2 != '')">
+							<span style="width: 25%;" class="w1">参考价格</span>
+							<span style="color: #e5004f;text-align: right;" class="">&yen;{{price}}</span>
+						</li>
+						<li>
+							<span class="w1">餐饮预订</span>
+							<div class="food">
 								<span :class="{active : lunch}" @click="toggleLunch()">午餐</span>
 								<span :class="{active : dinner}" @click="toggleDinner()">晚餐</span>
 							</div>
-							<p style="position: absolute;bottom: 0.01rem;left: 0;color: #00a0e9;">每栋别墅每日提供6人份免费早餐</p>
+							<p style="position: absolute;bottom: 0.01rem;left: 0;color: #00a0e9;">每栋别墅每日提供{{this.bookData == 0 ? '' : '6人份'}}免费早餐</p>
 						</li>
-						<li class="clearfix" style="padding: 0.1rem 0;"><span class="fl w1" style="margin-top: 0.05rem;">是否需要旅游服务</span>
-							<mt-switch class="fr" v-model="userinfo.tourism"></mt-switch>
+						<li style="padding: 0.1rem 0;"><span class="w1" style="margin-top: 0.05rem;">是否需要旅游服务</span>
+							<mt-switch v-model="userinfo.tourism"></mt-switch>
 						</li>
-						<li class="clearfix" style="padding: 0.1rem 0;"><span class="fl w1" style="margin-top: 0.05rem;">是否需要接送服务</span>
-							<mt-switch class="fr" v-model="userinfo.relay"></mt-switch>
+						<li style="padding: 0.1rem 0;"><span class="w1" style="margin-top: 0.05rem;">是否需要接送服务</span>
+							<mt-switch v-model="userinfo.relay"></mt-switch>
 						</li>
-						<li class="clearfix"><span class="fl w1">联系人</span><input type="text" placeholder="请输入姓名" class="fr" v-model.trim="userinfo.name" /></li>
-						<li class="clearfix"><span class="fl w1">手机</span><input type="text" placeholder="请输入手机" class="fr" v-model.trim="userinfo.tel" /></li>
-						<li class="clearfix"><span class="fl w1">邮箱</span><input type="text" placeholder="(选填)" class="fr" v-model.trim="userinfo.email" /></li>
+						<li><span class="w1">联系人</span><input type="text" placeholder="请输入姓名" v-model.trim="userinfo.name" /></li>
+						<li><span class="w1">手机</span><input type="text" placeholder="请输入手机" v-model.trim="userinfo.tel" /></li>
+						<li><span class="w1">邮箱</span><input type="text" placeholder="(选填)" v-model.trim="userinfo.email" /></li>
 					</ul>
-					<div class="btn" @click="signUp()" :disabled="disable">提交</div>
+					<div class="btn" :class="{'btnActive' : this.bookData == 0}" @click="signUp()" :disabled="disable">{{this.bookData == 0 ? '预订' : '提交'}}</div>
 				</div>
 			</div>
 		</div>
@@ -81,57 +95,30 @@
 				closeByClickmask: true,
 				format: 'MM-dd',
 				selectedDate: '',
-				selected1Date: dateFormat(new Date(), "yyyy-MM-dd"),
+				selected1Date: this.$route.query.book == 'travel'? '2019-04-30' : dateFormat(new Date(), "yyyy-MM-dd"),
 				minDate: new Date(),
 				maxDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * 30),
 				//离开
 				calendarShow2: false,
 				selectedDate2: '',
-				selected2Date: dateFormat(new Date(), "yyyy-MM-dd"),
+				selected2Date: this.$route.query.book == 'travel'? '2019-05-04' : dateFormat(new Date(), "yyyy-MM-dd"),
 				minDate2: new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * 2),
 				week: -1,
 				week2: -1,
-				selected: '点击选择',
-				options: [{
-						text: '点击选择',
-						value: '点击选择'
-					},
-					{
-						text: '1',
-						value: '1'
-					},
-					{
-						text: '2',
-						value: '2'
-					},
-					{
-						text: '3',
-						value: '3'
-					},
-					{
-						text: '4',
-						value: '4'
-					},
-					{
-						text: '5',
-						value: '5'
-					},
-					{
-						text: '6',
-						value: '6'
-					},
-					{
-						text: '7',
-						value: '7'
-					},
+				selected: this.$route.query.book == 'travel'? '1' : '点击选择',
+				options: [
+					{ text: '点击选择', value: '点击选择' },
+					{ text: '1', value: '1' },
+					{ text: '2', value: '2' },
+					{ text: '3', value: '3' },
+					{ text: '4', value: '4' },
+					{ text: '5', value: '5' },
+					{ text: '6', value: '6' },
+					{ text: '7', value: '7' },
 				],
 				url: window.location.href,
 				userinfo: { //用户信息
-					tourism: false,
-					relay: false,
-					name: '',
-					tel: '',
-					email: '',
+					tourism: false, relay: false, name: '', tel: '', email: '',
 				},
 				nameError: false, //姓名错误
 				emailError: false, //邮箱错误
@@ -141,9 +128,13 @@
 				disable: false,
 				lunch: false, //午餐
 				dinner: false, //晚餐
-				fromDate: '', //入住日期
-				toDate: '', //离开日期
-				price: '', //别墅价格
+				fromDate: this.$route.query.book == 'travel'? '2019-04-30' : '', //入住日期
+				toDate: this.$route.query.book == 'travel'? '2019-05-04' : '', //离开日期
+				price: '' || 5100, //别墅价格
+				activityDesc: this.$route.query.book == 'villa' ? '民宿五月促销' : (this.$route.query.book == 'travel'? '民宿亲子游' : '小镇住宿'),//活动描述
+				activityNo: this.$route.query.data == 0? '20190418' : '20181031', //活动编号
+				book: this.$route.query.book,
+				bookData: this.$route.query.data,
 			}
 		},
 		watch: {
@@ -272,7 +263,7 @@
 					var data = this.selected1Date + '/' + this.selected2Date;
 					this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
 							params: {
-								activityNo: '20181031',
+								activityNo: this.activityNo,
 								APF_UID: getCookie('APF_UID'),
 							}
 						})
@@ -281,13 +272,17 @@
 								this.$layer.msg('您已预订，不能重复预订!');
 								var self = this;
 								window.setTimeout(function() {
-									window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+									if(self.bookData) {
+										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.book;
+									}else {
+										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+									}
 								}, 2000)
 							} else {
 								const params = {
 									APF_UID: getCookie('APF_UID'),
-									activityNo: '20181031',
-									activityDesc: '小镇住宿',
+									activityNo: this.activityNo,
+									activityDesc: this.activityDesc,
 									contactPerson: this.userinfo.name,
 									mobile: this.userinfo.tel,
 									email: this.userinfo.email,
@@ -314,7 +309,7 @@
 											this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/sendNotice', {
 													params: {
 														APF_UID: getCookie('APF_UID'),
-														activityNo: '20181031',
+														activityNo: this.activityNo,
 													}
 												})
 												.then(res => {})
@@ -324,7 +319,11 @@
 											this.$layer.msg('恭喜您预订成功！');
 											var self = this;
 											window.setTimeout(function() {
-												//										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+												if(self.bookData) {
+													window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.book;
+												}else {
+													window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+												}
 											}, 2000)
 										} else {
 											this.$layer.msg(res.data.errMsg);
@@ -346,9 +345,9 @@
 		},
 		created() {
 			//wx-share
-			var title = '寒冷的2018即将过去，来三亚开启你温暖幸运的2019';
+			var title = '海棠花居，三亚最浪漫的民宿';
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
-			var desc = '凛冬骤降，亚太金融小镇新年礼包等你来，点击开启你的三亚温暖之旅';
+			var desc = '美丽三亚，浪漫天涯，来海棠花居，住海棠湾最浪漫的花园民宿';
 			var golink = window.location.href;
 			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 
@@ -364,7 +363,7 @@
 						//是否报名
 						this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
 								params: {
-									activityNo: '20181031',
+									activityNo: this.activityNo,
 									APF_UID: getCookie('APF_UID'),
 								}
 							})
@@ -373,7 +372,11 @@
 									this.$layer.msg('您已预订，不能重复预订!');
 									var self = this;
 									window.setTimeout(function() {
-										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+										if(self.bookData) {
+											window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.book;
+										}else {
+											window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
+										}
 									}, 2000)
 								} else { //未预订
 								}
@@ -382,7 +385,11 @@
 								console.log(err)
 							})
 					} else { //未登录
-						window.location.href = this.$root.urlPath.M_APF + '/act/act2018103105';
+						if(this.bookData) {
+							window.location.href = this.$root.urlPath.M_APF + '/act/act2018103105?data=0&book=' + this.book;
+						}else {
+							window.location.href = this.$root.urlPath.M_APF + '/act/act2018103105';
+						}
 					}
 				})
 				.catch(err => {
@@ -434,7 +441,6 @@
 
 	.act_train05 .con {
 		padding: 0 0.18rem;
-		/*margin-bottom: 0.25rem;*/
 	}
 
 	.act_train05 .con .form {
@@ -454,6 +460,8 @@
 		border-bottom: 1px solid #a0a0a0;
 		padding: 0.17rem 0;
 		position: relative;
+		display: flex;
+		justify-content: space-between;
 	}
 
 	.act_train05 .form .food span {
@@ -477,7 +485,6 @@
 	.act_train05 .form li .w1 {
 		font-size: 0.12rem;
 		color: #333;
-		width: 1.1rem;
 	}
 
 	.act_train05 .form li input[type="text"] {
@@ -511,5 +518,9 @@
 		height: 0.41rem;
 		line-height: 0.41rem;
 		margin-top: 0.19rem;
+	}
+	
+	.act_train05 .form .btnActive {
+		background-color: #00a0e9;
 	}
 </style>

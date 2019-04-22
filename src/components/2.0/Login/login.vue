@@ -38,7 +38,6 @@
 			next(vm => {
 				// 通过 `vm` 访问组件实例
 				if (isDevice() == '微信浏览器') {
-					// console.log(true)
 				} else {
 					next()
 				}

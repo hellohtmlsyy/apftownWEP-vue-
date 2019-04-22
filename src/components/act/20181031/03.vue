@@ -25,9 +25,9 @@
 		},
 		created() {
 			//wx-share
-			var title = '寒冷的2018即将过去，来三亚开启你温暖幸运的2019';
+			var title = '海棠花居，三亚最浪漫的民宿';
 			var imgUrl = 'http://m.apftown.com/static/img/act/wx_share.jpg';
-			var desc = '凛冬骤降，亚太金融小镇新年礼包等你来，点击开启你的三亚温暖之旅';
+			var desc = '美丽三亚，浪漫天涯，来海棠花居，住海棠湾最浪漫的花园民宿';
 			var golink = window.location.href;
 			wxShare(this.$root.urlPath.NEW + '/wx/share', this.url, title, imgUrl, desc, golink);
 		},
