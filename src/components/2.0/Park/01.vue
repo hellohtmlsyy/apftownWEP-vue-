@@ -26,21 +26,25 @@
 					通过微信扫码或自主绑定门禁卡，可自由出入相应区域
 				</div>
 			</div>
-			
+
 			<div>
 				<div class="picture" v-for="(item, index) in picData" :key="index">
 					<div class="pic-top">
-						<img :src="item.imgsrc1" :alt="item.alt" class="img-w243" v-preview="item.imgsrc1" preview-title-enable="true" preview-nav-enable="true">
+						<img :src="item.imgsrc1" :alt="item.alt" class="img-w243" v-preview="item.imgsrc1" preview-title-enable="true"
+						 preview-nav-enable="true">
 						<div class="pic-inv" :class="item.textclass">{{item.text1}}<br />{{item.text2}}</div>
 						<div class="pic-text"><span class="fw-7">{{item.text3}}</span><br />{{item.text4}}</div>
 					</div>
 					<div class="dis-fl">
 						<div>
-							<img :src="item.imgsrc2" :alt="item.alt" class="img-w143-5" v-preview="item.imgsrc2" preview-title-enable="true" preview-nav-enable="true">
+							<img :src="item.imgsrc2" :alt="item.alt" class="img-w143-5" v-preview="item.imgsrc2" preview-title-enable="true"
+							 preview-nav-enable="true">
 						</div>
 						<div>
-							<img :src="item.imgsrc3" :alt="item.alt" class="img-w173-5 mb-10" v-preview="item.imgsrc3" preview-title-enable="true" preview-nav-enable="true">
-							<img :src="item.imgsrc4" :alt="item.alt" class="img-w173-5" v-preview="item.imgsrc4" preview-title-enable="true" preview-nav-enable="true">
+							<img :src="item.imgsrc3" :alt="item.alt" class="img-w173-5 mb-10" v-preview="item.imgsrc3" preview-title-enable="true"
+							 preview-nav-enable="true">
+							<img :src="item.imgsrc4" :alt="item.alt" class="img-w173-5" v-preview="item.imgsrc4" preview-title-enable="true"
+							 preview-nav-enable="true">
 						</div>
 					</div>
 				</div>
@@ -57,8 +61,7 @@
 	export default {
 		data() {
 			return {
-				picData: [
-					{ 
+				picData: [{
 						imgsrc1: '../../../../static/img/2.0/park/park1-5.jpg',
 						imgsrc2: '../../../../static/img/2.0/park/park1-6.jpg',
 						imgsrc3: '../../../../static/img/2.0/park/park1-7.jpg',
@@ -70,7 +73,7 @@
 						text4: '餐饮',
 						textclass: 'pic-inv-bg1',
 					},
-					{ 
+					{
 						imgsrc1: '../../../../static/img/2.0/park/park1-9.jpg',
 						imgsrc2: '../../../../static/img/2.0/park/park1-10.jpg',
 						imgsrc3: '../../../../static/img/2.0/park/park1-11.jpg',
@@ -82,7 +85,7 @@
 						text4: '配套',
 						textclass: 'pic-inv-bg2',
 					},
-					{ 
+					{
 						imgsrc1: '../../../../static/img/2.0/park/park1-13.jpg',
 						imgsrc2: '../../../../static/img/2.0/park/park1-14.jpg',
 						imgsrc3: '../../../../static/img/2.0/park/park1-15.jpg',
@@ -123,11 +126,11 @@
 	.park01 .pic-inv-bg1 {
 		background-color: #eb6100;
 	}
-	
+
 	.park01 .pic-inv-bg2 {
 		background-color: #009e96;
 	}
-	
+
 	.park01 .pic-inv-bg3 {
 		background-color: #5f52a0;
 	}
@@ -137,7 +140,7 @@
 	}
 
 	.park01 .content {
-		padding: 0 0 .5rem!important;
+		padding: 0 0 .5rem !important;
 	}
 
 	.park01 .content .adv {
@@ -174,7 +177,7 @@
 		padding: 0.15rem 0.23rem;
 		margin-bottom: 0.12rem;
 	}
-	
+
 	.park01 .picture:last-child {
 		margin: 0;
 	}

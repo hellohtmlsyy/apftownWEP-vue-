@@ -23,7 +23,7 @@
 							</div>
 							<img src="../../../../static/img/act/20181008/right.png" alt="" style="width: .1rem;height: .18rem;" @click="data" />
 						</li>
-						
+
 						<li v-if="(this.book == 'travel')">
 							<span class="w1">预订别墅数量</span>
 							<span class="fs-12 col-70" style="width:1.8rem;text-align: right;">1栋</span>
@@ -34,7 +34,7 @@
 								<option v-for="option in options" :value="option.value" :key="option.value">{{option.text}}</option>
 							</select>
 						</li>
-						
+
 						<li v-if="(this.book == 'travel')">
 							<span style="width: 25%;" class="w1">参考价格</span>
 							<span style="color: #e5004f;text-align: right;" class="">&yen;5100</span>
@@ -95,30 +95,57 @@
 				closeByClickmask: true,
 				format: 'MM-dd',
 				selectedDate: '',
-				selected1Date: this.$route.query.book == 'travel'? '2019-04-30' : dateFormat(new Date(), "yyyy-MM-dd"),
+				selected1Date: this.$route.query.book == 'travel' ? '2019-04-30' : dateFormat(new Date(), "yyyy-MM-dd"),
 				minDate: new Date(),
 				maxDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * 30),
 				//离开
 				calendarShow2: false,
 				selectedDate2: '',
-				selected2Date: this.$route.query.book == 'travel'? '2019-05-04' : dateFormat(new Date(), "yyyy-MM-dd"),
+				selected2Date: this.$route.query.book == 'travel' ? '2019-05-04' : dateFormat(new Date(), "yyyy-MM-dd"),
 				minDate2: new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * 2),
 				week: -1,
 				week2: -1,
-				selected: this.$route.query.book == 'travel'? '1' : '点击选择',
-				options: [
-					{ text: '点击选择', value: '点击选择' },
-					{ text: '1', value: '1' },
-					{ text: '2', value: '2' },
-					{ text: '3', value: '3' },
-					{ text: '4', value: '4' },
-					{ text: '5', value: '5' },
-					{ text: '6', value: '6' },
-					{ text: '7', value: '7' },
+				selected: this.$route.query.book == 'travel' ? '1' : '点击选择',
+				options: [{
+						text: '点击选择',
+						value: '点击选择'
+					},
+					{
+						text: '1',
+						value: '1'
+					},
+					{
+						text: '2',
+						value: '2'
+					},
+					{
+						text: '3',
+						value: '3'
+					},
+					{
+						text: '4',
+						value: '4'
+					},
+					{
+						text: '5',
+						value: '5'
+					},
+					{
+						text: '6',
+						value: '6'
+					},
+					{
+						text: '7',
+						value: '7'
+					},
 				],
 				url: window.location.href,
 				userinfo: { //用户信息
-					tourism: false, relay: false, name: '', tel: '', email: '',
+					tourism: false,
+					relay: false,
+					name: '',
+					tel: '',
+					email: '',
 				},
 				nameError: false, //姓名错误
 				emailError: false, //邮箱错误
@@ -128,11 +155,11 @@
 				disable: false,
 				lunch: false, //午餐
 				dinner: false, //晚餐
-				fromDate: this.$route.query.book == 'travel'? '2019-04-30' : '', //入住日期
-				toDate: this.$route.query.book == 'travel'? '2019-05-04' : '', //离开日期
+				fromDate: this.$route.query.book == 'travel' ? '2019-04-30' : '', //入住日期
+				toDate: this.$route.query.book == 'travel' ? '2019-05-04' : '', //离开日期
 				price: '' || 5100, //别墅价格
-				activityDesc: this.$route.query.book == 'villa' ? '民宿五月促销' : (this.$route.query.book == 'travel'? '民宿亲子游' : '小镇住宿'),//活动描述
-				activityNo: this.$route.query.data == 0? '20190418' : '20181031', //活动编号
+				activityDesc: this.$route.query.book == 'villa' ? '民宿五月促销' : (this.$route.query.book == 'travel' ? '民宿亲子游' : '小镇住宿'), //活动描述
+				activityNo: this.$route.query.data == 0 ? '20190418' : '20181031', //活动编号
 				book: this.$route.query.book,
 				bookData: this.$route.query.data,
 			}
@@ -272,9 +299,9 @@
 								this.$layer.msg('您已预订，不能重复预订!');
 								var self = this;
 								window.setTimeout(function() {
-									if(self.bookData) {
+									if (self.bookData) {
 										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.book;
-									}else {
+									} else {
 										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
 									}
 								}, 2000)
@@ -319,9 +346,9 @@
 											this.$layer.msg('恭喜您预订成功！');
 											var self = this;
 											window.setTimeout(function() {
-												if(self.bookData) {
+												if (self.bookData) {
 													window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.book;
-												}else {
+												} else {
 													window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
 												}
 											}, 2000)
@@ -372,9 +399,9 @@
 									this.$layer.msg('您已预订，不能重复预订!');
 									var self = this;
 									window.setTimeout(function() {
-										if(self.bookData) {
+										if (self.bookData) {
 											window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.book;
-										}else {
+										} else {
 											window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107';
 										}
 									}, 2000)
@@ -385,9 +412,9 @@
 								console.log(err)
 							})
 					} else { //未登录
-						if(this.bookData) {
+						if (this.bookData) {
 							window.location.href = this.$root.urlPath.M_APF + '/act/act2018103105?data=0&book=' + this.book;
-						}else {
+						} else {
 							window.location.href = this.$root.urlPath.M_APF + '/act/act2018103105';
 						}
 					}
@@ -519,7 +546,7 @@
 		line-height: 0.41rem;
 		margin-top: 0.19rem;
 	}
-	
+
 	.act_train05 .form .btnActive {
 		background-color: #00a0e9;
 	}

@@ -152,36 +152,36 @@
 						APF_UID: getCookie('APF_UID'),
 					}
 				})
-			.then(res => {
-				if (res.data.success) { //已登录
-					this.userinfo.mobile = res.data.data.mobile;
-					//是否提交
-					this.$axios.get(this.$root.urlPath.NEW + '/wap/company/settledIn/submitAlready', {
-							params: {
-								APF_UID: getCookie('APF_UID'),
-							}
-						})
-						.then(res => {
-							if (res.data.data != false) { //已提交
-								this.$layer.msg('您已提交，不能重复提交!');
-								var self = this;
-								window.setTimeout(function() {
-									window.location.href = self.$root.urlPath.M_APF + '/EnterpriseEntry/03';
-								}, 2000)
-							} else { //未提交
-								// window.location.href = this.$root.urlPath.M_APF + '/EnterpriseEntry/02';
-							}
-						})
-						.catch(err => {
-							console.log(err)
-						})
-				} else { //未登录
-					window.location.href = this.$root.urlPath.M_APF + '/login?returnUrl=/EnterpriseEntry/02';
-				}
-			})
-			.catch(err => {
-				console.log(err)
-			});
+				.then(res => {
+					if (res.data.success) { //已登录
+						this.userinfo.mobile = res.data.data.mobile;
+						//是否提交
+						this.$axios.get(this.$root.urlPath.NEW + '/wap/company/settledIn/submitAlready', {
+								params: {
+									APF_UID: getCookie('APF_UID'),
+								}
+							})
+							.then(res => {
+								if (res.data.data != false) { //已提交
+									this.$layer.msg('您已提交，不能重复提交!');
+									var self = this;
+									window.setTimeout(function() {
+										window.location.href = self.$root.urlPath.M_APF + '/EnterpriseEntry/03';
+									}, 2000)
+								} else { //未提交
+									// window.location.href = this.$root.urlPath.M_APF + '/EnterpriseEntry/02';
+								}
+							})
+							.catch(err => {
+								console.log(err)
+							})
+					} else { //未登录
+						window.location.href = this.$root.urlPath.M_APF + '/login?returnUrl=/EnterpriseEntry/02';
+					}
+				})
+				.catch(err => {
+					console.log(err)
+				});
 		},
 	}
 </script>

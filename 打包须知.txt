@@ -1,0 +1,16 @@
+1、index.js中的url的端口改8070
+2、api.js中的test改prod(线上环境)
+3、main.js中的REQ_URL的端口改8070
+
+关于全景：
+index.html添加
+<script src="./static/vtour/tour.js"></script>
+package.json添加
+"vue-krpano": "^1.5.3",
+"vue-pano": "^1.4.1",
+
+index.js添加
+import Vtour from '@/components/Vtour';
+{ path: '/Vtour', name: 'Vtour', component: Vtour, meta: { title: 'vr'}},
+.
+其他文件在wap-author中

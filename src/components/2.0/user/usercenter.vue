@@ -42,9 +42,9 @@
 				selected: 'Usercenter',
 				itemDate: [{
 						icon: '../../../../static/img/2.0/user/icon1.png',
-						rtext: '888金元宝',
-						text: '小镇镇民',
-						detUrl: '/user/bill',
+						rtext: '',
+						text: '2019全球私募交易大会',
+						detUrl: '/ee2019/userCenter',
 					},
 					{
 						icon: '../../../../static/img/2.0/user/icon2.png',
@@ -82,27 +82,27 @@
 			},
 		},
 		mounted() {
-			var winHeight = $(window).height(); //获取当前页面高度  
+			var winHeight = $(window).height(); //获取当前页面高度
 			$('.m').css('height', winHeight + 'px');
 		},
 		created() {
-			this.$axios.get(this.$root.urlPath.NEW + '/user/getUserInfo', {
-					params: {
-						APF_UID: getCookie('APF_UID'),
-					}
-				})
-				.then(res => {
-					if (res.data.success) {
-						this.userInfo = res.data.data;
-						this.userName = this.userInfo.userName;
-					} else {
-						// this.$layer.msg('未登录，请先登录');
-						location.href = this.$root.urlPath.M_APF + '/login?returnUrl=/user/center';
-					}
-				})
-				.catch(err => {
-					console.log(err)
-				});
+			// this.$axios.get(this.$root.urlPath.NEW + '/user/getUserInfo', {
+			// 		params: {
+			// 			APF_UID: getCookie('APF_UID'),
+			// 		}
+			// 	})
+			// 	.then(res => {
+			// 		if (res.data.success) {
+			// 			this.userInfo = res.data.data;
+			// 			this.userName = this.userInfo.userName;
+			// 		} else {
+			// 			// this.$layer.msg('未登录，请先登录');
+			// 			location.href = this.$root.urlPath.M_APF + '/login?returnUrl=/user/center';
+			// 		}
+			// 	})
+			// 	.catch(err => {
+			// 		console.log(err)
+			// 	});
 		},
 	}
 </script>

@@ -247,7 +247,7 @@
 			prompt() {
 				this.tipsShow = !this.tipsShow;
 			},
-			sub(){},
+			sub() {},
 		},
 		created() {
 			//wx-share
@@ -259,37 +259,37 @@
 
 			//是否登录
 			this.$axios.get(this.$root.urlPath.NEW + '/user/getUserInfo', {
-				params: {
-					APF_UID: getCookie('APF_UID'),
-				}
-			})
-			.then(res => {
-				if (res.data.success) { //已登录
-					//是否预订
-					this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
-							params: {
-								activityNo: '20181031',
-								APF_UID: getCookie('APF_UID'),
-							}
-						})
-						.then(res => {
-							if (res.data.data != false) {
-								this.$layer.msg('您已预订，不能重复预订!');
-								this.islogin = true;
-							} else { //未预订
-								this.islogin = false;
-							}
-						})
-						.catch(err => {
-							console.log(err)
-						})
-				} else { //未登录
-					this.islogin = true;
-				}
-			})
-			.catch(err => {
-				console.log(err)
-			});
+					params: {
+						APF_UID: getCookie('APF_UID'),
+					}
+				})
+				.then(res => {
+					if (res.data.success) { //已登录
+						//是否预订
+						this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/actAlready', {
+								params: {
+									activityNo: '20181031',
+									APF_UID: getCookie('APF_UID'),
+								}
+							})
+							.then(res => {
+								if (res.data.data != false) {
+									this.$layer.msg('您已预订，不能重复预订!');
+									this.islogin = true;
+								} else { //未预订
+									this.islogin = false;
+								}
+							})
+							.catch(err => {
+								console.log(err)
+							})
+					} else { //未登录
+						this.islogin = true;
+					}
+				})
+				.catch(err => {
+					console.log(err)
+				});
 		}
 	}
 </script>

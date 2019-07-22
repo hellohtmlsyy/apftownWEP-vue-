@@ -15,7 +15,8 @@
 			</mt-navbar>
 		</div>
 		<div class="con">
-			<mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore" :auto-fill="false" :bottomPullText='bottomPullText'>
+			<mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore" :auto-fill="false"
+			 :bottomPullText='bottomPullText'>
 				<div class="item dis-fl" v-for="(item,index) in allBill" :id="index" :key="index">
 					<div>
 						<div class="fs-14 col-333 mb-10">{{item.remark}}</div>
@@ -83,7 +84,7 @@
 						} else {
 							this.$layer.msg(res.data.errMsg);
 						}
-						
+
 					})
 					.catch(err => {
 						console.log(err)

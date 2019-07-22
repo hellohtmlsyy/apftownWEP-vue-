@@ -31,7 +31,8 @@
 				<div class="advText"></div>
 				<ul class="clearfix">
 					<li :class="item.liclass" v-for="(item, index) in classroom" :key="index">
-						<img :src="item.imgsrc" :alt="item.text1||item.text" :class="item.imgclass" v-preview="item.bigimgsrc" preview-title-enable="true" preview-nav-enable="true">
+						<img :src="item.imgsrc" :alt="item.text1||item.text" :class="item.imgclass" v-preview="item.bigimgsrc"
+						 preview-title-enable="true" preview-nav-enable="true">
 						<div class="fs-13 col-333 fw-7 mb-8" v-show="item.text1">{{item.text1}}<small class="col-6bbe21 fw-4">　{{item.text2}}</small></div>
 						<div class="fs-11">{{item.info}}</div>
 					</li>
@@ -46,13 +47,16 @@
 				<div class="advText"></div>
 				<div class="stay dis-fl">
 					<div class="left">
-						<img src="../../../../static/img/2.0/study/study1-11.jpg" alt="精品民宿" class="img-w143" v-preview="bigimg08" preview-title-enable="true" preview-nav-enable="true">
+						<img src="../../../../static/img/2.0/study/study1-11.jpg" alt="精品民宿" class="img-w143" v-preview="bigimg08"
+						 preview-title-enable="true" preview-nav-enable="true">
 						<small><span class="fw-7 col-333">64间精品民宿</span><br />乡村情怀的心灵归宿</small>
 					</div>
 					<div class="right">
-						<img src="../../../../static/img/2.0/study/study1-12.jpg" alt="时尚酒店" class="img-w160" v-preview="bigimg09" preview-title-enable="true" preview-nav-enable="true">
+						<img src="../../../../static/img/2.0/study/study1-12.jpg" alt="时尚酒店" class="img-w160" v-preview="bigimg09"
+						 preview-title-enable="true" preview-nav-enable="true">
 						<small class="mb-5"><span class="fw-7 col-333">64间时尚酒店　</span>国际风尚青春体验</small>
-						<img src="../../../../static/img/2.0/study/study1-13.jpg" alt="私家别墅" class="img-w160" v-preview="bigimg10" preview-title-enable="true" preview-nav-enable="true">
+						<img src="../../../../static/img/2.0/study/study1-13.jpg" alt="私家别墅" class="img-w160" v-preview="bigimg10"
+						 preview-title-enable="true" preview-nav-enable="true">
 						<small><span class="fw-7 col-333">7栋私家别墅</span><br />隐居乡里的人文会所</small>
 					</div>
 				</div>
@@ -144,7 +148,7 @@
 						imgclass: 'img-w317',
 						info: '地处小镇中央核心区域，1500平方米的户外大型广场可以用于大型会展、黄昏酒会、夜晚BBQ等活动'
 					},
-					
+
 				],
 				bigimg08: '../../../../static/img/2.0/study/08-bigPicture.jpg',
 				bigimg09: '../../../../static/img/2.0/study/09-bigPicture.jpg',
@@ -277,11 +281,11 @@
 	.study01 .stay .left {
 		margin-right: 0.12rem;
 	}
-	
+
 	.study01 small {
 		width: 114%;
 	}
-	
+
 	.study01 #classroom small {
 		display: inline
 	}

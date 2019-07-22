@@ -37,8 +37,7 @@
 		beforeRouteEnter(to, from, next) {
 			next(vm => {
 				// 通过 `vm` 访问组件实例
-				if (isDevice() == '微信浏览器') {
-				} else {
+				if (isDevice() == '微信浏览器') {} else {
 					next()
 				}
 			})
@@ -159,11 +158,21 @@
 												setCookie('APF_UID', this.apf_UID);
 												setCookie('APF_WX_OID', this.apf_WX_OID);
 												if (this.returnUrl) {
-													location.href = this.$root.urlPath.M_APF + this.returnUrl;
+													if (this.$route.query.type) {
+														location.href = this.$root.urlPath.M_APF + this.returnUrl + '?type=' + this.$route.query.type;
+														console.log(this.$root.urlPath.M_APF + this.returnUrl + '?type=' + this.$route.query.type)
+													} else {
+														location.href = this.$root.urlPath.M_APF + this.returnUrl;
+													}
 												} else {
 													location.href = this.$root.urlPath.M_APF + '/user/center';
 												}
-											} else {}
+											} else {
+												if (res.data.errCode == '001006005' || res.data.errCode == '001006014' || res.data.errCode == '001006015' ||
+													res.data.errCode == '001006016' || res.data.errCode == '001006017') {
+													this.$layer.msg(res.data.errMsg);
+												}
+											}
 										})
 										.catch(err => {
 											console.log(err)
@@ -171,13 +180,19 @@
 								} else {
 									setCookie('APF_UID', res.data.data);
 									if (this.returnUrl) {
-										location.href = this.$root.urlPath.M_APF + this.returnUrl;
+										if (this.$route.query.type) {
+											location.href = this.$root.urlPath.M_APF + this.returnUrl + '?type=' + this.$route.query.type;
+										} else {
+											location.href = this.$root.urlPath.M_APF + this.returnUrl;
+										}
 									} else {
 										location.href = this.$root.urlPath.M_APF + '/user/center';
 									}
 								}
 							} else {
-								this.$layer.msg(res.data.errMsg);
+								if (res.data.errCode == '001001017' || res.data.errCode == '001001018') {
+									this.$layer.msg(res.data.errMsg);
+								}
 							}
 						})
 						.catch(err => {
@@ -187,13 +202,17 @@
 			},
 		},
 		mounted() {
-			var winHeight = $(window).height(); //获取当前页面高度  
+			var winHeight = $(window).height(); //获取当前页面高度
 			$('.login').css('height', winHeight + 'px');
 		},
 		created() {
 			if (getCookie('APF_UID')) {
 				if (this.returnUrl) {
-					location.href = this.$root.urlPath.M_APF + this.returnUrl;
+					if (this.$route.query.type) {
+						location.href = this.$root.urlPath.M_APF + this.returnUrl + '?type=' + this.$route.query.type;
+					} else {
+						location.href = this.$root.urlPath.M_APF + this.returnUrl;
+					}
 				} else {
 					location.href = this.$root.urlPath.M_APF + '/user/center';
 				}

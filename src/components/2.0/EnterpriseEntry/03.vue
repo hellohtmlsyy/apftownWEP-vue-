@@ -140,7 +140,7 @@
 	}
 
 	.entEntry03 .content {
-		margin-top: -0.7rem!important;
+		margin-top: -0.7rem !important;
 	}
 
 	.entEntry03 .content .adv {
@@ -170,15 +170,15 @@
 		font-size: .15rem;
 		margin-bottom: .2rem;
 	}
-	
+
 	.entEntry03 .entEntry03-download .btn-return {
 		background-color: #00a1e9;
 		margin-right: .54rem;
 	}
-	
+
 	.entEntry03 .entEntry03-download .btn-index {
 		background-color: #f39800;
-	} 
+	}
 
 	.entEntry03 .contact {
 		margin-left: .31rem;

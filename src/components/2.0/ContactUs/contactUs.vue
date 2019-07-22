@@ -32,7 +32,8 @@
 					</p>
 				</div>
 				<div class="tac col-70">
-					<a href="http://f.amap.com/pYfR_0605gGE" target="_blank"><img src="../../../../static/img/2.0/contactUs/contact1-3.jpg" alt="小镇地址" class="img-w317"></a>
+					<a href="http://f.amap.com/pYfR_0605gGE" target="_blank"><img src="../../../../static/img/2.0/contactUs/contact1-3.jpg"
+						 alt="小镇地址" class="img-w317"></a>
 					<span>点击查看小镇地址</span>
 				</div>
 			</div>
@@ -54,7 +55,7 @@
 		width: 0.9rem;
 		margin-bottom: 0.12rem;
 	}
-	
+
 	.contactUs .img-w317 {
 		width: 3.17rem;
 		margin-bottom: 0.1rem;
@@ -63,7 +64,7 @@
 	.contactUs .top_bg {
 		background-image: url('../../../../static/img/2.0/contactUs/contact1-1.jpg');
 	}
-	
+
 	.contactUs .contact {
 		margin-left: 0.31rem;
 		color: #707070;

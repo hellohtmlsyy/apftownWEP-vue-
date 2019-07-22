@@ -19,6 +19,7 @@
 </script>
 <style>
 	@import url("../../../assets/css/town2.0.css");
+
 	.study02 .img-w303 {
 		width: 3.03rem;
 		margin-top: 0.23rem;

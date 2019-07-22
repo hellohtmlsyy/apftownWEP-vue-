@@ -1,19 +1,20 @@
 <template>
-  <div id="app">
-    <router-view/>
-		 <lg-preview></lg-preview>
-  </div>
+	<div id="app">
+		<router-view />
+		<lg-preview></lg-preview>
+	</div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+	export default {
+		name: 'App'
+	}
 </script>
 
 <style>
 	@import url("../static/css/reset.css");
-	#app{
+
+	#app {
 		margin: 0;
 		padding: 0;
 	}

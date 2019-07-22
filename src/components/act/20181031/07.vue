@@ -89,7 +89,7 @@
 				url: window.location.href,
 				accountNumber: '78990188000266009',
 				info: [],
-				activityNo: this.$route.query.data == 0? '20190418' : '20181031', //活动编号 
+				activityNo: this.$route.query.data == 0 ? '20190418' : '20181031', //活动编号 
 				book: this.$route.query.book,
 			}
 		},
@@ -103,9 +103,9 @@
 				return;
 			},
 			goNextpage() {
-				if(this.$route.query.data == 0) {
+				if (this.$route.query.data == 0) {
 					window.location.href = this.$root.urlPath.M_APF + '/act/act2019041801';
-				}else {
+				} else {
 					window.location.href = this.$root.urlPath.M_APF + '/act/act2018103101';
 				}
 			},
@@ -135,9 +135,9 @@
 							.then(res => {
 								if (res.data.data != false) { //已预订
 								} else { //未预订
-									if(this.$route.query.data) {
+									if (this.$route.query.data) {
 										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103106?data=0&book=' + this.book;
-									}else {
+									} else {
 										window.location.href = self.$root.urlPath.M_APF + '/act/act2018103106';
 									}
 								}
@@ -146,9 +146,9 @@
 								console.log(err)
 							})
 					} else { //未登录
-						if(this.$route.query.data) {
+						if (this.$route.query.data) {
 							window.location.href = self.$root.urlPath.M_APF + '/act/act2018103105?data=0&book=' + this.book;
-						}else {
+						} else {
 							window.location.href = self.$root.urlPath.M_APF + '/act/act2018103105';
 						}
 					}
@@ -156,7 +156,7 @@
 				.catch(err => {
 					console.log(err)
 				});
-			
+
 			// 预付定金信息
 			this.$axios.get(this.$root.urlPath.NEW + '/wap/activity/activityShareInfo', {
 					params: {

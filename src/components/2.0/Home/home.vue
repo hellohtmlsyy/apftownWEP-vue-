@@ -7,6 +7,9 @@
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
+									<a href="/ee2019/home"><img src="../../../../static/img/2.0/home/banner02.jpg" /></a>
+								</div>
+								<div class="swiper-slide">
 									<a href="/industry/03"><img src="../../../../static/img/2.0/home/banner.jpg" /></a>
 								</div>
 							</div>
@@ -268,6 +271,7 @@
 				layerinfo: [],
 				title: '亚太金融小镇欢迎您，诚邀各基金入驻',
 				desc: '面朝大海春暖花开，快速基金注册，轻松三亚培训，惬意海棠生活 ',
+				// ee2019: getCookie('APF_LAN') == 1 ? '/ee2019/home_en' : '/ee2019/home',
 			}
 		},
 		methods: {
@@ -323,7 +327,7 @@
 					operatingSystem: operatingSystem,
 				}
 				getCookie('APF_UID') ? (params['APF_UID'] = getCookie('APF_UID')) : '',
-				this.$axios.get(this.$root.urlPath.NEW + '/wap/spread/spreadBySales', {
+					this.$axios.get(this.$root.urlPath.NEW + '/wap/spread/spreadBySales', {
 						params: params
 					})
 					.then(res => {
@@ -340,6 +344,13 @@
 			}
 			this.$nextTick(function() {
 				this.qrcode(); //生成二维码
+			})
+		},
+		mounted() {
+			var mySwiper = new Swiper('.swiper-container', {
+				autoplay: 3000,
+				loop: true,
+				pagination: '.swiper-pagination',
 			})
 		},
 	}

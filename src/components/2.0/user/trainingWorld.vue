@@ -16,9 +16,11 @@
 	export default {
 		data() {
 			return {
-				data: [
-					{ type: 1, content: '中国人民解放军总医院2019神经内镜高级研修班', imgsrc: '../../../../static/img/2.0/user/train_world03.png' },
-				],
+				data: [{
+					type: 1,
+					content: '中国人民解放军总医院2019神经内镜高级研修班',
+					imgsrc: '../../../../static/img/2.0/user/train_world03.png'
+				}, ],
 			}
 		},
 		methods: {
@@ -37,7 +39,7 @@
 		height: .32rem;
 		margin-bottom: 0.05rem;
 	}
-	
+
 	.train_world .tw_item .bgcolor01 {
 		background-image: linear-gradient(0deg,
 			#556fb5 0%,
@@ -45,23 +47,23 @@
 			linear-gradient(#f1a200,
 			#f1a200);
 	}
-	
+
 	.train_world .tw_item .bgcolor02 {
-		background-image: linear-gradient(0deg, 
-			#21ac38 0%, 
-			#9fdb21 100%), 
-			linear-gradient(#f1a200, 
+		background-image: linear-gradient(0deg,
+			#21ac38 0%,
+			#9fdb21 100%),
+			linear-gradient(#f1a200,
 			#f1a200);
 	}
-	
+
 	.train_world .tw_item .bgcolor03 {
-		background-image: linear-gradient(0deg, 
-			#e4007f 0%, 
-			#eb6100 100%), 
-			linear-gradient(#f1a200, 
+		background-image: linear-gradient(0deg,
+			#e4007f 0%,
+			#eb6100 100%),
+			linear-gradient(#f1a200,
 			#f1a200);
 	}
-	
+
 	.train_world {
 		width: 100%;
 		padding: 0 .13rem;

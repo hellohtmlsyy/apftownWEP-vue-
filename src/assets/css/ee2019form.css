@@ -1,0 +1,175 @@
+@charset "utf-8";
+
+/*
+* @name: 私募大会表单页面样式/通用
+* @description: 如下各模块注释
+* @author: author-name(szhengjie@126.com)
+* @update: 2019-6-21 16:30
+*/
+
+.conference {
+	background-image: linear-gradient(0deg, #313131 0%, #262424 100%), linear-gradient(#313131, #313131);
+}
+
+
+/* 图片大小 */
+
+.conference .img-w12 {
+	width: .12rem;
+	height: .12rem;
+	margin-right: .04rem;
+}
+
+/* content */
+
+.conference .top_bg {
+	width: 100%;
+	height: 1.3rem;
+}
+
+.conference .entInfo,
+.conference .perInfo {
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0 0 .05rem 0 #1b1b1b;
+	border-radius: .1rem;
+	color: #808285;
+}
+
+.conference .perInfo {
+	padding-bottom: .25rem;
+}
+
+.conference .entInfo .tit,
+.conference .perInfo .tit {
+	color: #fff;
+	font-weight: 700;
+	font-size: .16rem;
+	height: .38rem;
+	line-height: .38rem;
+	padding-left: .17rem;
+	border-radius: .1rem .1rem 0 0;
+}
+
+.addPer .entInfo li,
+.addPer .perInfo li,
+.exhibitorsReg .entInfo li,
+.exhibitorsReg .perInfo li {
+	display: flex;
+	padding: .2rem 0;
+	border-bottom: 1px solid #c9c9c9;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.addPer .entInfo .info-t,
+.addPer .perInfo .info-t,
+.exhibitorsReg .entInfo .info-t,
+.exhibitorsReg .perInfo .info-t {
+	font-size: .14rem;
+	margin-right: .1rem
+}
+
+.addPer .entInfo li input,
+.addPer .perInfo li input,
+.exhibitorsReg .entInfo li input,
+.exhibitorsReg .perInfo li input {
+	text-align: right;
+	border: none;
+	font-size: .12rem;
+	color: #aaa;
+	flex: 1;
+}
+
+.conference .perInfo .add {
+	width: 100%;
+	height: .33rem;
+	background-color: #fff;
+	border-radius: 5px;
+	border: solid 1px #00a0e9;
+	color: #008ed9;
+	font-size: .12rem;
+	margin-top: .25rem;
+	font-weight: 700;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/* 完成按钮 */
+
+.conference .content .complete {
+	width: 100%;
+	height: .4rem;
+	line-height: .4rem;
+	background-color: #eb6100;
+	border-radius: .2rem;
+	margin-top: .25rem;
+	color: #fff;
+	font-size: .18rem;
+	text-align: center;
+}
+
+.conference .border-b-1-d2 {
+	border-bottom: 1px solid #d2d2d2;
+}
+
+
+/* 单选框 */
+
+.conference .mint-cell {
+	display: inline-block;
+	min-height: 0;
+}
+
+.conference .mint-radiolist-title {
+	display: none;
+}
+
+.conference .mint-cell-wrapper,
+.conference .mint-cell {
+	padding: 0;
+	font-size: .13rem;
+	background: inherit;
+}
+
+.conference .mint-cell:last-child {
+	background: inherit;
+}
+
+.conference .mint-radiolist-label {
+	padding: 0;
+	padding-left: .2rem;
+}
+
+
+	/* 赞助商报名-赞助权益 */
+	.equity {
+	  font-size: .12rem;
+	  color: #eb6100;
+	}
+
+	.equity .info-t {
+	  color: #e32c21;
+	  font-weight: 700;
+	}
+
+  /* 报名详情-对账码 */
+  .subDetails .content .rec_code {
+    position: relative;
+    width: 100%;
+  }
+
+  .subDetails .rec_code>span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: .28rem;
+    height: 100%;
+    text-align: center;
+    background-color: #00a0e9;
+    font-size: .12rem;
+    border-radius: .1rem 0 0 .1rem;
+    writing-mode: vertical-lr;
+  }

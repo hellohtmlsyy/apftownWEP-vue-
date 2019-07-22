@@ -37,7 +37,7 @@
 				mobileIsEixt: false,
 				count: 60,
 				show_time: true,
-				activityNo: this.$route.query.data == 0? '20190418' : '20181031', //活动编号 
+				activityNo: this.$route.query.data == 0 ? '20190418' : '20181031', //活动编号 
 				data: this.$route.query.data,
 			}
 		},
@@ -84,17 +84,18 @@
 										}
 									})
 									.then(res => {
-										if(this.data == 0) {
+										if (this.data == 0) {
 											if (res.data.data != false) {
 												this.$layer.msg('您已预订，不能重复预订!');
 												var self = this;
 												window.setTimeout(function() { //已预订
-													window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.$route.query.book;
+													window.location.href = self.$root.urlPath.M_APF + '/act/act2018103107?data=0&book=' + self.$route.query
+														.book;
 												}, 2000)
 											} else { //未预订
 												window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106?data=0&book=' + this.$route.query.book;
 											}
-										}else {
+										} else {
 											if (res.data.data != false) {
 												this.$layer.msg('您已预订，不能重复预订!');
 												var self = this;
@@ -194,7 +195,7 @@
 								}
 							})
 							.then(res => {
-								if(this.data == 0) {
+								if (this.data == 0) {
 									if (res.data.data != false) {
 										this.$layer.msg('您已预订，不能重复预订!');
 										var self = this;
@@ -204,7 +205,7 @@
 									} else { //未预订
 										window.location.href = this.$root.urlPath.M_APF + '/act/act2018103106?data=0&book=' + this.$route.query.book;
 									}
-								}else {
+								} else {
 									if (res.data.data != false) {
 										this.$layer.msg('您已预订，不能重复预订!');
 										var self = this;
@@ -228,12 +229,11 @@
 		},
 		mounted() {
 			var winHeight = $(window).height(); //获取当前页面高度  
-			if (winHeight > 680) {
-			}
+			if (winHeight > 680) {}
 			$('.act_stay05').css('height', winHeight + 'px');
-			if(this.data == 0) {
+			if (this.data == 0) {
 				this.bgurl = this.$root.urlPath.M_APF + '/static/img/act/20190418/2-1.png';
-			}else{
+			} else {
 				this.bgurl = this.$root.urlPath.M_APF + '/static/img/act/20181031/bg-5-1.jpg';
 			}
 		},

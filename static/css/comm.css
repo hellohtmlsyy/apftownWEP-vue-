@@ -1,14 +1,18 @@
 @charset "utf-8";
 
-/* 
+/*
 * @name: 字体、颜色/通用
 * @description: 如下各模块注释
 * @author: author-name(szhengjie@126.com)
 * @update: 2019-3-4 16:30
 */
 
+
 /* 颜色表 */
+
+
 /* 黑白 */
+
 .col-fff {
 	color: #fff;
 }
@@ -25,7 +29,9 @@
 	color: #333;
 }
 
+
 /* 灰 */
+
 .col-70 {
 	color: #707070;
 }
@@ -42,7 +48,20 @@
 	color: #c9c9c9;
 }
 
+.col-43 {
+	color: #434343;
+}
+
+
+/* 主题色 */
+
+.col-00a0e9 {
+	color: #00a0e9;
+}
+
+
 /* 字体大小 */
+
 .small-font {
 	font-size: .11rem;
 	-webkit-transform-origin-x: 0;
@@ -101,7 +120,9 @@
 	font-size: .5rem;
 }
 
+
 /* 字体粗细 */
+
 .fw-4,
 .fwN {
 	font-weight: normal;
@@ -112,7 +133,9 @@
 	font-weight: bold;
 }
 
+
 /*行高*/
+
 .lh-20 {
 	line-height: .2rem;
 }
@@ -133,7 +156,9 @@
 	line-height: .4rem;
 }
 
+
 /* margin */
+
 .mb-5 {
 	margin-bottom: .05rem;
 }
@@ -202,7 +227,9 @@
 	margin-top: .2rem;
 }
 
+
 /* 对齐方式 */
+
 .tac {
 	text-align: center;
 }
@@ -220,6 +247,10 @@
 	justify-content: space-between;
 }
 
+.vam {
+	vertical-align: middle;
+}
+
 .df {
 	display: flex;
 }
@@ -227,4 +258,8 @@
 .dis-inline,
 .dis-i {
 	display: inline;
+}
+
+.dis-block {
+	display: block;
 }

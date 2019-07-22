@@ -38,12 +38,14 @@ import {
 	Tabbar,
 	TabItem,
 	Navbar,
+	Radio
 } from 'mint-ui';
 
 Vue.component(Navbar.name, Navbar);
 Vue.component(TabItem.name, TabItem);
 Vue.component(Switch.name, Switch);
 Vue.component(Tabbar.name, Tabbar);
+Vue.component(Radio.name, Radio);
 
 Vue.config.productionTip = false;
 // 日期选择
@@ -117,6 +119,39 @@ router.beforeEach((to, from, next) => {
 			})
 		}
 	}
+
+	if (to.meta.requireAuth_en) { //判断路由是否需要登录权限(英文登录)
+		if (getCookie('APF_UID')) {
+			Axios.get(REQ_URL + '/user/getUserInfo', {
+					params: {
+						APF_UID: getCookie('APF_UID'),
+					}
+				})
+				.then(res => {
+					if (res.data.success) {
+						next()
+					} else {
+						next({
+							path: '/login_en',
+							query: {
+								returnUrl: to.fullPath
+							} //将跳转的路由path作为参数回跳
+						})
+					}
+				})
+				.catch(err => {
+					console.log(err)
+				});
+		} else {
+			next({
+				path: '/login_en',
+				query: {
+					returnUrl: to.fullPath
+				} //将跳转的路由path作为参数回跳
+			})
+		}
+	}
+
 
 	next()
 });

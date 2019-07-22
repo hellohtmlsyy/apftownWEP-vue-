@@ -1,11 +1,11 @@
 <template>
 	<div class="pay m" v-show="flag">
 		<div class="col-fff fs-12 tac">
-      <p>仅供内部人员使用,初五迎财神庙会</p>
-      <p>用户姓名：{{userInfo.contactPerson == null ? '无' : userInfo.contactPerson }}</p>
-      <p>报名电话：{{userInfo.contactNumber == null ? '无' : userInfo.contactNumber}}</p>
-      <p>微信昵称：{{userInfo.nickName == null ? '无' : userInfo.nickName}}</p>
-    </div>
+			<p>仅供内部人员使用,初五迎财神庙会</p>
+			<p>用户姓名：{{userInfo.contactPerson == null ? '无' : userInfo.contactPerson }}</p>
+			<p>报名电话：{{userInfo.contactNumber == null ? '无' : userInfo.contactNumber}}</p>
+			<p>微信昵称：{{userInfo.nickName == null ? '无' : userInfo.nickName}}</p>
+		</div>
 		<div class="content">
 			<ul>
 				<li class="dis-fl" v-for="(item, index) in data" :key="index">
@@ -63,8 +63,8 @@
 				otherNum: 0,
 				qrCodeToken: this.$route.query.qrCodeToken,
 				operateUserToken: '',
-        extraAmount: '',
-        userInfo:''
+				extraAmount: '',
+				userInfo: ''
 			}
 		},
 		computed: {
@@ -133,8 +133,8 @@
 				))
 				.then(res => {
 					if (res.data.success) {
-            this.flag = true;
-            this.userInfo = res.data.data
+						this.flag = true;
+						this.userInfo = res.data.data
 					} else {
 						this.flag = false;
 						this.$layer.msg(res.data.errMsg);

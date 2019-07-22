@@ -55,7 +55,7 @@
 		border: solid 1px #d2d2d2;
 		font-size: 0.15rem;
 	}
-	
+
 	.park02 .adv .pro-tit {
 		font-size: 0.13rem;
 		padding: 0.08rem 0;
@@ -68,7 +68,7 @@
 	.park02 .adv .pro-item {
 		padding-left: 0.28rem;
 	}
-	
+
 	.park02 .adv2 .view {
 		width: 3.17rem;
 		height: 2.5rem;
